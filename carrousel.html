@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Actualités</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .news-section {
+            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon fill="rgba(255,255,255,0.05)" points="0,0 100,20 100,100 0,80"/></svg>');
+            background-size: 200px 200px;
+        }
+
+        .section-title {
+            color: #A8E6CF;
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-heading {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .news-card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .news-card-content {
+            padding: 1.5rem;
+        }
+
+        .news-card-title {
+            color: #2E86AB;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .news-card-text {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .news-card-meta {
+            display: flex;
+            align-items: center;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .news-card-meta i {
+            margin-right: 0.5rem;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .carousel-control-prev {
+            left: -25px;
+        }
+
+        .carousel-control-next {
+            right: -25px;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .carousel-indicators {
+            bottom: -50px;
+        }
+
+        .carousel-indicators [data-bs-target] {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            margin: 0 5px;
+        }
+
+        .carousel-indicators .active {
+            background-color: #A8E6CF;
+        }
+
+        .btn-view-all {
+            background: linear-gradient(45deg, #A8E6CF, #8FD19E);
+            border: none;
+            color: #2E86AB;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2rem;
+        }
+
+        .btn-view-all:hover {
+            background: linear-gradient(45deg, #8FD19E, #A8E6CF);
+            color: #1a5f7a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(168, 230, 207, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .news-section {
+                padding: 60px 0;
+            }
+
+            .section-heading {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .news-card-image {
+                height: 180px;
+            }
+
+            .news-card-content {
+                padding: 1.25rem;
+            }
+
+            .news-card-title {
+                font-size: 1.2rem;
+            }
+
+            .carousel-control-prev,
+            .carousel-control-next {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .news-section {
+                padding: 40px 0;
+            }
+
+            .section-heading {
+                font-size: 1.75rem;
+            }
+
+            .news-card-image {
+                height: 160px;
+            }
+
+            .news-card-content {
+                padding: 1rem;
+            }
+        }
+
+        /* Animation pour l'apparition des cartes */
+        .news-card {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="news-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="section-title">les news</p>
+                    <h2 class="section-heading">actualités</h2>
+                </div>
+            </div>
+
+            <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="news-card">
+                                    <div class="news-card-image" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect fill=%22%23f0f0f0%22 width=%22400%22 height=%22200%22/><rect fill=%22%232E86AB%22 x=%2250%22 y=%2250%22 width=%22300%22 height=%22100%22 rx=%2210%22/><text x=%22200%22 y=%22110%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Arial%22 font-size=%2220%22>Site Internet</text></svg>')"></div>
+                                    <div class="news-card-content">
+                                        <h3 class="news-card-title">Bienvenue sur notre nouveau site Internet !</h3>
+                                        <p class="news-card-text">Nous sommes ravis de vous dévoiler notre nouveau site internet avec ses fonctionnalités améliorées et son design moderne.</p>
+                                        <div class="news-card-meta">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>15 juin 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="news-card">
+                                    <div class="news-card-image" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect fill=%22%238B7355%22 width=%22400%22 height=%22200%22/><circle fill=%22%23A0522D%22 cx=%22100%22 cy=%22100%22 r=%2230%22/><circle fill=%22%236B4423%22 cx=%22200%22 cy=%2280%22 r=%2225%22/><circle fill=%22%23D2B48C%22 cx=%22150%22 cy=%22130%22 r=%2220%22/><circle fill=%22%238B7355%22 cx=%22300%22 cy=%22110%22 r=%2235%22/><text x=%22200%22 y=%22180%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Arial%22 font-size=%2218%22>Broyage</text></svg>')"></div>
+                                    <div class="news-card-content">
+                                        <h3 class="news-card-title">Opération de broyage</h3>
+                                        <p class="news-card-text">Venez découvrir nos déchets de branchages et de taille sur notre plateforme du 6 au 8 avril avec des réductions exceptionnelles.</p>
+                                        <div class="news-card-meta">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>6 avril 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="news-card">
+                                    <div class="news-card-image" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect fill=%22%234169E1%22 width=%22400%22 height=%22200%22/><rect fill=%22%23fff%22 x=%2250%22 y=%2260%22 width=%22120%22 height=%2280%22 rx=%225%22/><rect fill=%22%23ddd%22 x=%2260%22 y=%2270%22 width=%22100%22 height=%2210%22/><rect fill=%22%23ddd%22 x=%2260%22 y=%2290%22 width=%2280%22 height=%2210%22/><text x=%22250%22 y=%22120%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Arial%22 font-size=%2220%22>Accès en ligne</text></svg>')"></div>
+                                    <div class="news-card-content">
+                                        <h3 class="news-card-title">Accès aux droits et aux démarches</h3>
+                                        <p class="news-card-text">Découvrez notre nouvelle plateforme numérique pour simplifier toutes vos démarches administratives en ligne.</p>
+                                        <div class="news-card-meta">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>20 mai 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="news-card">
+                                    <div class="news-card-image" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect fill=%22%2332CD32%22 width=%22400%22 height=%22200%22/><circle fill=%22%23228B22%22 cx=%22100%22 cy=%22100%22 r=%2240%22/><rect fill=%22%238B4513%22 x=%2295%22 y=%22130%22 width=%2210%22 height=%2240%22/><text x=%22250%22 y=%22120%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Arial%22 font-size=%2218%22>Environnement</text></svg>')"></div>
+                                    <div class="news-card-content">
+                                        <h3 class="news-card-title">Initiative écologique 2025</h3>
+                                        <p class="news-card-text">Lancement de notre programme de développement durable avec de nouveaux projets environnementaux innovants.</p>
+                                        <div class="news-card-meta">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>12 mars 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="news-card">
+                                    <div class="news-card-image" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect fill=%22%23FF6347%22 width=%22400%22 height=%22200%22/><rect fill=%22%23fff%22 x=%22100%22 y=%2280%22 width=%22200%22 height=%2240%22 rx=%2220%22/><text x=%22200%22 y=%22105%22 text-anchor=%22middle%22 fill=%22%23FF6347%22 font-family=%22Arial%22 font-size=%2216%22>Événement</text></svg>')"></div>
+                                    <div class="news-card-content">
+                                        <h3 class="news-card-title">Journée portes ouvertes</h3>
+                                        <p class="news-card-text">Participez à notre journée portes ouvertes le 15 juillet pour découvrir nos installations et nos équipes.</p>
+                                        <div class="news-card-meta">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>2 juillet 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6">
+                                <div class="news-card">
+                                    <div class="news-card-image" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect fill=%22%239932CC%22 width=%22400%22 height=%22200%22/><rect fill=%22%23fff%22 x=%2250%22 y=%2270%22 width=%22300%22 height=%2260%22 rx=%2210%22/><text x=%22200%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%239932CC%22 font-family=%22Arial%22 font-size=%2220%22>Innovation</text></svg>')"></div>
+                                    <div class="news-card-content">
+                                        <h3 class="news-card-title">Nouvelles technologies</h3>
+                                        <p class="news-card-text">Découvrez les dernières innovations technologiques que nous avons intégrées pour améliorer nos services.</p>
+                                        <div class="news-card-meta">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>8 février 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contrôles du carrousel -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Précédent</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Suivant</span>
+                </button>
+
+                <!-- Indicateurs -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center">
+                    <button class="btn btn-view-all">
+                        <i class="fas fa-eye me-2"></i>
+                        Toutes les actualités
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animation au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.news-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+            });
+
+            // Auto-play du carrousel avec pause au hover
+            const carousel = document.querySelector('#newsCarousel');
+            const bootstrapCarousel = new bootstrap.Carousel(carousel, {
+                interval: 3700,
+                wrap: true
+            });
+
+            // Pause sur hover
+            carousel.addEventListener('mouseenter', () => {
+                bootstrapCarousel.pause();
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                bootstrapCarousel.cycle();
+            });
+        });
+
+        // Gestion du bouton "Toutes les actualités"
+        document.querySelector('.btn-view-all').addEventListener('click', function() {
+            // Ici vous pouvez ajouter la logique pour rediriger vers la page complète des actualités
+            console.log('Redirection vers toutes les actualités');
+        });
+    </script>
+</body>
+</html>
