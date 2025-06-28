@@ -1,0 +1,261 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.hero-section {
+    min-height: 100vh;
+    width: 100vw;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: url('../img/WhatsApp\ Image\ 2025-06-24\ à\ 19.04.10_f226f4c6.jpg') center center/cover no-repeat fixed;
+    color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+.adjame-navbar {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 40px 0 40px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    margin: 20px 0 0 0;
+    backdrop-filter: blur(6px);
+}
+
+.adjame-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.adjame-nav-links {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.adjame-nav-links > li {
+    position: relative;
+}
+
+.adjame-nav-links .dropdown-menu.submenu {
+    background: rgba(30, 30, 30, 0.92);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    padding: 10px 0;
+    min-width: 200px;
+    border: none;
+}
+
+.adjame-nav-links .dropdown-item {
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: background 0.18s, color 0.18s;
+    padding: 10px 24px;
+    white-space: nowrap;
+}
+
+.adjame-nav-links .dropdown-item:hover, .adjame-nav-links .dropdown-item:focus {
+    background: #f2c94c !important;
+    color: #222 !important;
+}
+
+/* Pour éviter que le dernier sous-menu déborde à droite (optionnel, à garder si besoin) */
+.adjame-nav-links > li.has-submenu:last-child .dropdown-menu.submenu {
+    left: auto;
+    right: 0;
+}
+
+.adjame-nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: background 0.2s;
+}
+
+.adjame-nav-links li a:hover {
+    background: rgba(255,255,255,0.18);
+}
+
+.adjame-menu-icon {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+.adjame-menu-icon span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+.hero-main {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    min-height: 0;
+}
+
+.hero-content {
+    margin-left: 8vw;
+    max-width: 600px;
+}
+.sous-titre {
+    font-size: 1.1rem;
+    background: rgba(0,0,0,0.25);
+    padding: 6px 18px;
+    border-radius: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    display: inline-block;
+}
+.hero-content h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin: 18px 0 32px 0;
+    line-height: 1.1;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.25);
+}
+.btn-hero {
+    display: inline-block;
+    background: #fff;
+    color: #222;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 14px 36px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    transition: background 0.2s, color 0.2s;
+}
+.btn-hero:hover {
+    background: #f2c94c;
+    color: #222;
+}
+
+.hero-social {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+.hero-social a {
+    background: rgba(255,255,255,0.18);
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.hero-social a:hover {
+    background: #f2c94c;
+}
+
+.hero-social svg {
+    width: 32px;
+    height: 32px;
+}
+
+.hero-scroll {
+    position: absolute;
+    right: 60px;
+    bottom: 60px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+    .adjame-navbar {
+        flex-direction: column;
+        gap: 18px;
+        padding: 18px 10vw 0 10vw;
+    }
+    .hero-content {
+        margin-left: 4vw;
+        max-width: 90vw;
+    }
+    .hero-social, .hero-scroll {
+        right: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-section {
+        min-height: 100vh;
+    }
+    .adjame-navbar {
+        margin: 10px 4vw 0 4vw;
+        padding: 12px 4vw 0 4vw;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .btn-hero {
+        padding: 10px 18px;
+        font-size: 1rem;
+    }
+    .hero-social {
+        top: unset;
+        bottom: 100px;
+        right: 10px;
+    }
+    .hero-scroll {
+        right: 10px;
+        bottom: 20px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .adjame-nav-links {
+        gap: 12px;
+    }
+    .dropdown-menu.submenu {
+        min-width: 150px;
+    }
+    .dropdown-item {
+        padding: 8px 14px;
+        font-size: 0.97rem;
+    }
+}

@@ -10,7 +10,7 @@
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-0" style="background:rgba(255,255,255,0.75);border-bottom:2px solid #E6AC30;backdrop-filter:blur(12px);position:fixed;top:0;left:0;width:100vw;z-index:100;">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-0" style="background:linear-gradient(120deg, #AC3B27 0%, #E6AC30 100%) !important;backdrop-filter:blur(12px);position:fixed;top:0;left:0;width:100vw;z-index:100;">
       <div class="container-fluid px-4">
         <div class="logo-container d-flex align-items-center bg-white rounded-4 shadow-sm me-4" style="height:100px;padding:8px 24px;">
           <img src="img/logo.png" alt="Logo d'Adjamé" class="logo" style="height:90px;max-width:220px;object-fit:contain;filter:drop-shadow(0 2px 8px #E6AC30aa);">
@@ -20,9 +20,9 @@
         </button>
         <div class="collapse navbar-collapse justify-content-center menu-wrapper-adjame" id="navbarAdjame">
           <ul class="navbar-nav menu-links-adjame mb-2 mb-lg-0 gap-3">
-            <li class="nav-item"><a class="nav-link fw-bold px-4 py-2 rounded-pill" href="#" style="color:#0F9B39;">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold px-4 py-2 rounded-pill" href="#">Accueil</a></li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle fw-bold px-4 py-2 rounded-pill" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#0F9B39;">Découvrir Adjamé</a>
+              <a class="nav-link dropdown-toggle fw-bold px-4 py-2 rounded-pill" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">Découvrir Adjamé</a>
               <ul class="dropdown-menu menu-dropdown-adjame rounded-4 shadow border-0 mt-2" aria-labelledby="navbarDropdown1" style="background:#fff;min-width:220px;">
                 <li><a class="dropdown-item fw-semibold" href="#" style="color:#AC3B27;">L'histoire de Adjamé</a></li>
                 <li><a class="dropdown-item fw-semibold" href="#" style="color:#AC3B27;">Culture</a></li>
@@ -31,21 +31,21 @@
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle fw-bold px-4 py-2 rounded-pill" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#0F9B39;">Vos Marchés</a>
+              <a class="nav-link dropdown-toggle fw-bold px-4 py-2 rounded-pill" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Vos Marchés</a>
               <ul class="dropdown-menu menu-dropdown-adjame rounded-4 shadow border-0 mt-2" aria-labelledby="navbarDropdown2" style="background:#fff;min-width:220px;">
                 <li><a class="dropdown-item fw-semibold" href="#" style="color:#AC3B27;">Sous-menu 1</a></li>
                 <li><a class="dropdown-item fw-semibold" href="#" style="color:#AC3B27;">Sous-menu 2</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle fw-bold px-4 py-2 rounded-pill" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#0F9B39;">Transports & Mobilité</a>
+              <a class="nav-link dropdown-toggle fw-bold px-4 py-2 rounded-pill" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Transports & Mobilité</a>
               <ul class="dropdown-menu menu-dropdown-adjame rounded-4 shadow border-0 mt-2" aria-labelledby="navbarDropdown3" style="background:#fff;min-width:220px;">
                 <li><a class="dropdown-item fw-semibold" href="#" style="color:#AC3B27;">Sous-menu 1</a></li>
                 <li><a class="dropdown-item fw-semibold" href="#" style="color:#AC3B27;">Sous-menu 2</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle fw-bold px-4 py-2 rounded-pill" href="#" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#0F9B39;">Services citoyens</a>
+              <a class="nav-link dropdown-toggle fw-bold px-4 py-2 rounded-pill" href="#" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services citoyens</a>
               <ul class="dropdown-menu menu-dropdown-adjame rounded-4 shadow border-0 mt-2" aria-labelledby="navbarDropdown4" style="background:#fff;min-width:220px;">
                 <li><a class="dropdown-item fw-semibold" href="#" style="color:#AC3B27;">Faire une demande</a></li>
                 <li><a class="dropdown-item fw-semibold" href="#" style="color:#AC3B27;">Signaler un problème</a></li>
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="right">
-            <video src="img/color 1.mp4" autoplay loop muted></video>
+            <video src="img/color3.mp4" autoplay loop muted></video>
         </div>
     </div>
    </section>
@@ -334,6 +334,16 @@
 
             carousel.addEventListener('mouseleave', () => {
                 bootstrapCarousel.cycle();
+            });
+
+            // Gestion du défilement de la navbar
+            const navbar = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
             });
         });
 
