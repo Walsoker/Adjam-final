@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adjamé - Découvrez la Commune Dynamique</title>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -83,7 +84,7 @@
         /* Section Hero */
         .hero-section {
             height: 100vh;
-            background: url('img/WhatsApp Image 2025-06-24 à 19.04.10_f226f4c6.jpg') center/cover no-repeat;
+            background: url('img/background\ 220.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             position: relative;
@@ -996,7 +997,7 @@
 
         .newsletter-form {
             display: flex;
-            margin-top: 15px;
+            margin-top: 8px;
             gap: 10px;
         }
 
@@ -1026,7 +1027,7 @@
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 20px;
+            padding-top: 10px;
             text-align: center;
             color: #b0b0b0;
             font-size: 0.8em;
@@ -1176,7 +1177,9 @@
 
         /* Ajouté dans le <style> du footer (après .footer-new) */
         .footer-new {
-            padding-top: 60px; /* Ajoute de l'espace pour la vague */
+            padding-top: 30px;
+            padding-bottom: 20px;
+            background: linear-gradient(135deg, #0F9B39 0%, #4a7c59 100%);
         }
 
         /* Masquer les réseaux sociaux verticaux quand on atteint le footer */
@@ -1225,8 +1228,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
-                            <li><a class="dropdown-item" href="#personnalites">Personnalités Locales</a></li>
-                            <li><a class="dropdown-item" href="#personnalites">Galleries Photo</a></li>
+                            <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
+                            <li><a class="dropdown-item" href="gallerie.html">Galleries Photo</a></li>
                         </ul>
                     </li>
                     
@@ -1248,10 +1251,9 @@
                             Économie et Mobilité
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#commerce">Commerce</a></li>
-                            <li><a class="dropdown-item" href="#transport">Transport</a></li>
-                            <li><a class="dropdown-item" href="#emploi">Emploi</a></li>
-                            <li><a class="dropdown-item" href="#investissement">Investissement</a></li>
+                            <li><a class="dropdown-item" href="exploration.html">Explorer les marchés</a></li>
+                            <li><a class="dropdown-item" href="commercant.html">Je suis commerçant</a></li>
+                            <li><a class="dropdown-item" href="#emploi">Déclaration mensuelle</a></li>
                         </ul>
                     </li>
                     
@@ -1779,9 +1781,7 @@
     <!-- Nouveau Footer Sombre et Moderne -->
     <footer class="footer-new position-relative mt-5">
         <!-- Effet wave -->
-        <div class="footer-wave">
-            <svg viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#0F9B39" d="M0,60 C360,120 1080,0 1440,60 L1440,90 L0,90 Z"></path></svg>
-        </div>
+        
         <div class="container py-5">
             <div class="row g-4 align-items-start">
                 <!-- Bloc à propos -->
@@ -1829,10 +1829,12 @@
     </footer>
     <style>
     .footer-new {
-        background: #AC3B27;
+        background: linear-gradient(135deg, #0F9B39 0%, #4a7c59 100%);
         color: #FFFFFF;
         position: relative;
         overflow: hidden;
+        padding-top: 30px;
+        padding-bottom: 20px;
     }
     .footer-wave {
         position: absolute;
@@ -1842,27 +1844,27 @@
         z-index: 2;
     }
     .footer-wave svg path {
-        fill: #AC3B27;
+        fill: #0F9B39;
     }
     .footer-title {
-        color: #E6AC30;
+        color: #fff;
         font-size: 1.5rem;
         font-weight: 700;
         letter-spacing: 1px;
     }
     .footer-subtitle {
-        color: #E6AC30;
+        color: #a8d4ae;
         font-size: 1.1rem;
         font-weight: 600;
         letter-spacing: 0.5px;
     }
     .footer-desc {
-        color: #E7E6E6;
+        color: #d6f5e3;
         font-size: 1rem;
         font-style: italic;
     }
     .footer-links a {
-        color: #FFFFFF;
+        color: #e0ffe0;
         text-decoration: none;
         transition: color 0.2s;
         display: block;
@@ -1870,11 +1872,11 @@
         font-size: 1rem;
     }
     .footer-links a:hover {
-        color: #AC3B27;
+        color: #a8d4ae;
         text-decoration: underline;
     }
     .footer-contact li {
-        color: #E7E6E6;
+        color: #e0ffe0;
         font-size: 0.98rem;
         margin-bottom: 0.5rem;
         display: flex;
@@ -1882,14 +1884,14 @@
         gap: 8px;
     }
     .footer-contact i {
-        color: #E6AC30;
+        color: #a8d4ae;
         min-width: 18px;
         text-align: center;
     }
     .footer-newsletter .form-control {
         border-radius: 25px 0 0 25px;
         border: none;
-        background: #E7E6E6;
+        background: #e0ffe0;
         color: #0F9B39;
         font-size: 1rem;
     }
@@ -1898,7 +1900,7 @@
         outline: none;
     }
     .footer-newsletter .btn-gold {
-        background: #E6AC30;
+        background: #a8d4ae;
         color: #0F9B39;
         border-radius: 0 25px 25px 0;
         border: none;
@@ -1906,7 +1908,7 @@
         transition: background 0.2s;
     }
     .footer-newsletter .btn-gold:hover {
-        background: #AC3B27;
+        background: #0F9B39;
         color: #fff;
     }
     .footer-social-link {
@@ -1915,24 +1917,24 @@
         justify-content: center;
         width: 44px;
         height: 44px;
-        background: #E6AC30;
-        color: #0F9B39;
+        background: #0F9B39;
+        color: #fff;
         border-radius: 50%;
         font-size: 1.3rem;
         transition: background 0.2s, color 0.2s, transform 0.2s;
         box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
     .footer-social-link:hover {
-        background: #AC3B27;
-        color: #fff;
+        background: #a8d4ae;
+        color: #0F9B39;
         transform: scale(1.1);
     }
     .footer-separator {
-        border-color: #E6AC30;
+        border-color: #a8d4ae;
         opacity: 0.4;
     }
     .footer-copyright {
-        color: #E7E6E6;
+        color: #d6f5e3;
         font-size: 0.95rem;
         letter-spacing: 0.5px;
     }
@@ -1945,6 +1947,10 @@
         }
         .footer-social {
             justify-content: center;
+        }
+        .footer-new {
+            padding-top: 18px;
+            padding-bottom: 10px;
         }
     }
     </style>

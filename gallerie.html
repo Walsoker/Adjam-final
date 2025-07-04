@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-light: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Header et Navigation */
+        .navbar {
+            background: rgba(0, 0, 0, 0.595) !important;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(172,59,39,0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: #E6AC30;
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            background: #E6AC30 !important;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown-item {
+            color: var(--text-light) !important;
+            padding: 0.7rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover, .dropdown-item:focus {
+            background: #E6AC30 !important;
+            color: #fff !important;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Footer moderne vert */
+        .footer-new {
+            background: linear-gradient(135deg, #0F9B39 0%, #4a7c59 100%);
+            color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+        .footer-title {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .footer-subtitle {
+            color: #a8d4ae;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .footer-desc {
+            color: #d6f5e3;
+            font-size: 1rem;
+            font-style: italic;
+        }
+        .footer-links a {
+            color: #e0ffe0;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .footer-links a:hover {
+            color: #a8d4ae;
+            text-decoration: underline;
+        }
+        .footer-contact li {
+            color: #e0ffe0;
+            font-size: 0.98rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-contact i {
+            color: #a8d4ae;
+            min-width: 18px;
+            text-align: center;
+        }
+        .footer-newsletter .form-control {
+            border-radius: 25px 0 0 25px;
+            border: none;
+            background: #e0ffe0;
+            color: #0F9B39;
+            font-size: 1rem;
+        }
+        .footer-newsletter .form-control:focus {
+            box-shadow: none;
+            outline: none;
+        }
+        .footer-newsletter .btn-gold {
+            background: #a8d4ae;
+            color: #0F9B39;
+            border-radius: 0 25px 25px 0;
+            border: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .footer-newsletter .btn-gold:hover {
+            background: #0F9B39;
+            color: #fff;
+        }
+        .footer-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #0F9B39;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .footer-social-link:hover {
+            background: #a8d4ae;
+            color: #0F9B39;
+            transform: scale(1.1);
+        }
+        .footer-separator {
+            border-color: #a8d4ae;
+            opacity: 0.4;
+        }
+        .footer-copyright {
+            color: #d6f5e3;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 767px) {
+            .footer-title, .footer-subtitle {
+                text-align: center;
+            }
+            .footer-new .row > div {
+                text-align: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            .footer-new {
+                padding-top: 18px;
+                padding-bottom: 10px;
+            }
+        }
+        .gallery-section {
+            background: #f8f9fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            grid-auto-flow: dense;
+        }
+
+        .gallery-card {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(15, 155, 57, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 16px 32px rgba(15, 155, 57, 0.18);
+        }
+
+        .gallery-info {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            background: linear-gradient(0deg, rgba(15,155,57,0.85) 0%, rgba(0,0,0,0.0) 100%);
+            color: #fff;
+            padding: 18px 16px 10px 16px;
+        }
+
+        .gallery-info h5 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Cartes de tailles différentes pour effet créatif */
+        .gallery-card:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+        .gallery-card:nth-child(2) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        .gallery-card:nth-child(3) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        .gallery-card:nth-child(4) {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+        .gallery-card:nth-child(5) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        .gallery-card:nth-child(6) {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+        .gallery-card img {
+            height: 100%;
+            min-height: 180px;
+            max-height: 350px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-card {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+        }
+        @media (max-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html#home"><img src="img/logo.png" width="100" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Découvrir Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
+                            <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
+                            <li><a class="dropdown-item" href="gallerie.html">Galleries Photo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Vivre à Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#logement">Éducation et jeunesse</a></li>
+                            <li><a class="dropdown-item" href="#education">Vie associative</a></li>
+                            <li><a class="dropdown-item" href="#sante">Santé</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Économie et Mobilité
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#commerce">Commerce</a></li>
+                            <li><a class="dropdown-item" href="#transport">Transport</a></li>
+                            <li><a class="dropdown-item" href="#emploi">Emploi</a></li>
+                            <li><a class="dropdown-item" href="#investissement">Investissement</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services Citoyens
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#administration">Faire une demande </a></li>
+                            <li><a class="dropdown-item" href="#etat-civil">Signaler un problème</a></li>
+                            <li><a class="dropdown-item" href="#urbanisme">Annonces de la mairie</a></li>
+                            <li><a class="dropdown-item" href="#social">Info pratique</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Voix d'Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#actualites">Actualités</a></li>
+                            <li><a class="dropdown-item" href="#temoignages">Exprime-toi</a></li>
+                            <li><a class="dropdown-item" href="#participation">Sondages dynamiques sur les besoins ou projets dans la commune</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br><br><br>
+    <section class="gallery-section py-5">
+      <div class="container">
+        <h2 class="text-center mb-4" style="color:#0F9B39;">Galerie Photo d'Adjamé</h2>
+        <div class="gallery-grid">
+          <div class="gallery-card">
+            <img src="img/WhatsApp Image 2025-06-24 à 19.04.10_f226f4c6.jpg" alt="Marché d'Adjamé">
+            <div class="gallery-info">
+              <h5>Marché d'Adjamé</h5>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <img src="img/220 logement portraits.jpg" alt="Vie urbaine">
+            <div class="gallery-info">
+              <h5>Vie urbaine</h5>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <img src="img/transport.jpg" alt="Transport à Adjamé">
+            <div class="gallery-info">
+              <h5>Transport à Adjamé</h5>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <img src="img/WhatsApp Image 2025-06-24 à 19.07.49_96223ecd.jpg" alt="Ambiance locale">
+            <div class="gallery-info">
+              <h5>Institution Religieuse</h5>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <img src="img/220 logement portraits.jpg" alt="Quartier populaire">
+            <div class="gallery-info">
+              <h5>Quartier populaire</h5>
+            </div>
+          </div>
+          <div class="gallery-card">
+            <img src="img/le monde .jpg" alt="Scène de rue">
+            <div class="gallery-info">
+              <h5>Scène de rue</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-new position-relative mt-5">
+        <div class="container py-5">
+            <div class="row g-4 align-items-start">
+                <!-- Bloc à propos -->
+                <div class="col-md-4">
+                    <h3 class="footer-title mb-3">Commune d'Adjamé</h3>
+                    <p class="footer-desc mb-3">"Adjamé, carrefour de cultures et d'opportunités, au cœur d'Abidjan."</p>
+                    <img src="img/logo mairie adjaamé-Photoroom.png" alt="Logo Adjamé" style="max-width:120px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                </div>
+                <!-- Bloc liens utiles -->
+                <div class="col-md-2 d-none d-md-block">
+                </div>
+                <!-- Bloc contact -->
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Contact</h4>
+                    <ul class="footer-contact list-unstyled mb-3">
+                        <li><i class="fas fa-map-marker-alt"></i> Boulevard Lagunaire, Adjamé</li>
+                        <li><i class="fas fa-phone"></i> +225 27 20 XX XX XX</li>
+                        <li><i class="fas fa-envelope"></i> contact@mairie-adjame.ci</li>
+                        <li><i class="fas fa-clock"></i> Lun - Ven: 7h30 - 15h30</li>
+                    </ul>
+                </div>
+                <!-- Bloc newsletter & réseaux sociaux -->
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Restez connectés</h4>
+                    <form class="footer-newsletter mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                            <button class="btn btn-gold" type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="footer-social d-flex gap-3">
+                        <a href="#" class="footer-social-link" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@redecouvreadjame" class="footer-social-link" title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-separator my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright mb-0">&copy; 2025 Commune d'Adjamé. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+    // Animation simple pour la newsletter
+    document.querySelectorAll('.footer-newsletter').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Merci pour votre inscription ! Vous recevrez bientôt nos actualités.');
+                this.querySelector('input[type="email"]').value = '';
+            }
+        });
+    });
+    // Animation de la navbar au scroll
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    </script>
+</body>
+</html>

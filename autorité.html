@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Mot du Maire - Adjamé</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #E7E6E6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+        .maire-hero {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background: #fff;
+            min-height: 350px;
+            padding: 40px 0 0 0;
+            margin-bottom: 0;
+        }
+        .maire-hero-photo {
+            flex: 0 0 38vw;
+            max-width: 600px;
+            min-width: 260px;
+            height: 350px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .maire-hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+            display: block;
+        }
+        .maire-hero-nom {
+            flex: 1 1 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .maire-hero-nom h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #0F3B47;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        /* Bande dorée sous le hero */
+        .gold-bar {
+            width: 100vw;
+            height: 7px;
+            background: linear-gradient(90deg, #E6AC30 60%, #AC3B27 100%);
+            margin: 0 0 0 0;
+            border: none;
+        }
+        /* Nouvelle section infos, full width, disposition moderne */
+        .maire-infos-wide {
+            width: 100vw;
+            background: linear-gradient(90deg, #f8f9fa 60%, #E7E6E6 100%);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 3vw;
+            padding: 48px 0 48px 0;
+        }
+        .maire-bio-col {
+            flex: 1 1 480px;
+            max-width: 600px;
+            padding: 0 2vw 0 4vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        .maire-bio-col .maire-bio {
+            font-size: 1.13rem;
+            line-height: 1.7;
+            color: #2c3e50;
+            text-align: left;
+            width: 100%;
+        }
+        .maire-center-col {
+            flex: 0 0 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 18px;
+        }
+        .logo-republique {
+            width: 90px;
+            margin: 0 auto 0 auto;
+            display: block;
+        }
+        .social-links {
+            margin-bottom: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            color: #E6AC30;
+            font-size: 1.7rem;
+            background: #fff;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(230,172,48,0.10);
+        }
+        .social-links a:hover {
+            background: #E6AC30;
+            color: #fff;
+            transform: scale(1.08);
+        }
+        .contact-form-col {
+            flex: 1 1 320px;
+            max-width: 420px;
+            padding: 0 2vw;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .contact-form {
+            width: 100%;
+            max-width: 400px;
+        }
+        .contact-form label {
+            color: #AC3B27;
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            border: 1.5px solid #E6AC30;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #fff;
+            color: #2c3e50;
+        }
+        .contact-form textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .contact-form button {
+            background: linear-gradient(90deg, #E6AC30 60%, #AC3B27 100%);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 32px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .contact-form button:hover {
+            background: linear-gradient(90deg, #AC3B27 60%, #E6AC30 100%);
+            transform: translateY(-2px) scale(1.04);
+        }
+        @media (max-width: 1100px) {
+            .maire-infos-wide {
+                flex-direction: column;
+                align-items: center;
+                gap: 32px;
+                padding: 32px 0 32px 0;
+            }
+            .maire-bio-col {
+                max-width: 100%;
+                padding: 0 4vw;
+                align-items: center;
+            }
+            .maire-bio-col .maire-bio {
+                text-align: center;
+            }
+            .contact-form-col {
+                align-items: center;
+            }
+        }
+        @media (max-width: 700px) {
+            .maire-hero-photo {
+                height: 160px;
+            }
+            .maire-hero-nom h1 {
+                font-size: 2rem;
+            }
+            .maire-infos-wide {
+                padding: 18px 0 18px 0;
+            }
+        }
+        /* --- CSS NAVBAR DE INDEX.HTML --- */
+        .navbar {
+            background: rgba(0, 0, 0, 0.595) !important;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(172,59,39,0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .navbar-nav .nav-link:hover {
+            background: #E6AC30;
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        .dropdown-menu {
+            background: #E6AC30;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+        .dropdown-item {
+            color: rgba(255, 255, 255, 0.9) !important;
+            padding: 0.7rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .dropdown-item:hover {
+            background: #E6AC30;
+            color: white !important;
+        }
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+        /* --- FIN CSS NAVBAR DE INDEX.HTML --- */
+        .bande-hero {
+            position: relative;
+            width: 100vw;
+            height: 140px;
+            overflow: hidden;
+            z-index: 10;
+            margin-top: 150px;
+        }
+        .bande-bg {
+            position: absolute;
+            top: 0; left: 0; width: 200vw; height: 100%;
+            background: url('img/adjame-bg.jpg') repeat-x center/cover;
+            animation: bandeScroll 30s linear infinite;
+        }
+        @keyframes bandeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50vw); }
+        }
+        .bande-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 155, 57, 0.85);
+            z-index: 1;
+        }
+        .bande-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding-left: 8vw;
+        }
+        .bande-titre {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.3rem;
+            letter-spacing: 1px;
+        }
+        .bande-magistrat-1er {
+            font-size: 2.1rem;
+            vertical-align: super;
+            margin-right: 0.2em;
+        }
+        .bande-menu {
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+        .bande-menu a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .bande-menu a:hover {
+            color: #E6AC30;
+        }
+        .bande-sep {
+            color: #fff;
+            opacity: 0.7;
+            margin: 0 0.7rem;
+        }
+        @media (max-width: 700px) {
+            .bande-hero { height: 90px; }
+            .bande-titre { font-size: 1.5rem; }
+            .bande-content { padding-left: 4vw; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="img/logo.png" width="100" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#home">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Découvrir Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
+                            <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
+                            <li><a class="dropdown-item" href="#personnalites">Galleries Photo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Vivre à Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#logement">Éducation et jeunesse</a></li>
+                            <li><a class="dropdown-item" href="#education">Vie associative</a></li>
+                            <li><a class="dropdown-item" href="#sante">Santé</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Économie et Mobilité
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#commerce">Commerce</a></li>
+                            <li><a class="dropdown-item" href="#transport">Transport</a></li>
+                            <li><a class="dropdown-item" href="#emploi">Emploi</a></li>
+                            <li><a class="dropdown-item" href="#investissement">Investissement</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services Citoyens
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#administration">Faire une demande </a></li>
+                            <li><a class="dropdown-item" href="#etat-civil">Signaler un problème</a></li>
+                            <li><a class="dropdown-item" href="#urbanisme">Annonces de la mairie</a></li>
+                            <li><a class="dropdown-item" href="#social">Info pratique</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Voix d'Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#actualites">Actualités</a></li>
+                            <li><a class="dropdown-item" href="#temoignages">Exprime-toi</a></li>
+                            <li><a class="dropdown-item" href="#participation">Sondages dynamiques sur les besoins ou projets dans la commune</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Bande défilante au-dessus du maire -->
+    <div class="bande-hero">
+        <div class="bande-bg"></div>
+        <div class="bande-overlay"></div>
+        <div class="bande-content">
+            <div class="bande-titre">
+                <span class="bande-magistrat"><span class="bande-magistrat-1er">1<sup>er</sup></span> Magistrat</span>
+            </div>
+            <div class="bande-menu">
+                <a href="index.html">Accueil</a>
+                <span class="bande-sep">|</span>
+                <a href="#">Présentation du Maire</a>
+            </div>
+        </div>
+    </div>
+    <!-- Fin bande -->
+    <section class="maire-hero">
+        <div class="maire-hero-photo">
+            <img src="img/Soumahoro_Farikou maire.jpg" alt="Soumahoro Farikou">
+        </div>
+        <div class="maire-hero-nom">
+            <h1>Soumahoro Farikou</h1>
+        </div>
+    </section>
+    <div class="gold-bar"></div>
+    <section class="maire-infos-wide">
+        <div class="maire-bio-col">
+            <div class="maire-bio">
+                Soumahoro Farikou, surnommé « Farik », est une figure emblématique d'Adjamé. Syndicaliste engagé et homme politique de conviction, il s'est imposé depuis plus de dix ans comme un acteur incontournable de la vie municipale. Après un parcours militant débuté en France, il a contribué à la fondation du RDR à Adjamé et s'est illustré par son engagement pour la défense des commerçants et le bien-être de ses concitoyens. Proche de la population, il est reconnu pour sa disponibilité, son sens du partage et sa détermination à améliorer les conditions de vie à Adjamé.
+            </div>
+        </div>
+        <div class="maire-center-col">
+            <img src="img/logo republic ci-true.png" alt="République de Côte d'Ivoire" class="logo-republique">
+            <div class="social-links">
+                <a href="https://www.facebook.com/p/Farikou-Soumahoro-100060519711252/?locale=fr_FR" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/farikousoumahoroofficiel/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="contact-form-col">
+            <form class="contact-form">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+                <label for="email">Adresse e-mail</label>
+                <input type="email" id="email" name="email" placeholder="Votre e-mail" required>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-new position-relative mt-5">
+        <!-- Effet wave -->
+        <div class="footer-wave">
+            <svg viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#0F9B39" d="M0,60 C360,120 1080,0 1440,60 L1440,90 L0,90 Z"></path></svg>
+        </div>
+        <div class="container py-5">
+            <div class="row g-4 align-items-start">
+                <!-- Bloc à propos -->
+                <div class="col-md-4">
+                    <h3 class="footer-title mb-3">Commune d'Adjamé</h3>
+                    <p class="footer-desc mb-3">"Adjamé, carrefour de cultures et d'opportunités, au cœur d'Abidjan."</p>
+                    <img src="img/logo mairie adjaamé-Photoroom.png" alt="Logo Adjamé" style="max-width:120px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                </div>
+                <!-- Bloc liens utiles -->
+                <div class="col-md-2 d-none d-md-block">
+                </div>
+                <!-- Bloc contact -->
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Contact</h4>
+                    <ul class="footer-contact list-unstyled mb-3">
+                        <li><i class="fas fa-map-marker-alt"></i> Boulevard Lagunaire, Adjamé</li>
+                        <li><i class="fas fa-phone"></i> +225 27 20 XX XX XX</li>
+                        <li><i class="fas fa-envelope"></i> contact@mairie-adjame.ci</li>
+                        <li><i class="fas fa-clock"></i> Lun - Ven: 7h30 - 15h30</li>
+                    </ul>
+                </div>
+                <!-- Bloc newsletter & réseaux sociaux -->
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Restez connectés</h4>
+                    <form class="footer-newsletter mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                            <button class="btn btn-gold" type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="footer-social d-flex gap-3">
+                        <a href="#" class="footer-social-link" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@redecouvreadjame" class="footer-social-link" title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-separator my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright mb-0">&copy; 2025 Commune d'Adjamé. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <style>
+        .footer-new {
+            background: #AC3B27;
+            color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        .footer-wave {
+            position: absolute;
+            top: -1px; left: 0; right: 0;
+            width: 100%;
+            line-height: 0;
+            z-index: 2;
+        }
+        .footer-wave svg path {
+            fill: #AC3B27;
+        }
+        .footer-title {
+            color: #E6AC30;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .footer-subtitle {
+            color: #E6AC30;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .footer-desc {
+            color: #E7E6E6;
+            font-size: 1rem;
+            font-style: italic;
+        }
+        .footer-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .footer-links a:hover {
+            color: #AC3B27;
+            text-decoration: underline;
+        }
+        .footer-contact li {
+            color: #E7E6E6;
+            font-size: 0.98rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-contact i {
+            color: #E6AC30;
+            min-width: 18px;
+            text-align: center;
+        }
+        .footer-newsletter .form-control {
+            border-radius: 25px 0 0 25px;
+            border: none;
+            background: #E7E6E6;
+            color: #0F9B39;
+            font-size: 1rem;
+        }
+        .footer-newsletter .form-control:focus {
+            box-shadow: none;
+            outline: none;
+        }
+        .footer-newsletter .btn-gold {
+            background: #E6AC30;
+            color: #0F9B39;
+            border-radius: 0 25px 25px 0;
+            border: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .footer-newsletter .btn-gold:hover {
+            background: #AC3B27;
+            color: #fff;
+        }
+        .footer-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #E6AC30;
+            color: #0F9B39;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .footer-social-link:hover {
+            background: #AC3B27;
+            color: #fff;
+            transform: scale(1.1);
+        }
+        .footer-separator {
+            border-color: #E6AC30;
+            opacity: 0.4;
+        }
+        .footer-copyright {
+            color: #E7E6E6;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 767px) {
+            .footer-title, .footer-subtitle {
+                text-align: center;
+            }
+            .footer-new .row > div {
+                text-align: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // Animation simple pour la newsletter
+    document.querySelectorAll('.footer-newsletter').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Merci pour votre inscription ! Vous recevrez bientôt nos actualités.');
+                this.querySelector('input[type="email"]').value = '';
+            }
+        });
+    });
+    </script>
+    <script>
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    </script>
+</body>
+</html>

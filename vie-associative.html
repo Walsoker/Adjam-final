@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vie associative - Commune d'Adjamé</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #AC3B27;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.06)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #AC3B27;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #E6AC30;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(230, 172, 48, 0.3);
+        }
+
+        .btn-primary {
+            background: #AC3B27;
+        }
+
+        .btn-primary:hover {
+            background: #E6AC30;
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(230, 172, 48, 0.3);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-light {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #AC3B27;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Presentation Section */
+        .presentation {
+            text-align: center;
+        }
+
+        .presentation p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .category-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .category-card h3 {
+            color: #AC3B27;
+            margin-bottom: 10px;
+        }
+
+        /* Association Directory */
+        .search-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 25px;
+            border: 2px solid #e9ecef;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: #AC3B27;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .filter-tag {
+            padding: 8px 20px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-tag:hover, .filter-tag.active {
+            background: #AC3B27;
+            color: white;
+            border-color: #AC3B27;
+        }
+
+        .associations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .association-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .association-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .association-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #AC3B27, #E6AC30);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .association-info {
+            padding: 25px;
+        }
+
+        .association-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #AC3B27;
+        }
+
+        .association-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .association-tag {
+            display: inline-block;
+            background: #E6AC30;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        .association-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            border-radius: 25px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #AC3B27;
+            border: 2px solid #AC3B27;
+        }
+
+        .btn-outline:hover {
+            background: #AC3B27;
+            color: white;
+        }
+
+        /* Volunteer Section */
+        .volunteer-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #AC3B27;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #AC3B27;
+        }
+
+        /* News Section */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #E6AC30, #AC3B27);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .news-info {
+            padding: 25px;
+        }
+
+        .news-date {
+            color: #E6AC30;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #AC3B27;
+        }
+
+        .news-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Register Section */
+        .register-info {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .register-info p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .document-link {
+            display: inline-block;
+            color: #AC3B27;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .document-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .associations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                justify-content: flex-start;
+            }
+
+            .association-actions {
+                flex-direction: column;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .search-container,
+            .volunteer-form,
+            .register-info {
+                padding: 25px;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .simple-directory {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .simple-association {
+            display: flex;
+            align-items: flex-start;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(15,155,57,0.08);
+            border-left: 6px solid #E6AC30;
+            padding: 18px 28px;
+            gap: 24px;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .simple-association:hover {
+            box-shadow: 0 15px 35px rgba(230, 172, 48, 0.18);
+            transform: translateY(-3px) scale(1.02);
+        }
+        .asso-logo {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 0;
+            background: #f8f9fa;
+            box-shadow: 0 2px 8px rgba(230,172,48,0.08);
+            flex-shrink: 0;
+            border: 2px solid #E6AC30;
+        }
+        .simple-content {
+            flex: 1;
+        }
+        .simple-title {
+            font-weight: 700;
+            color: #AC3B27;
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+        .simple-desc {
+            color: #444;
+            font-size: 0.98rem;
+        }
+        .simple-contact {
+            color: #AC3B27;
+            font-size: 0.93rem;
+            margin-top: 4px;
+        }
+        @media (max-width: 700px) {
+            .simple-association {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 16px 14px;
+                gap: 10px;
+            }
+            .asso-logo {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        .about-highlight {
+            color: #E6AC30;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.595) !important;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+            border-bottom-left-radius: 0.7rem;
+            border-bottom-right-radius: 0.7rem;
+            box-shadow: 0 4px 24px rgba(172,59,39,0.10);
+        }
+        .navbar.scrolled {
+            background: #ac3b27e6 !important;
+            padding: 1rem 0;
+            box-shadow: 0 4px 24px rgba(172,59,39,0.18);
+        }
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
+            background: #E6AC30;
+            color: #fff !important;
+            transform: translateY(-2px);
+        }
+        .dropdown-menu {
+            background: #E6AC30;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+        .dropdown-item {
+            color: #fff !important;
+            padding: 0.7rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .dropdown-item:hover, .dropdown-item:focus {
+            background: #AC3B27;
+            color: #fff !important;
+        }
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="img/logo.png" width="100" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Accueil</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Découvrir Adjamé
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
+                        <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
+                        <li><a class="dropdown-item" href="gallerie.html">Galleries Photo</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Vivre à Adjamé
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#logement">Éducation et jeunesse</a></li>
+                        <li><a class="dropdown-item" href="vie-associative.html">Vie associative</a></li>
+                        <li><a class="dropdown-item" href="#sante">Santé</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Économie et Mobilité
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="exploration.html">Explorer les marchés</a></li>
+                        <li><a class="dropdown-item" href="commercant.html">Je suis commerçant</a></li>
+                        <li><a class="dropdown-item" href="#emploi">Déclaration mensuelle</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Services Citoyens
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#administration">Faire une demande </a></li>
+                        <li><a class="dropdown-item" href="#etat-civil">Signaler un problème</a></li>
+                        <li><a class="dropdown-item" href="#urbanisme">Annonces de la mairie</a></li>
+                        <li><a class="dropdown-item" href="#social">Info pratique</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Voix d'Adjamé
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#actualites">Actualités</a></li>
+                        <li><a class="dropdown-item" href="#temoignages">Exprime-toi</a></li>
+                        <li><a class="dropdown-item" href="#participation">Sondages dynamiques</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br><br><br><br>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Vie Associative</h1>
+            <p>Un espace pour découvrir, s'engager et renforcer la solidarité à Adjamé.</p>
+            <a href="#volunteer" class="btn">Je veux devenir bénévole</a>
+        </div>
+    </section>
+
+    <!-- Presentation Section -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="presentation">
+                <h2 class="section-title">Présentation <span class="about-highlight">de la vie associative</span></h2>
+                <p>À Adjamé, les associations jouent un rôle essentiel dans le développement social et économique de notre commune. Elles créent du lien social, proposent des services aux citoyens et contribuent à améliorer la qualité de vie de tous. Découvrez les différents domaines d'action de nos associations locales.</p>
+                
+                <div class="categories">
+                    <div class="category-card">
+                        <div class="category-icon">🎓</div>
+                        <h3>Éducation & Jeunesse</h3>
+                        <p>Soutien scolaire, formation professionnelle, accompagnement des jeunes</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🏥</div>
+                        <h3>Santé & Bien-être</h3>
+                        <p>Prévention, sensibilisation, accompagnement des personnes vulnérables</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🎭</div>
+                        <h3>Culture & Sport</h3>
+                        <p>Promotion des arts, activités sportives, préservation du patrimoine</p>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🤝</div>
+                        <h3>Solidarité & Environnement</h3>
+                        <p>Entraide communautaire, protection de l'environnement, développement durable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Association Directory -->
+    <section class="section" id="directory">
+        <div class="container">
+            <h2 class="section-title">Annuaire <span class="about-highlight">des associations</span></h2>
+            <p class="section-subtitle">Découvrez quelques associations actives à Adjamé</p>
+            <div class="simple-directory">
+                <div class="simple-association">
+                    <img src="img/logo-asa.png" alt="Logo ASA" class="asso-logo">
+                    <div class="simple-content">
+                        <div class="simple-title">Association Sportive d'Adjamé (ASA)</div>
+                        <div class="simple-desc">Équipe masculine évoluant dans le championnat national de basketball première division N1. L'ASA incarne l'excellence sportive et la fierté d'Adjamé.</div>
+                        <div class="simple-contact">📍 Adjamé, Abidjan | 📞 07 79 09 31 69 | 📧 asaviking9@gmail.com</div>
+                    </div>
+                </div>
+                <div class="simple-association">
+                    <img src="img/logo-gbeba.png" alt="Logo Centre Social Gbêba" class="asso-logo">
+                    <div class="simple-content">
+                        <div class="simple-title">Centre Social Adjamé Gbêba</div>
+                        <div class="simple-desc">Le centre social favorise le lien social en créant des espaces de rencontre et en proposant des activités variées. Il soutient les familles et sensibilise sur divers thèmes essentiels à la cohésion sociale et au développement local.</div>
+                    </div>
+                </div>
+                <div class="simple-association">
+                    <img src="img/logo-anfama.png" alt="Logo ANFAMA" class="asso-logo">
+                    <div class="simple-content">
+                        <div class="simple-title">ANFAMA (Association des Femmes Agents de la Mairie d'Adjamé)</div>
+                        <div class="simple-desc">L'ANFAMA œuvre pour l'autonomisation, la solidarité et la valorisation des femmes travaillant à la mairie, moteur d'initiatives sociales et citoyennes.</div>
+                    </div>
+                </div>
+                <div class="simple-association">
+                    <img src="img/logo-adalci.png" alt="Logo ADALCI" class="asso-logo">
+                    <div class="simple-content">
+                        <div class="simple-title">ADALCI</div>
+                        <div class="simple-desc">Développement des métiers de la logistique et supply chain en Côte d'Ivoire. Organisation de formations, séminaires et ateliers pour les professionnels.</div>
+                        <div class="simple-contact">🌐 <a href="http://adalci.org/" target="_blank" style="color:#AC3B27;">adalci.org</a></div>
+                    </div>
+                </div>
+                <div class="simple-association">
+                    <img src="img/logo-conzemius.png" alt="Logo Conzemius Friendship Club" class="asso-logo">
+                    <div class="simple-content">
+                        <div class="simple-title">Conzemius Friendship Club Abidjan</div>
+                        <div class="simple-desc">Club service menant des actions caritatives et éducatives pour le développement socio-économique à Abidjan.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Section -->
+    <section class="section section-light" id="volunteer">
+        <div class="container">
+            <h2 class="section-title">Envie de <span class="about-highlight">vous engager ?</span></h2>
+            <p class="section-subtitle">Rejoignez notre communauté de bénévoles et contribuez au développement d'Adjamé</p>
+            
+            <div class="volunteer-form">
+                <form id="volunteerForm">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">Domaine d'intérêt</label>
+                        <select id="interest" name="interest" required>
+                            <option value="">Choisissez un domaine</option>
+                            <option value="education">Éducation & Jeunesse</option>
+                            <option value="sante">Santé & Bien-être</option>
+                            <option value="culture">Culture & Sport</option>
+                            <option value="solidarite">Solidarité & Environnement</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="availability">Disponibilité</label>
+                        <select id="availability" name="availability" required>
+                            <option value="">Choisissez votre disponibilité</option>
+                            <option value="weekend">Week-ends</option>
+                            <option value="evenings">Soirées</option>
+                            <option value="flexible">Flexible</option>
+                            <option value="fulltime">Temps plein</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer ma candidature</button>
+                </form>
+                <div class="success-message" id="successMessage">
+                    Merci pour votre candidature ! Nous vous contacterons bientôt.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="section" id="news">
+        <div class="container">
+            <h2 class="section-title">Les initiatives <span class="about-highlight">locales en action</span></h2>
+            <p class="section-subtitle">Découvrez les dernières actualités de nos associations</p>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">📚</div>
+                    <div class="news-info">
+                        <div class="news-date">15 Juin 2025</div>
+                        <h3 class="news-title">Journée de soutien scolaire gratuit</h3>
+                        <p class="news-excerpt">Plus de 200 élèves ont bénéficié d'un soutien scolaire gratuit organisé par l'association Éducation Pour Tous.</p>
+                        <a href="#" class="btn btn-small btn-outline">Voir l'événement</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">🌳</div>
+                    <div class="news-info">
+                        <div class="news-date">10 Juin 2025</div>
+                        <h3 class="news-title">Campagne de reboisement</h3>
+                        <p class="news-excerpt">L'association Environnement Durable a planté 500 arbres dans les espaces verts de la commune.</p>
+                        <a href="#" class="btn btn-small btn-outline">Voir l'événement</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">🏥</div>
+                    <div class="news-info">
+                        <div class="news-date">5 Juin 2025</div>
+                        <h3 class="news-title">Dépistage médical gratuit</h3>
+                        <p class="news-excerpt">Une journée de dépistage médical gratuit a été organisée en partenariat avec le centre de santé local.</p>
+                        <a href="#" class="btn btn-small btn-outline">Voir l'événement</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Section -->
+    <section class="section section-light" id="register">
+        <div class="container">
+            <h2 class="section-title">Vous avez une <span class="about-highlight">association à Adjamé ?</span></h2>
+            <div class="register-info">
+                <p>La mairie vous accompagne dans votre visibilité et vous aide à développer vos activités au service de la communauté.</p>
+                <a href="#" class="btn btn-primary">Soumettre mon association</a>
+                <br>
+                <a href="#" class="document-link">📄 Télécharger la liste des documents requis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nouveau Footer Sombre et Moderne -->
+    <footer class="footer-new position-relative mt-5">
+        <div class="container py-5">
+            <div class="row g-4 align-items-start">
+                <!-- Bloc à propos -->
+                <div class="col-md-4">
+                    <h3 class="footer-title mb-3">Commune d'Adjamé</h3>
+                    <p class="footer-desc mb-3">"Adjamé, carrefour de cultures et d'opportunités, au cœur d'Abidjan."</p>
+                    <img src="img/logo mairie adjaamé-Photoroom.png" alt="Logo Adjamé" style="max-width:120px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                </div>
+                <!-- Bloc liens utiles -->
+                <div class="col-md-2 d-none d-md-block">
+                </div>
+                <!-- Bloc contact -->
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Contact</h4>
+                    <ul class="footer-contact list-unstyled mb-3">
+                        <li><i class="fas fa-map-marker-alt"></i> Boulevard Lagunaire, Adjamé</li>
+                        <li><i class="fas fa-phone"></i> +225 27 20 XX XX XX</li>
+                        <li><i class="fas fa-envelope"></i> contact@mairie-adjame.ci</li>
+                        <li><i class="fas fa-clock"></i> Lun - Ven: 7h30 - 15h30</li>
+                    </ul>
+                </div>
+                <!-- Bloc newsletter & réseaux sociaux -->
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Restez connectés</h4>
+                    <form class="footer-newsletter mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                            <button class="btn btn-gold" type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="footer-social d-flex gap-3">
+                        <a href="#" class="footer-social-link" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@redecouvreadjame" class="footer-social-link" title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-separator my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright mb-0">&copy; 2025 Commune d'Adjamé. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <style>
+    .footer-new {
+        background: #AC3B27 !important;
+        color: #FFFFFF;
+        position: relative;
+        overflow: hidden;
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+    .footer-title {
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+    .footer-subtitle {
+        color: #a8d4ae;
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    .footer-desc {
+        color: #d6f5e3;
+        font-size: 1rem;
+        font-style: italic;
+    }
+    .footer-links a {
+        color: #e0ffe0;
+        text-decoration: none;
+        transition: color 0.2s;
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+    .footer-links a:hover {
+        color: #a8d4ae;
+        text-decoration: underline;
+    }
+    .footer-contact li {
+        color: #e0ffe0;
+        font-size: 0.98rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .footer-contact i {
+        color: #a8d4ae;
+        min-width: 18px;
+        text-align: center;
+    }
+    .footer-newsletter .form-control {
+        border-radius: 25px 0 0 25px;
+        border: none;
+        background: #e0ffe0;
+        color: #0F9B39;
+        font-size: 1rem;
+    }
+    .footer-newsletter .form-control:focus {
+        box-shadow: none;
+        outline: none;
+    }
+    .footer-newsletter .btn-gold {
+        background: #a8d4ae;
+        color: #0F9B39;
+        border-radius: 0 25px 25px 0;
+        border: none;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    .footer-newsletter .btn-gold:hover {
+        background: #0F9B39;
+        color: #fff;
+    }
+    .footer-social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background: #0F9B39;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 1.3rem;
+        transition: background 0.2s, color 0.2s, transform 0.2s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .footer-social-link:hover {
+        background: #a8d4ae;
+        color: #0F9B39;
+        transform: scale(1.1);
+    }
+    .footer-separator {
+        border-color: #a8d4ae;
+        opacity: 0.4;
+    }
+    .footer-copyright {
+        color: #d6f5e3;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+    }
+    @media (max-width: 767px) {
+        .footer-title, .footer-subtitle {
+            text-align: center;
+        }
+        .footer-new .row > div {
+            text-align: center;
+        }
+        .footer-social {
+            justify-content: center;
+        }
+        .footer-new {
+            padding-top: 18px;
+            padding-bottom: 10px;
+        }
+    }
+    </style>
+    <script>
+    // Animation simple pour la newsletter
+    document.querySelectorAll('.footer-newsletter').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Merci pour votre inscription ! Vous recevrez bientôt nos actualités.');
+                this.querySelector('input[type="email"]').value = '';
+            }
+        });
+    });
+    </script>
+    <script>
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

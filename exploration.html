@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorer les marchés d'Adjamé</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+        }
+        .explorer-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 16px 64px 16px;
+        }
+        .explorer-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #AC3B27;
+            letter-spacing: 1px;
+        }
+        .explorer-desc {
+            text-align: center;
+            color: #555;
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+        }
+        .markets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        .market-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(172,59,39,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.3s, transform 0.3s;
+            border: 1.5px solid #E6AC30;
+        }
+        .market-card:hover {
+            box-shadow: 0 15px 35px rgba(230, 172, 48, 0.18);
+            transform: translateY(-5px) scale(1.03);
+        }
+        .market-img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            background: #eaeaea;
+        }
+        .market-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 24px 20px 20px 20px;
+        }
+        .market-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #AC3B27;
+            margin-bottom: 8px;
+        }
+        .market-desc {
+            color: #666;
+            font-size: 1.02rem;
+            margin-bottom: 20px;
+            min-height: 54px;
+        }
+        .market-hours {
+            margin-bottom: 20px;
+        }
+        .market-btns {
+            display: flex;
+            gap: 12px;
+            margin-top: 4px;
+        }
+        .market-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #0F9B39;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 22px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.18s, box-shadow 0.18s;
+            box-shadow: 0 1px 4px rgba(15, 155, 57, 0.08);
+        }
+        .market-btn.waze {
+            background: #E6AC30;
+            color: #fff;
+        }
+        .market-btn.maps {
+            background: #0F9B39;
+            color: #fff;
+        }
+        .market-btn.maps:hover {
+            background: #AC3B27;
+            color: #fff;
+        }
+        .market-btn.waze:hover {
+            background: #AC3B27;
+            color: #fff;
+        }
+        @media (max-width: 600px) {
+            .market-img {
+                height: 130px;
+            }
+            .explorer-title {
+                font-size: 1.3rem;
+            }
+            .market-title {
+                font-size: 1rem;
+            }
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.595) !important;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(172,59,39,0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .navbar-nav .nav-link:hover {
+            background: #E6AC30;
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        .dropdown-menu {
+            background: #E6AC30;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+        .dropdown-item {
+            color: rgba(255, 255, 255, 0.9) !important;
+            padding: 0.7rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .dropdown-item:hover {
+            background: #E6AC30;
+            color: white !important;
+        }
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="img/logo.png" width="100" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Découvrir Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
+                            <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
+                            <li><a class="dropdown-item" href="gallerie.html">Galleries Photo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Vivre à Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#logement">Éducation et jeunesse</a></li>
+                            <li><a class="dropdown-item" href="vie-associative.html">Vie associative</a></li>
+                            <li><a class="dropdown-item" href="#sante">Santé</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Économie et Mobilité
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="exploration.html">Explorer les marchés</a></li>
+                            <li><a class="dropdown-item" href="#transport">Je suis commerçant</a></li>
+                            <li><a class="dropdown-item" href="#emploi">Déclaration mensuelle</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services Citoyens
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#administration">Faire une demande </a></li>
+                            <li><a class="dropdown-item" href="#etat-civil">Signaler un problème</a></li>
+                            <li><a class="dropdown-item" href="#urbanisme">Annonces de la mairie</a></li>
+                            <li><a class="dropdown-item" href="#social">Info pratique</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Voix d'Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#actualites">Actualités</a></li>
+                            <li><a class="dropdown-item" href="#temoignages">Exprime-toi</a></li>
+                            <li><a class="dropdown-item" href="#participation">Sondages dynamiques sur les besoins ou projets dans la commune</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br><br><br>
+    <section class="explorer-section">
+        <h1 class="explorer-title">Explorer les marchés d'Adjamé</h1>
+        <p class="explorer-desc">Découvrez les marchés emblématiques de la commune d'Adjamé à Abidjan. Cliquez sur un bouton pour lancer le guidage GPS vers le marché de votre choix.</p>
+        <div class="markets-grid">
+            <!-- Forum des marchés -->
+            <div class="market-card">
+                <img class="market-img" src="img/forum adjamé.jpg" alt="Forum des marchés">
+                <div class="market-content">
+                    <div class="market-title">Forum des marchés</div>
+                    <div class="market-desc">Le plus grand marché d'Abidjan. Inauguré en 2001, il comprend plus de 13 000 emplacements répartis sur deux niveaux.</div>
+                    <div class="market-hours mb-2" style="color:#0F9B39;font-size:0.98rem;display:flex;align-items:center;gap:7px;"><i class="far fa-clock"></i>  Ouvert : 6h00 - 18h30</div>
+                    <div class="market-btns">
+                        <a class="market-btn maps" href="https://www.google.com/maps/dir/?api=1&destination=5.34494,-4.02637" target="_blank" rel="noopener"><i class="fab fa-google"></i> Google Maps</a>
+                        <a class="market-btn waze" href="https://waze.com/ul?ll=5.34494,-4.02637&navigate=yes" target="_blank" rel="noopener"><i class="fab fa-waze"></i> Waze</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Marché Gouro (Roxy) -->
+            <div class="market-card">
+                <img class="market-img" src="img/last marché.jpg" alt="Marché Gouro (Roxy)">
+                <div class="market-content">
+                    <div class="market-title">Marché Gouro</div>
+                    <div class="market-desc">Fondé par des femmes Gouro en 1972. Marché vivrier très fréquenté, modernisé avec plus de 2000 magasins prévus.</div>
+                    <div class="market-hours mb-2" style="color:#0F9B39;font-size:0.98rem;display:flex;align-items:center;gap:7px;"><i class="far fa-clock"></i>  Ouvert : 6h00 - 18h30</div>
+                    <div class="market-btns">
+                        <a class="market-btn maps" href="https://www.google.com/maps/dir/?api=1&destination=5.345215,-4.025988" target="_blank" rel="noopener"><i class="fab fa-google"></i> Google Maps</a>
+                        <a class="market-btn waze" href="https://waze.com/ul?ll=5.345215,-4.025988&navigate=yes" target="_blank" rel="noopener"><i class="fab fa-waze"></i> Waze</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Black Market (Shopping Abrogoua) -->
+            <div class="market-card">
+                <img class="market-img" src="img/black market.jpeg" alt="Black Market (Shopping Abrogoua)">
+                <div class="market-content">
+                    <div class="market-title">Black Market (Shopping Abrogoua)</div>
+                    <div class="market-desc">Centre de commerce électronique et vestimentaire avec plus de 400 boutiques près de la mosquée d'Adjamé.</div>
+                    <div class="market-hours mb-2" style="color:#0F9B39;font-size:0.98rem;display:flex;align-items:center;gap:7px;"><i class="far fa-clock"></i>  Ouvert : 7h00 - 19h00</div>
+                    <div class="market-btns">
+                        <a class="market-btn maps" href="https://www.google.com/maps/dir/?api=1&destination=5.346205,-4.022290" target="_blank" rel="noopener"><i class="fab fa-google"></i> Google Maps</a>
+                        <a class="market-btn waze" href="https://waze.com/ul?ll=5.346205,-4.022290&navigate=yes" target="_blank" rel="noopener"><i class="fab fa-waze"></i> Waze</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Marché Roxy -->
+            <div class="market-card">
+                <img class="market-img" src="img/marché.jpg" alt="Marché Roxy">
+                <div class="market-content">
+                    <div class="market-title">Marché Roxy</div>
+                    <div class="market-desc">Marché dense et très actif, surtout connu pour ses vendeuses ambulantes. Haut lieu du commerce populaire.</div>
+                    <div class="market-hours mb-2" style="color:#0F9B39;font-size:0.98rem;display:flex;align-items:center;gap:7px;"><i class="far fa-clock"></i>  Ouvert : 6h30 - 18h00</div>
+                    <div class="market-btns">
+                        <a class="market-btn maps" href="https://www.google.com/maps/dir/?api=1&destination=5.344816,-4.024351" target="_blank" rel="noopener"><i class="fab fa-google"></i> Google Maps</a>
+                        <a class="market-btn waze" href="https://waze.com/ul?ll=5.344816,-4.024351&navigate=yes" target="_blank" rel="noopener"><i class="fab fa-waze"></i> Waze</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Marché Petit-Lomé -->
+            <div class="market-card">
+                <img class="market-img" src="img/marché petit lomé.jpg" alt="Marché Petit-Lomé">
+                <div class="market-content">
+                    <div class="market-title">Marché Petit-Lomé</div>
+                    <div class="market-desc">Ancien marché récemment ravagé par un incendie. Il fait l'objet d'une réinstallation progressive depuis 2024.</div>
+                    <div class="market-hours mb-2" style="color:#0F9B39;font-size:0.98rem;display:flex;align-items:center;gap:7px;"><i class="far fa-clock"></i>  Ouvert : 7h00 - 17h00</div>
+                    <div class="market-btns">
+                        <a class="market-btn maps" href="https://www.google.com/maps/dir/?api=1&destination=5.343525,-4.020426" target="_blank" rel="noopener"><i class="fab fa-google"></i> Google Maps</a>
+                        <a class="market-btn waze" href="https://waze.com/ul?ll=5.343525,-4.020426&navigate=yes" target="_blank" rel="noopener"><i class="fab fa-waze"></i> Waze</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    </script>
+</body>
+</html>

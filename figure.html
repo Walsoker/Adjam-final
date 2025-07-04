@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figures Emblématiques d'Adjamé</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --adjame-red: #AC3B27;
+            --adjame-green: #0F9B39;
+            --adjame-gold: #E6AC30;
+            --text-light: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0 40px 0;
+            color: #2c3e50;
+            position: relative;
+            overflow: hidden;
+            margin-top: 90px;
+            background: linear-gradient(135deg, #fff 60%, #E6AC30 100%);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.595) !important;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(172,59,39,0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: #E6AC30;
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            background: #E6AC30;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown-item {
+            color: var(--text-light) !important;
+            padding: 0.7rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: #E6AC30;
+            color: white !important;
+        }
+
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(230,172,48,0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+        }
+
+        .figures-section {
+            background: white;
+            border-radius: 30px 30px 0 0;
+            margin-top: -30px;
+            position: relative;
+            z-index: 3;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+        }
+
+        .figure-card {
+            display: flex;
+            align-items: center;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .figure-card:not(:last-child) {
+            border-bottom: 1px solid #e8ecf3;
+        }
+
+        .figure-card:nth-child(even) {
+            flex-direction: row-reverse;
+            background: linear-gradient(45deg, #f8f9ff 0%, #ffffff 100%);
+        }
+
+        .figure-image {
+            flex: 0 0 400px;
+            height: 400px;
+            margin: 0 60px;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transition: all 0.5s ease;
+        }
+
+        .figure-image:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+        }
+
+        .figure-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(172, 59, 39, 0.8), rgba(230, 172, 48, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .figure-image:hover::before {
+            opacity: 0.1;
+        }
+
+        .figure-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        .figure-content {
+            flex: 1;
+            padding: 0 60px;
+        }
+
+        .figure-name {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--adjame-red);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .figure-name::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--adjame-gold), var(--adjame-red));
+            border-radius: 2px;
+        }
+
+        .figure-title {
+            font-size: 1.3rem;
+            color: var(--adjame-green);
+            font-style: italic;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .figure-bio {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #34495e;
+            text-align: justify;
+            position: relative;
+        }
+
+        .figure-bio::first-letter {
+            font-size: 3rem;
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin: 8px 8px 0 0;
+            color: var(--adjame-gold);
+        }
+
+        .decorative-element {
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, rgba(172, 59, 39, 0.05), rgba(230, 172, 48, 0.05));
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2c5530 0%, #1a3d1f 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .figure-card {
+                flex-direction: column !important;
+                padding: 40px 0;
+                text-align: center;
+            }
+
+            .figure-image {
+                flex: none;
+                width: 300px;
+                height: 300px;
+                margin: 0 0 40px 0;
+            }
+
+            .figure-content {
+                padding: 0 20px;
+            }
+
+            .figure-name {
+                font-size: 2.2rem;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .decorative-element {
+                display: none;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--adjame-gold), var(--adjame-red));
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 1000;
+            transition: transform 0.1s ease;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(0, 0, 0, 0.595) !important;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(172,59,39,0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: var(--adjame-gold);
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 100px;
+            left: 20px;
+            background: var(--adjame-red);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(172, 59, 39, 0.3);
+        }
+
+        .back-button:hover {
+            background: var(--adjame-gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 172, 48, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .back-button {
+                top: 80px;
+                left: 10px;
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home"><img src="img/logo.png" width="100" alt=""></a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Découvrir Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
+                            <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
+                            <li><a class="dropdown-item" href="gallerie.html">Galleries Photo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Vivre à Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#logement">Éducation et jeunesse</a></li>
+                            <li><a class="dropdown-item" href="vie-associative.html">Vie associative</a></li>
+                            <li><a class="dropdown-item" href="index.html#sante">Santé</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Économie et Mobilité
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="exploration.html">Explorer les marchés</a></li>
+                            <li><a class="dropdown-item" href="commercant.html">Je suis commerçant</a></li>
+                            <li><a class="dropdown-item" href="#emploi">Déclaration mensuelle</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services Citoyens
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#administration">Faire une demande </a></li>
+                            <li><a class="dropdown-item" href="index.html#etat-civil">Signaler un problème</a></li>
+                            <li><a class="dropdown-item" href="index.html#urbanisme">Annonces de la mairie</a></li>
+                            <li><a class="dropdown-item" href="index.html#social">Info pratique</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Voix d'Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#actualites">Actualités</a></li>
+                            <li><a class="dropdown-item" href="index.html#temoignages">Exprime-toi</a></li>
+                            <li><a class="dropdown-item" href="index.html#participation">Sondages dynamiques sur les besoins ou projets dans la commune</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="scroll-indicator"></div>
+    
+    <header class="header">
+        <div class="container">
+            <h1>Figures Emblématiques</h1>
+            <p>Les personnalités qui ont marqué l'histoire d'Adjamé</p>
+        </div>
+    </header>
+
+    <main class="figures-section">
+        <div class="container">
+            <!-- Aruna Dindane -->
+            <div class="figure-card fade-in">
+                <div class="figure-image">
+                    <img src="img/Aruna Dindane.webp" alt="Aruna Dindane - Footballeur International">
+                </div>
+                <div class="figure-content">
+                    <h2 class="figure-name">Aruna Dindane</h2>
+                    <p class="figure-title">Footballeur International</p>
+                    <p class="figure-bio">
+                        Né à Adjamé, Aruna Dindane est l'une des figures les plus emblématiques du football ivoirien. Attaquant redoutable et capitaine de l'équipe nationale de Côte d'Ivoire, il a marqué l'histoire du football africain par ses performances exceptionnelles. Sa carrière l'a mené dans les plus grands championnats européens, où il a brillé par son talent et sa détermination. Véritable ambassadeur de son quartier natal, Dindane reste une source d'inspiration pour la jeunesse d'Adjamé, incarnant la réussite par le travail et la persévérance.
+                    </p>
+                </div>
+                <div class="decorative-element"></div>
+            </div>
+
+            <!-- Basile Boli -->
+            <div class="figure-card fade-in">
+                <div class="figure-image">
+                    <img src="img/Basile Boli ex footballeur.jpg" alt="Basile Boli - Légende du Football">
+                </div>
+                <div class="figure-content">
+                    <h2 class="figure-name">Basile Boli</h2>
+                    <p class="figure-title">Légende du Football</p>
+                    <p class="figure-bio">
+                        Originaire d'Adjamé, Basile Boli est une légende vivante du football français et international. Défenseur central d'exception, il a marqué l'histoire en inscrivant le but victorieux en finale de la Ligue des Champions 1993 avec l'Olympique de Marseille. Sa carrière exceptionnelle l'a vu évoluer dans les plus grands clubs européens. Au-delà de ses exploits sportifs, Boli reste profondément attaché à ses racines et continue d'œuvrer pour le développement du football en Côte d'Ivoire, particulièrement dans sa commune natale d'Adjamé.
+                    </p>
+                </div>
+                <div class="decorative-element"></div>
+            </div>
+
+            <!-- Pierre Djédji Amondji -->
+            <div class="figure-card fade-in">
+                <div class="figure-image">
+                    <img src="img/pierre_djedji_amondji_gouverneur.jpg" alt="Pierre Djédji Amondji - Homme Politique et Visionnaire">
+                </div>
+                <div class="figure-content">
+                    <h2 class="figure-name">Pierre Djédji Amondji</h2>
+                    <p class="figure-title">Homme Politique et Visionnaire</p>
+                    <p class="figure-bio">
+                        Figure politique majeure d'Adjamé, Pierre Djédji Amondji a consacré sa vie au service de sa communauté et au développement de sa région. Homme de conviction et de dialogue, il a joué un rôle déterminant dans la modernisation d'Adjamé et l'amélioration des conditions de vie de ses habitants. Son engagement politique s'est toujours caractérisé par une approche pragmatique et une volonté constante de rassembler. Visionnaire, il a su anticiper les défis urbains et proposer des solutions innovantes pour l'avenir de sa commune.
+                    </p>
+                </div>
+                <div class="decorative-element"></div>
+            </div>
+
+            <!-- Nangui Abrogoua -->
+            <div class="figure-card fade-in">
+                <div class="figure-image">
+                    <img src="img/Nangui Abrogoua.jpg" alt="Nangui Abrogoua - Pionnier et Bâtisseur">
+                </div>
+                <div class="figure-content">
+                    <h2 class="figure-name">Nangui Abrogoua</h2>
+                    <p class="figure-title">Pionnier et Bâtisseur</p>
+                    <p class="figure-bio">
+                        Nangui Abrogoua est une figure historique fondamentale dans l'histoire d'Adjamé. Pionnier et visionnaire, il a contribué de manière significative au développement urbain et social de la région. Son héritage se perpétue à travers les nombreuses réalisations qui portent encore aujourd'hui son empreinte. Homme de terrain et de proximité, il a su mobiliser les énergies autour de projets ambitieux pour sa communauté. Sa mémoire reste vivace parmi les habitants d'Adjamé qui reconnaissent en lui l'un des artisans de la modernité de leur territoire.
+                    </p>
+                </div>
+                <div class="decorative-element"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 - Patrimoine d'Adjamé. Honorer notre histoire, construire notre avenir.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrollProgress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.querySelector('.scroll-indicator').style.transform = `scaleX(${scrollProgress / 100})`;
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for better UX
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Add subtle parallax effect to decorative elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const decorativeElements = document.querySelectorAll('.decorative-element');
+            decorativeElements.forEach((el, index) => {
+                const speed = 0.5 + (index * 0.1);
+                el.style.transform = `translateY(${scrolled * speed}px) translateX(-50px)`;
+            });
+        });
+
+        // Animation de la navbar au scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

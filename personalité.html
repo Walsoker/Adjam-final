@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personnalité Locale - Adjamé</title>
+    <style>
+        body {
+            background: #E7E6E6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 16px 32px 16px;
+        }
+        .section-title {
+            color: #AC3B27;
+            font-size: 2.1rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .cards-row {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .main-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 24px rgba(172,59,39,0.10);
+            padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+            min-width: 260px;
+            max-width: 340px;
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2.5px solid #E6AC30;
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .main-card img {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            border-radius: 16px;
+            margin-bottom: 1.2rem;
+            background: #E7E6E6;
+            box-shadow: 0 2px 8px rgba(172,59,39,0.08);
+        }
+        .main-card .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #AC3B27;
+            margin-bottom: 1.1rem;
+            text-align: center;
+        }
+        .main-card .voir-plus {
+            display: inline-block;
+            margin-top: 0.7rem;
+            padding: 0.7rem 1.6rem;
+            background: linear-gradient(90deg, #E6AC30 60%, #AC3B27 100%);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(230,172,48,0.10);
+        }
+        .main-card .voir-plus:hover {
+            background: linear-gradient(90deg, #AC3B27 60%, #E6AC30 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+        }
+        @media (max-width: 700px) {
+            .cards-row {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="section-title">Personnalités Locales d'Adjamé</h1>
+        <div class="cards-row">
+            <!-- Card Autorités locales -->
+            <div class="main-card">
+                <img src="img/logo republic ci-true.png" alt="République de Côte d'Ivoire">
+                <div class="card-title">Autorités locales</div>
+                <a href="autorité.html" class="voir-plus">Voir plus</a>
+            </div>
+            <!-- Card Figures emblématiques -->
+            <div class="main-card">
+                <img src="img/logo mairie adjaamé-Photoroom.png" alt="Logo Adjamé">
+                <div class="card-title">Figures emblématiques</div>
+                <a href="figure.html" class="voir-plus">Voir plus</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

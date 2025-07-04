@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Je suis commerçant - Adjamé</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Inter', 'Roboto', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #222;
+            min-height: 100vh;
+        }
+        .main-form-container {
+            max-width: 950px;
+            margin: 48px auto 0 auto;
+            padding: 0 16px 48px 16px;
+            display: flex;
+            gap: 32px;
+        }
+        .form-block {
+            flex: 2;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.07);
+            padding: 38px 36px 32px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+        .form-block h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: #AC3B27;
+        }
+        .form-section {
+            background: #f7f9fb;
+            border-radius: 12px;
+            padding: 22px 20px 18px 20px;
+            margin-bottom: 0;
+            box-shadow: 0 1px 4px rgba(44,62,80,0.03);
+        }
+        .form-row {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+        .form-row:last-child {
+            margin-bottom: 0;
+        }
+        .form-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-size: 0.98rem;
+            color: #2c3e50;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            padding: 12px 14px;
+            border: 1.5px solid #E6AC30;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #fff;
+            transition: border 0.2s;
+            outline: none;
+        }
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="date"]:focus,
+        select:focus {
+            border: 1.5px solid #0F9B39;
+            background: #f9fef9;
+        }
+        .radio-group {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .radio-group label {
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-left: 6px;
+            font-size: 0.97rem;
+        }
+        .radio-group input[type="radio"] {
+            accent-color: #0F9B39;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .checkbox-group label {
+            font-weight: 400;
+            font-size: 0.97rem;
+            margin-bottom: 0;
+        }
+        .form-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .btn-main {
+            background: #0F9B39;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 13px 38px;
+            font-size: 1.08rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(15, 155, 57, 0.08);
+            transition: background 0.18s;
+        }
+        .btn-main:hover {
+            background: #AC3B27;
+            color: #fff;
+        }
+        .btn-secondary {
+            background: #fff;
+            color: #0F9B39;
+            border: 1.5px solid #0F9B39;
+            border-radius: 25px;
+            padding: 13px 38px;
+            font-size: 1.08rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.18s, color 0.18s;
+        }
+        .btn-secondary:hover {
+            background: #E6AC30;
+            color: #fff;
+        }
+        .side-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 38px;
+        }
+        .side-panel .btn-main {
+            width: 100%;
+            margin-bottom: 8px;
+        }
+        .side-panel .btn-secondary {
+            width: 100%;
+        }
+        .side-panel .side-note {
+            font-size: 0.97rem;
+            color: #666;
+            margin-top: 18px;
+        }
+        @media (max-width: 1100px) {
+            .main-form-container {
+                flex-direction: column;
+                max-width: 98vw;
+            }
+            .side-panel {
+                margin-top: 0;
+                flex-direction: row;
+                gap: 12px;
+            }
+            .side-panel .btn-main, .side-panel .btn-secondary {
+                width: auto;
+            }
+        }
+        @media (max-width: 700px) {
+            .form-block {
+                padding: 18px 6vw 18px 6vw;
+            }
+            .form-section {
+                padding: 12px 4vw 12px 4vw;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+        /* --- NAVBAR STYLE DE INDEX --- */
+        .navbar {
+            background: rgba(0, 0, 0, 0.595) !important;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(172,59,39,0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .navbar-nav .nav-link:hover {
+            background: #E6AC30;
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        .dropdown-menu {
+            background: #E6AC30;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+        .dropdown-item {
+            color: rgba(255, 255, 255, 0.9) !important;
+            padding: 0.7rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .dropdown-item:hover {
+            background: #E6AC30;
+            color: white !important;
+        }
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="img/logo.png" width="100" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Découvrir Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
+                            <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
+                            <li><a class="dropdown-item" href="gallerie.html">Galleries Photo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Vivre à Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#logement">Éducation et jeunesse</a></li>
+                            <li><a class="dropdown-item" href="vie-associative.html">Vie associative</a></li>
+                            <li><a class="dropdown-item" href="#sante">Santé</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Économie et Mobilité
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="exploration.html">Explorer les marchés</a></li>
+                            <li><a class="dropdown-item" href="commercant.html">Je suis commerçant</a></li>
+                            <li><a class="dropdown-item" href="#emploi">Déclaration mensuelle</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services Citoyens
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#administration">Faire une demande </a></li>
+                            <li><a class="dropdown-item" href="#etat-civil">Signaler un problème</a></li>
+                            <li><a class="dropdown-item" href="#urbanisme">Annonces de la mairie</a></li>
+                            <li><a class="dropdown-item" href="#social">Info pratique</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Voix d'Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#actualites">Actualités</a></li>
+                            <li><a class="dropdown-item" href="#temoignages">Exprime-toi</a></li>
+                            <li><a class="dropdown-item" href="#participation">Sondages dynamiques sur les besoins ou projets dans la commune</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br><br>
+    <div style="display: flex; justify-content: center; margin-top: 38px; margin-bottom: 32px;">
+      <div style="background: #fff; border-radius: 16px; box-shadow: 0 2px 8px rgba(44,62,80,0.07); padding: 18px 36px; max-width: 700px; width: 100%;">
+        <div style="font-size: 1.25rem; font-weight: 700; color: #0F9B39; letter-spacing: 0.5px; text-align:center;">
+          Espace commerçant – Mairie d'Adjamé
+        </div>
+        <div style="font-size: 1.05rem; color: #666; margin-top: 6px; text-align:center;">
+          Remplissez ce formulaire pour enregistrer votre activité auprès de la mairie. Toutes les informations sont confidentielles.
+        </div>
+      </div>
+    </div>
+    <div class="main-form-container">
+        <div class="form-block">
+            <h2>Veuillez remplir vos informations</h2>
+            <form autocomplete="off">
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="nom">Nom & Prénom</label>
+                            <input type="text" id="nom" name="nom" required placeholder="Ex : Koffi Yao">
+                        </div>
+                        <div class="form-col">
+                            <label for="date">Date de naissance</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="activite">Activité principale</label>
+                            <input type="text" id="activite" name="activite" required placeholder="Ex : Vendeur de fruits, Coiffeuse...">
+                        </div>
+                        <div class="form-col">
+                            <label for="tel">Téléphone</label>
+                            <input type="tel" id="tel" name="tel" required pattern="[0-9+ ]{8,}" placeholder="Ex : 0700000000">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="marche">Marché concerné</label>
+                            <select id="marche" name="marche" required>
+                                <option value="" disabled selected>Choisissez un marché</option>
+                                <option>Forum des marchés</option>
+                                <option>Marché Gouro</option>
+                                <option>Black Market</option>
+                                <option>Marché Roxy</option>
+                                <option>Marché Petit-Lomé</option>
+                            </select>
+                        </div>
+                        <div class="form-col">
+                            <label for="piece">Pièce justificative</label>
+                            <input type="file" id="piece" name="piece" accept="image/*,.pdf" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="rgpd" name="rgpd" required>
+                        <label for="rgpd">J'accepte l'utilisation de mes données par la mairie d'Adjamé dans le cadre de mon enregistrement.</label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-main">Envoyer ma demande</button>
+                </div>
+            </form>
+        </div>
+        <div class="side-panel">
+            <button class="btn-main">Continuer</button>
+            <button class="btn-secondary">Retour</button>
+            <div class="side-note">Vos données sont strictement confidentielles et utilisées uniquement par la mairie.</div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    </script>
+</body>
+</html>
+
