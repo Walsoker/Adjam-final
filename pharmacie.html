@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacies de Garde - Adjamé</title>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-light: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header et Navigation */
+        .navbar {
+            background: rgba(0, 0, 0, 0.312) !important;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(172,59,39,0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: #E6AC30;
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            background: #E6AC30;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown-item {
+            color: var(--text-light) !important;
+            padding: 0.7rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: #E6AC30;
+            color: white !important;
+        }
+
+        /* Responsive Design pour la navigation */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 60px 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 20px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0F9B39;
+            margin-bottom: 15px;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pharmacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pharmacy-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .pharmacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(15,155,57,0.15);
+            border-color: #0F9B39;
+        }
+
+        .pharmacy-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .pharmacy-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0F9B39, #4a7c59);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .pharmacy-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0F9B39;
+            margin-bottom: 5px;
+        }
+
+        .pharmacy-number {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .pharmacy-info {
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .info-icon {
+            color: #0F9B39;
+            margin-right: 12px;
+            margin-top: 3px;
+            min-width: 16px;
+        }
+
+        .info-text {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .pharmacy-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-call {
+            background: linear-gradient(135deg, #0F9B39, #4a7c59);
+            color: white;
+            border: none;
+        }
+
+        .btn-call:hover {
+            background: #0F9B39;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-map {
+            background: transparent;
+            color: #0F9B39;
+            border: 2px solid #0F9B39;
+        }
+
+        .btn-map:hover {
+            background: #0F9B39;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .emergency-notice {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(255,107,107,0.2);
+        }
+
+        .emergency-notice h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .emergency-notice p {
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 20px 15px 40px 15px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .pharmacy-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .pharmacy-card {
+                padding: 20px;
+            }
+            
+            .pharmacy-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .pharmacy-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Styles du Footer */
+        .footer-new {
+            background: linear-gradient(135deg, #0F9B39 0%, #4a7c59 100%);
+            color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+        .footer-wave {
+            position: absolute;
+            top: -1px; left: 0; right: 0;
+            width: 100%;
+            line-height: 0;
+            z-index: 2;
+        }
+        .footer-wave svg path {
+            fill: #0F9B39;
+        }
+        .footer-title {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .footer-subtitle {
+            color: #a8d4ae;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .footer-desc {
+            color: #d6f5e3;
+            font-size: 1rem;
+            font-style: italic;
+        }
+        .footer-links a {
+            color: #e0ffe0;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .footer-links a:hover {
+            color: #a8d4ae;
+            text-decoration: underline;
+        }
+        .footer-contact li {
+            color: #e0ffe0;
+            font-size: 0.98rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-contact i {
+            color: #a8d4ae;
+            min-width: 18px;
+            text-align: center;
+        }
+        .footer-newsletter .form-control {
+            border-radius: 25px 0 0 25px;
+            border: none;
+            background: #e0ffe0;
+            color: #0F9B39;
+            font-size: 1rem;
+        }
+        .footer-newsletter .form-control:focus {
+            box-shadow: none;
+            outline: none;
+        }
+        .footer-newsletter .btn-gold {
+            background: #a8d4ae;
+            color: #0F9B39;
+            border-radius: 0 25px 25px 0;
+            border: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .footer-newsletter .btn-gold:hover {
+            background: #0F9B39;
+            color: #fff;
+        }
+        .footer-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #0F9B39;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .footer-social-link:hover {
+            background: #a8d4ae;
+            color: #0F9B39;
+            transform: scale(1.1);
+        }
+        .footer-separator {
+            border-color: #a8d4ae;
+            opacity: 0.4;
+        }
+        .footer-copyright {
+            color: #d6f5e3;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 767px) {
+            .footer-title, .footer-subtitle {
+                text-align: center;
+            }
+            .footer-new .row > div {
+                text-align: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            .footer-new {
+                padding-top: 18px;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="img/logo.png" width="100" alt=""></a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Découvrir Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
+                            <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
+                            <li><a class="dropdown-item" href="gallerie.html">Galleries Photo</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Vivre à Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#logement">Éducation et jeunesse
+                            </a></li>
+                            <li><a class="dropdown-item" href="#education">Vie associative
+                            </a></li>
+                            <li><a class="dropdown-item" href="info.html">Info pratique</a></li>
+
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Économie et Mobilité
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="exploration.html">Explorer les marchés</a></li>
+                            <li><a class="dropdown-item" href="commercant.html">Je suis commerçant</a></li>
+                            <li><a class="dropdown-item" href="transport.html">Explore la gare</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services Citoyens
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="demande.html">Faire une demande </a></li>
+                            <li><a class="dropdown-item" href="signaler.html">Signaler un problème</a></li>
+                            <li><a class="dropdown-item" href="annonce.html">Annonces de la mairie</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Voix d'Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#actualites">Actualités</a></li>
+                            <li><a class="dropdown-item" href="#temoignages">Exprime-toi</a></li>
+                            <li><a class="dropdown-item" href="#participation">Sondages dynamiques sur les besoins ou projets dans la commune
+                            </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br>
+    <div class="main-container">
+        <div class="page-header">
+            <h1 class="page-title">Pharmacies de Garde à Adjamé</h1>
+            <p class="page-subtitle">Trouvez rapidement une pharmacie de garde près de chez vous en cas d'urgence</p>
+        </div>
+
+        <div class="emergency-notice">
+            <h3><i class="fas fa-exclamation-triangle me-2"></i>Urgence Médicale</h3>
+            <p>En cas d'urgence vitale, composez immédiatement le <strong>185</strong> (SAMU) ou le <strong>110</strong> (Pompiers)</p>
+        </div>
+
+        <div class="pharmacy-grid">
+            <!-- Pharmacie 1 -->
+            <div class="pharmacy-card">
+                <div class="pharmacy-header">
+                    <div class="pharmacy-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div>
+                        <div class="pharmacy-name">PHARMACIE DE LA MOSQUEE</div>
+                        <div class="pharmacy-number">Pharmacie #1</div>
+                    </div>
+                </div>
+                <div class="pharmacy-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt info-icon"></i>
+                        <div class="info-text">BD. WILLIAM JACOB DERRIERE LES RAILS DE LA GRANDE MOSQUEE</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone info-icon"></i>
+                        <div class="info-text">+225 01 03 12 11 91</div>
+                    </div>
+                </div>
+                <div class="pharmacy-actions">
+                    <a href="tel:+2250103121191" class="action-btn btn-call">
+                        <i class="fas fa-phone"></i> Appeler
+                    </a>
+                    <a href="#" class="action-btn btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Localiser
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pharmacie 2 -->
+            <div class="pharmacy-card">
+                <div class="pharmacy-header">
+                    <div class="pharmacy-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div>
+                        <div class="pharmacy-name">PHARMACIE SCHIBA</div>
+                        <div class="pharmacy-number">Pharmacie #2</div>
+                    </div>
+                </div>
+                <div class="pharmacy-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt info-icon"></i>
+                        <div class="info-text">RUE DU DISPENSAIRE ANTITUBERCULEUX / FACE MARCHE GOURO (EX LOCAUX COFRUITEL)</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone info-icon"></i>
+                        <div class="info-text">+225 27 20 37 98 33</div>
+                    </div>
+                </div>
+                <div class="pharmacy-actions">
+                    <a href="tel:+2252720379833" class="action-btn btn-call">
+                        <i class="fas fa-phone"></i> Appeler
+                    </a>
+                    <a href="#" class="action-btn btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Localiser
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pharmacie 3 -->
+            <div class="pharmacy-card">
+                <div class="pharmacy-header">
+                    <div class="pharmacy-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div>
+                        <div class="pharmacy-name">PHARMACIE ST EMMANUEL</div>
+                        <div class="pharmacy-number">Pharmacie #3</div>
+                    </div>
+                </div>
+                <div class="pharmacy-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt info-icon"></i>
+                        <div class="info-text">BD GENERAL DE GAULLE / QUARTIER MIRADOR FACE IMMEUBLE SICOGI / 30 M DU CARREFOUR</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone info-icon"></i>
+                        <div class="info-text">+225 27 20 37 98 27</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-mobile-alt info-icon"></i>
+                        <div class="info-text">+225 01 02 69 19 38</div>
+                    </div>
+                </div>
+                <div class="pharmacy-actions">
+                    <a href="tel:+2252720379827" class="action-btn btn-call">
+                        <i class="fas fa-phone"></i> Appeler
+                    </a>
+                    <a href="#" class="action-btn btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Localiser
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pharmacie 4 -->
+            <div class="pharmacy-card">
+                <div class="pharmacy-header">
+                    <div class="pharmacy-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div>
+                        <div class="pharmacy-name">PHARMACIE DE LA PROVIDENCE</div>
+                        <div class="pharmacy-number">Pharmacie #4</div>
+                    </div>
+                </div>
+                <div class="pharmacy-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt info-icon"></i>
+                        <div class="info-text">PETIT MARCHE DES 220 LGTS / FACE EDIPRESSE / LIGNE BUS N° 14 00 09 75 86 12 83</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone info-icon"></i>
+                        <div class="info-text">+225 27 20 37 55 81</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-mobile-alt info-icon"></i>
+                        <div class="info-text">+225 07 07 08 45 12</div>
+                    </div>
+                </div>
+                <div class="pharmacy-actions">
+                    <a href="tel:+2252720375581" class="action-btn btn-call">
+                        <i class="fas fa-phone"></i> Appeler
+                    </a>
+                    <a href="#" class="action-btn btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Localiser
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pharmacie 5 -->
+            <div class="pharmacy-card">
+                <div class="pharmacy-header">
+                    <div class="pharmacy-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div>
+                        <div class="pharmacy-name">PHARMACIE SARAH</div>
+                        <div class="pharmacy-number">Pharmacie #5</div>
+                    </div>
+                </div>
+                <div class="pharmacy-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt info-icon"></i>
+                        <div class="info-text">ROUTE CAMP GENDARMERIE AGBAN / CENTRE COMMERCIAL CARINE N' COUTURE / FACE QUARTIER CHICANE</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone info-icon"></i>
+                        <div class="info-text">+225 27 20 39 03 57</div>
+                    </div>
+                </div>
+                <div class="pharmacy-actions">
+                    <a href="tel:+2252720390357" class="action-btn btn-call">
+                        <i class="fas fa-phone"></i> Appeler
+                    </a>
+                    <a href="#" class="action-btn btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Localiser
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pharmacie 6 -->
+            <div class="pharmacy-card">
+                <div class="pharmacy-header">
+                    <div class="pharmacy-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div>
+                        <div class="pharmacy-name">PHARMACIE KORO</div>
+                        <div class="pharmacy-number">Pharmacie #6</div>
+                    </div>
+                </div>
+                <div class="pharmacy-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt info-icon"></i>
+                        <div class="info-text">ADJAME QUARTIER MARIE THERESE HOUPHOUET BOIGNY A COTE COLLEGE MONTHERLANT BATIMENT B</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone info-icon"></i>
+                        <div class="info-text">+225 01 52 78 27 27</div>
+                    </div>
+                </div>
+                <div class="pharmacy-actions">
+                    <a href="tel:+2250152782727" class="action-btn btn-call">
+                        <i class="fas fa-phone"></i> Appeler
+                    </a>
+                    <a href="#" class="action-btn btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Localiser
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pharmacie 7 -->
+            <div class="pharmacy-card">
+                <div class="pharmacy-header">
+                    <div class="pharmacy-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div>
+                        <div class="pharmacy-name">PHARMACIE DU MARCHE (NVLLE)</div>
+                        <div class="pharmacy-number">Pharmacie #7</div>
+                    </div>
+                </div>
+                <div class="pharmacy-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt info-icon"></i>
+                        <div class="info-text">RUE DES AGOUAS / FACE AU GD MARCHE D'ADJAME</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone info-icon"></i>
+                        <div class="info-text">+225 27 20 37 06 17</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-mobile-alt info-icon"></i>
+                        <div class="info-text">+225 07 58 09 46 95</div>
+                    </div>
+                </div>
+                <div class="pharmacy-actions">
+                    <a href="tel:+2252720370617" class="action-btn btn-call">
+                        <i class="fas fa-phone"></i> Appeler
+                    </a>
+                    <a href="#" class="action-btn btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Localiser
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pharmacie 8 -->
+            <div class="pharmacy-card">
+                <div class="pharmacy-header">
+                    <div class="pharmacy-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div>
+                        <div class="pharmacy-name">PHARMACIE CHRIST MARIE DE PAILLET</div>
+                        <div class="pharmacy-number">Pharmacie #8</div>
+                    </div>
+                </div>
+                <div class="pharmacy-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt info-icon"></i>
+                        <div class="info-text">PAILLET EXTENSION / ENTRE LE CARREFOUR HUMMER ET LA MAISON BLANCHE DES PETITS</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone info-icon"></i>
+                        <div class="info-text">+225 27 20 37 40 00</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-mobile-alt info-icon"></i>
+                        <div class="info-text">+225 07 57 48 94 43</div>
+                    </div>
+                </div>
+                <div class="pharmacy-actions">
+                    <a href="tel:+2252720374000" class="action-btn btn-call">
+                        <i class="fas fa-phone"></i> Appeler
+                    </a>
+                    <a href="#" class="action-btn btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Localiser
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nouveau Footer Sombre et Moderne -->
+    <footer class="footer-new position-relative mt-5">
+        <!-- Effet wave -->
+        
+        <div class="container py-5">
+            <div class="row g-4 align-items-start">
+                <!-- Bloc à propos -->
+                <div class="col-md-4">
+                    <h3 class="footer-title mb-3">Commune d'Adjamé</h3>
+                    <p class="footer-desc mb-3">"Adjamé, carrefour de cultures et d'opportunités, au cœur d'Abidjan."</p>
+                    <img src="img/logo mairie adjaamé-Photoroom.png" alt="Logo Adjamé" style="max-width:120px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                </div>
+                <!-- Bloc liens utiles -->
+                <div class="col-md-2 d-none d-md-block">
+                </div>
+                <!-- Bloc contact -->
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Contact</h4>
+                    <ul class="footer-contact list-unstyled mb-3">
+                        <li><i class="fas fa-map-marker-alt"></i> Boulevard Lagunaire, Adjamé</li>
+                        <li><i class="fas fa-phone"></i> +225 27 20 XX XX XX</li>
+                        <li><i class="fas fa-envelope"></i> contact@mairie-adjame.ci</li>
+                        <li><i class="fas fa-clock"></i> Lun - Ven: 7h30 - 15h30</li>
+                    </ul>
+                </div>
+                <!-- Bloc newsletter & réseaux sociaux -->
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Restez connectés</h4>
+                    <form class="footer-newsletter mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                            <button class="btn btn-gold" type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="footer-social d-flex gap-3">
+                        <a href="#" class="footer-social-link" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@redecouvreadjame" class="footer-social-link" title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-separator my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright mb-0">&copy; 2025 Commune d'Adjamé. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Animation de la navbar au scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling pour les liens d'ancrage
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation simple pour la newsletter
+        document.querySelectorAll('.footer-newsletter').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email) {
+                    alert('Merci pour votre inscription ! Vous recevrez bientôt nos actualités.');
+                    this.querySelector('input[type="email"]').value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
