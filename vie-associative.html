@@ -605,6 +605,122 @@
                 margin-top: 1rem;
             }
         }
+
+        .footer-new {
+            background: linear-gradient(135deg, #0F9B39 0%, #4a7c59 100%) !important;
+            color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+        .footer-title {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .footer-subtitle {
+            color: #a8d4ae;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .footer-desc {
+            color: #d6f5e3;
+            font-size: 1rem;
+            font-style: italic;
+        }
+        .footer-links a {
+            color: #e0ffe0;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .footer-links a:hover {
+            color: #a8d4ae;
+            text-decoration: underline;
+        }
+        .footer-contact li {
+            color: #e0ffe0;
+            font-size: 0.98rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-contact i {
+            color: #a8d4ae;
+            min-width: 18px;
+            text-align: center;
+        }
+        .footer-newsletter .form-control {
+            border-radius: 25px 0 0 25px;
+            border: none;
+            background: #e0ffe0;
+            color: #0F9B39;
+            font-size: 1rem;
+        }
+        .footer-newsletter .form-control:focus {
+            box-shadow: none;
+            outline: none;
+        }
+        .footer-newsletter .btn-gold {
+            background: #a8d4ae;
+            color: #0F9B39;
+            border-radius: 0 25px 25px 0;
+            border: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .footer-newsletter .btn-gold:hover {
+            background: #0F9B39;
+            color: #fff;
+        }
+        .footer-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #0F9B39;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .footer-social-link:hover {
+            background: #a8d4ae;
+            color: #0F9B39;
+            transform: scale(1.1);
+        }
+        .footer-separator {
+            border-color: #a8d4ae;
+            opacity: 0.4;
+        }
+        .footer-copyright {
+            color: #d6f5e3;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 767px) {
+            .footer-title, .footer-subtitle {
+                text-align: center;
+            }
+            .footer-new .row > div {
+                text-align: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            .footer-new {
+                padding-top: 18px;
+                padding-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -667,7 +783,7 @@
         </div>
     </div>
 </nav>
-<br><br><br><br><br><br>
+<br><br><br><br><br>
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
@@ -717,7 +833,7 @@
             <p class="section-subtitle">Découvrez quelques associations actives à Adjamé</p>
             <div class="simple-directory">
                 <div class="simple-association">
-                    <img src="img/logo-asa.png" alt="Logo ASA" class="asso-logo">
+                    <img src="imgv2/ASA.jpg" alt="Logo ASA" class="asso-logo">
                     <div class="simple-content">
                         <div class="simple-title">Association Sportive d'Adjamé (ASA)</div>
                         <div class="simple-desc">Équipe masculine évoluant dans le championnat national de basketball première division N1. L'ASA incarne l'excellence sportive et la fierté d'Adjamé.</div>
@@ -725,21 +841,21 @@
                     </div>
                 </div>
                 <div class="simple-association">
-                    <img src="img/logo-gbeba.png" alt="Logo Centre Social Gbêba" class="asso-logo">
+                    <img src="imgv2/gbêbga.jpg" alt="Logo Centre Social Gbêba" class="asso-logo">
                     <div class="simple-content">
                         <div class="simple-title">Centre Social Adjamé Gbêba</div>
                         <div class="simple-desc">Le centre social favorise le lien social en créant des espaces de rencontre et en proposant des activités variées. Il soutient les familles et sensibilise sur divers thèmes essentiels à la cohésion sociale et au développement local.</div>
                     </div>
                 </div>
                 <div class="simple-association">
-                    <img src="img/logo-anfama.png" alt="Logo ANFAMA" class="asso-logo">
+                    <img src="img/logo mairie adjaamé-Photoroom.png" alt="Logo ANFAMA" class="asso-logo">
                     <div class="simple-content">
                         <div class="simple-title">ANFAMA (Association des Femmes Agents de la Mairie d'Adjamé)</div>
                         <div class="simple-desc">L'ANFAMA œuvre pour l'autonomisation, la solidarité et la valorisation des femmes travaillant à la mairie, moteur d'initiatives sociales et citoyennes.</div>
                     </div>
                 </div>
                 <div class="simple-association">
-                    <img src="img/logo-adalci.png" alt="Logo ADALCI" class="asso-logo">
+                    <img src="imgv2/adalci_ci_logo.jpg" alt="Logo ADALCI" class="asso-logo">
                     <div class="simple-content">
                         <div class="simple-title">ADALCI</div>
                         <div class="simple-desc">Développement des métiers de la logistique et supply chain en Côte d'Ivoire. Organisation de formations, séminaires et ateliers pour les professionnels.</div>
@@ -747,7 +863,7 @@
                     </div>
                 </div>
                 <div class="simple-association">
-                    <img src="img/logo-conzemius.png" alt="Logo Conzemius Friendship Club" class="asso-logo">
+                    <img src="imgv2/conzalieus friendship.jpg" alt="Logo Conzemius Friendship Club" class="asso-logo">
                     <div class="simple-content">
                         <div class="simple-title">Conzemius Friendship Club Abidjan</div>
                         <div class="simple-desc">Club service menant des actions caritatives et éducatives pour le développement socio-économique à Abidjan.</div>
@@ -810,7 +926,9 @@
             
             <div class="news-grid">
                 <div class="news-card">
-                    <div class="news-image">📚</div>
+                    <div class="news-image">
+                        <img src="imgv2/img association1.jpg" alt="Soutien scolaire" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
                     <div class="news-info">
                         <div class="news-date">15 Juin 2025</div>
                         <h3 class="news-title">Journée de soutien scolaire gratuit</h3>
@@ -820,17 +938,24 @@
                 </div>
                 
                 <div class="news-card">
-                    <div class="news-image">🌳</div>
+                    <div class="news-image">
+                        <img src="imgv2/association2.jpg" alt="Campagne de reboisement" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
                     <div class="news-info">
                         <div class="news-date">10 Juin 2025</div>
-                        <h3 class="news-title">Campagne de reboisement</h3>
-                        <p class="news-excerpt">L'association Environnement Durable a planté 500 arbres dans les espaces verts de la commune.</p>
+                        <h3 class="news-title">Place aux demi-finales !</h3>
+                        <p class="news-excerpt">
+                            L'ASA s'apprête à écrire une nouvelle page de son histoire ce samedi 03 mai au Palais des Sports de Treichville.
+                            Premier acte face à l'équipe du JCA à 17h00.
+                            C'est maintenant que tout se joue. C'est maintenant qu'on a besoin de vous !</p>
                         <a href="#" class="btn btn-small btn-outline">Voir l'événement</a>
                     </div>
                 </div>
                 
                 <div class="news-card">
-                    <div class="news-image">🏥</div>
+                    <div class="news-image">
+                        <img src="imgv2/actu3.jpg" alt="Dépistage médical" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
                     <div class="news-info">
                         <div class="news-date">5 Juin 2025</div>
                         <h3 class="news-title">Dépistage médical gratuit</h3>
@@ -902,123 +1027,6 @@
             </div>
         </div>
     </footer>
-    <style>
-    .footer-new {
-        background: #AC3B27 !important;
-        color: #FFFFFF;
-        position: relative;
-        overflow: hidden;
-        padding-top: 30px;
-        padding-bottom: 20px;
-    }
-    .footer-title {
-        color: #fff;
-        font-size: 1.5rem;
-        font-weight: 700;
-        letter-spacing: 1px;
-    }
-    .footer-subtitle {
-        color: #a8d4ae;
-        font-size: 1.1rem;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-    }
-    .footer-desc {
-        color: #d6f5e3;
-        font-size: 1rem;
-        font-style: italic;
-    }
-    .footer-links a {
-        color: #e0ffe0;
-        text-decoration: none;
-        transition: color 0.2s;
-        display: block;
-        margin-bottom: 0.5rem;
-        font-size: 1rem;
-    }
-    .footer-links a:hover {
-        color: #a8d4ae;
-        text-decoration: underline;
-    }
-    .footer-contact li {
-        color: #e0ffe0;
-        font-size: 0.98rem;
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .footer-contact i {
-        color: #a8d4ae;
-        min-width: 18px;
-        text-align: center;
-    }
-    .footer-newsletter .form-control {
-        border-radius: 25px 0 0 25px;
-        border: none;
-        background: #e0ffe0;
-        color: #0F9B39;
-        font-size: 1rem;
-    }
-    .footer-newsletter .form-control:focus {
-        box-shadow: none;
-        outline: none;
-    }
-    .footer-newsletter .btn-gold {
-        background: #a8d4ae;
-        color: #0F9B39;
-        border-radius: 0 25px 25px 0;
-        border: none;
-        font-weight: bold;
-        transition: background 0.2s;
-    }
-    .footer-newsletter .btn-gold:hover {
-        background: #0F9B39;
-        color: #fff;
-    }
-    .footer-social-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        background: #0F9B39;
-        color: #fff;
-        border-radius: 50%;
-        font-size: 1.3rem;
-        transition: background 0.2s, color 0.2s, transform 0.2s;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .footer-social-link:hover {
-        background: #a8d4ae;
-        color: #0F9B39;
-        transform: scale(1.1);
-    }
-    .footer-separator {
-        border-color: #a8d4ae;
-        opacity: 0.4;
-    }
-    .footer-copyright {
-        color: #d6f5e3;
-        font-size: 0.95rem;
-        letter-spacing: 0.5px;
-    }
-    @media (max-width: 767px) {
-        .footer-title, .footer-subtitle {
-            text-align: center;
-        }
-        .footer-new .row > div {
-            text-align: center;
-        }
-        .footer-social {
-            justify-content: center;
-        }
-        .footer-new {
-            padding-top: 18px;
-            padding-bottom: 10px;
-        }
-    }
-    </style>
     <script>
     // Animation simple pour la newsletter
     document.querySelectorAll('.footer-newsletter').forEach(form => {
