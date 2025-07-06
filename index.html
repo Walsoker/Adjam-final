@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adjamé - Découvrez la Commune Dynamique</title>
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -36,7 +37,7 @@
         .navbar.scrolled {
             background: rgba(172,59,39,0.85) !important;
             backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            padding: 0.1rem 0;
         }
 
         .navbar-brand {
@@ -1269,16 +1270,8 @@
                         </ul>
                     </li>
                     
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Voix d'Adjamé
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#actualites">Actualités</a></li>
-                            <li><a class="dropdown-item" href="#temoignages">Exprime-toi</a></li>
-                            <li><a class="dropdown-item" href="#participation">Sondages dynamiques sur les besoins ou projets dans la commune
-                            </a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -1303,8 +1296,7 @@
                             d'Adjamé
                         </h1>
                         <p class="hero-subtitle">
-                            Au cœur d'Abidjan, Adjamé vous invite à découvrir son riche patrimoine culturel, 
-                            ses opportunités économiq ues et sa vie communautaire vibrante.
+                            Adjamé, au cœur d'Abidjan, vous ouvre ses portes : culture riche, économie dynamique et vie locale vibrante. 
                         </p>
                         <a href="#decouvrir" class="cta-button">
                             <i class="fas fa-rocket me-2"></i>
@@ -1356,7 +1348,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <div class="about-content">
+                    <div class="about-content" data-aos="fade-right">
                         <p class="about-subtitle">À propos</p>
                         <h2 class="about-title">Adjamé <span class="about-highlight">Aujourd'hui</span></h2>
                         <p class="about-description">
@@ -1401,7 +1393,7 @@
                 </div>
                 
                 <div class="col-lg-6">
-                    <div class="about-image-container">
+                    <div class="about-image-container" data-aos="fade-left">
                         <div class="about-image">
                             <img src="img/adjame territoire.jpg" alt="Adjamé aujourd'hui" class="img-fluid rounded">
                         </div>
@@ -1428,7 +1420,7 @@
     <section class="services-adjame py-5 bg-white">
         <div class="container">
             <div class="row justify-content-center g-4">
-                <div class="col-6 col-md-4 col-lg-2 text-center">
+                <div class="col-6 col-md-4 col-lg-2 text-center" data-aos="fade-up" data-aos-delay="0">
                     <a href="#culture" class="service-link" style="text-decoration:none;">
                         <div class="service-icon mb-2">
                             <!-- Icône Culture (livre) -->
@@ -1438,7 +1430,7 @@
                         <div class="service-label">Culture</div>
                     </a>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
+                <div class="col-6 col-md-4 col-lg-2 text-center" data-aos="fade-up" data-aos-delay="100">
                     <a href="#commerce" class="service-link" style="text-decoration:none;">
                         <div class="service-icon mb-2">
                             <!-- Icône Commerce (boutique) -->
@@ -1448,7 +1440,7 @@
                         <div class="service-label">Commerce</div>
                     </a>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
+                <div class="col-6 col-md-4 col-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
                     <a href="#transport" class="service-link" style="text-decoration:none;">
                         <div class="service-icon mb-2">
                             <!-- Icône Transport (bus) -->
@@ -1458,7 +1450,7 @@
                         <div class="service-label">Transport</div>
                     </a>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
+                <div class="col-6 col-md-4 col-lg-2 text-center" data-aos="fade-up" data-aos-delay="300">
                     <a href="#administration" class="service-link" style="text-decoration:none;">
                         <div class="service-icon mb-2">
                             <!-- Icône Demande en ligne (ordinateur) -->
@@ -1468,7 +1460,7 @@
                         <div class="service-label">Demande en ligne</div>
                     </a>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
+                <div class="col-6 col-md-4 col-lg-2 text-center" data-aos="fade-up" data-aos-delay="400">
                     <a href="#participation" class="service-link" style="text-decoration:none;">
                         <div class="service-icon mb-2">
                             <!-- Icône Participation citoyenne (main levée) -->
@@ -1478,7 +1470,7 @@
                         <div class="service-label">Participation citoyenne</div>
                     </a>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2 text-center">
+                <div class="col-6 col-md-4 col-lg-2 text-center" data-aos="fade-up" data-aos-delay="500">
                     <a href="#temoignages" class="service-link" style="text-decoration:none;">
                         <div class="service-icon mb-2">
                             <!-- Icône Témoignage (bulle de dialogue) -->
@@ -1505,9 +1497,9 @@
                       <i class="fas fa-quote-left"></i>
                     </div>
                     <div class="d-flex align-items-center mb-3">
-                      <img src="img/avatar1.jpg" alt="Fatou, Adjamé Marché" class="rounded-circle me-3" width="60" height="60" style="object-fit:cover;border:3px solid #E6AC30;">
+                      <img src="imgv2/temoint1.jpg" alt="Fatou, Adjamé Marché" class="rounded-circle me-3" width="60" height="60" style="object-fit:cover;border:3px solid #E6AC30;">
                       <div>
-                        <h5 class="mb-0" style="color:#AC3B27;">Fatou K.</h5>
+                        <h5 class="mb-0" style="color:#AC3B27;">Othniel K.</h5>
                         <small class="text-muted">Adjamé Marché</small>
                       </div>
                     </div>
@@ -1520,9 +1512,9 @@
                       <i class="fas fa-quote-left"></i>
                     </div>
                     <div class="d-flex align-items-center mb-3">
-                      <img src="img/avatar2.jpg" alt="Moussa, Williamsville" class="rounded-circle me-3" width="60" height="60" style="object-fit:cover;border:3px solid #E6AC30;">
+                      <img src="imgv2/temoint2.jpg" alt="Moussa, Williamsville" class="rounded-circle me-3" width="60" height="60" style="object-fit:cover;border:3px solid #E6AC30;">
                       <div>
-                        <h5 class="mb-0" style="color:#AC3B27;">Moussa D.</h5>
+                        <h5 class="mb-0" style="color:#AC3B27;">Kouamé D.</h5>
                         <small class="text-muted">Williamsville</small>
                       </div>
                     </div>
@@ -1535,9 +1527,9 @@
                       <i class="fas fa-quote-left"></i>
                     </div>
                     <div class="d-flex align-items-center mb-3">
-                      <img src="img/avatar3.jpg" alt="Awa, Bracodi" class="rounded-circle me-3" width="60" height="60" style="object-fit:cover;border:3px solid #E6AC30;">
+                      <img src="imgv2/temoint3.jpg" alt="Awa, Bracodi" class="rounded-circle me-3" width="60" height="60" style="object-fit:cover;border:3px solid #E6AC30;">
                       <div>
-                        <h5 class="mb-0" style="color:#AC3B27;">Awa S.</h5>
+                        <h5 class="mb-0" style="color:#AC3B27;">Kai S.</h5>
                         <small class="text-muted">Bracodi</small>
                       </div>
                     </div>
@@ -2134,6 +2126,22 @@
         document.body.classList.remove('scrolled-to-footer');
       }
     });
+    </script>
+
+    <script>
+      var newsCarousel = document.getElementById('newsCarousel');
+      if (newsCarousel) {
+        var carousel = new bootstrap.Carousel(newsCarousel, {
+          interval: 40000, // 10 secondes
+          ride: 'carousel',
+          pause: false,
+          wrap: true
+        });
+      }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
     </script>
 </body>
 </html>

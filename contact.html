@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez-nous - Adjamé</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e6e1c3 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .contact-section {
+            padding: 60px 0 40px 0;
+        }
+        .contact-title {
+            font-size: 2.7rem;
+            font-weight: 800;
+            color: #AC3B27;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 4px #4a7c59;
+        }
+        .contact-subtitle {
+            text-align: center;
+            color: #7a7a7a;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+        .contact-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(15, 155, 57, 0.08);
+            padding: 36px 32px 28px 32px;
+            margin-bottom: 24px;
+        }
+        .contact-form label {
+            font-weight: 600;
+            color: #0F9B39;
+        }
+        .contact-form .form-control {
+            border-radius: 8px;
+            border: 1.5px solid #E6AC30;
+            font-size: 1rem;
+            margin-bottom: 18px;
+        }
+        .contact-form .form-control:focus {
+            border-color: #0F9B39;
+            box-shadow: 0 0 0 2px #e6ac3040;
+        }
+        .contact-form .btn-contact {
+            background: linear-gradient(90deg, #E6AC30 60%, #0F9B39 100%);
+            color: #fff;
+            font-weight: 700;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 0;
+            width: 100%;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+        }
+        .contact-form .btn-contact:hover {
+            background: linear-gradient(90deg, #0F9B39 60%, #E6AC30 100%);
+        }
+        .contact-infos {
+            background: linear-gradient(120deg, #f8f9fa 60%, #e6e1c3 100%);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(15, 155, 57, 0.06);
+            padding: 36px 32px 28px 32px;
+            margin-bottom: 24px;
+        }
+        .contact-infos h4 {
+            color: #0F9B39;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .contact-info-block {
+            background: rgba(230, 172, 48, 0.08);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .contact-info-block i {
+            color: #E6AC30;
+            font-size: 1.3rem;
+            min-width: 28px;
+        }
+        .contact-info-block span {
+            color: #2c3e50;
+            font-size: 1.05rem;
+        }
+        .contact-infos .contact-social {
+            margin-top: 1.5rem;
+        }
+        .contact-infos .contact-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #0F9B39;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            margin-right: 12px;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .contact-infos .contact-social a:hover {
+            background: #E6AC30;
+            color: #fff;
+            transform: scale(1.1);
+        }
+        @media (max-width: 991px) {
+            .contact-card, .contact-infos {
+                padding: 28px 12px 20px 12px;
+            }
+        }
+        @media (max-width: 767px) {
+            .contact-section {
+                padding: 30px 0 20px 0;
+            }
+        }
+        /* --- NAVBAR STYLE DE INDEX.HTML --- */
+        .navbar {
+            background: rgba(0, 0, 0, 0.312) !important;
+            padding: 0.3rem 0;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(172,59,39,0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 0.1rem 0;
+        }
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            background: #E6AC30;
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        .dropdown-menu {
+            background: #E6AC30;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+        .dropdown-item {
+            color: rgba(255, 255, 255, 0.9) !important;
+            padding: 0.7rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .dropdown-item:hover {
+            background: #E6AC30;
+            color: white !important;
+        }
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+        /* --- FIN NAVBAR --- */
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="imgv2/logo12.png" width="90" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Découvrir Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
+                            <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
+                            <li><a class="dropdown-item" href="gallerie.html">Galleries Photo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Vivre à Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="gastronomie.html">Gastronomie</a></li>
+                            <li><a class="dropdown-item" href="vie-associative.html">Vie associative</a></li>
+                            <li><a class="dropdown-item" href="info.html">Info pratique</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Économie et Mobilité
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="exploration.html">Explorer les marchés</a></li>
+                            <li><a class="dropdown-item" href="commercant.html">Je suis commerçant</a></li>
+                            <li><a class="dropdown-item" href="transport.html">Explore la gare</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services Citoyens
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="demande.html">Faire une demande </a></li>
+                            <li><a class="dropdown-item" href="signaler.html">Signaler un problème</a></li>
+                            <li><a class="dropdown-item" href="annonce.html">Annonces de la mairie</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br><br><br><br>
+    <section class="contact-section">
+        <div class="container">
+            <h1 class="contact-title">Contactez-nous</h1>
+            <div class="contact-subtitle">Nous sommes là pour vous aider</div>
+            <div class="row justify-content-center align-items-start g-4">
+                <div class="col-lg-6">
+                    <div class="contact-card">
+                        <form class="contact-form">
+                            <h3 class="mb-4 text-center" style="color:#222;font-weight:700;">Envoyez-nous un message</h3>
+                            <label for="nom">Nom complet *</label>
+                            <input type="text" class="form-control" id="nom" name="nom" required>
+                            <label for="email">Email *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                            <label for="tel">Téléphone</label>
+                            <input type="tel" class="form-control" id="tel" name="tel">
+                            <label for="sujet">Sujet *</label>
+                            <select class="form-control" id="sujet" name="sujet" required>
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="info">Demande d'information</option>
+                                <option value="service">Service municipal</option>
+                                <option value="partenariat">Partenariat</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                            <label for="message">Message *</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required placeholder="Décrivez votre demande..."></textarea>
+                            <button type="submit" class="btn btn-contact mt-2"><i class="fas fa-paper-plane me-2"></i>ENVOYER LE MESSAGE</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="contact-infos">
+                        <h4 class="mb-4">Nos coordonnées</h4>
+                        <div class="contact-info-block">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Adjamé, 67192 Adjamé_village</span>
+                        </div>
+                        <div class="contact-info-block">
+                            <i class="fas fa-phone"></i>
+                            <span>+225 07 67 84 27 30</span>
+                        </div>
+                        <div class="contact-info-block">
+                            <i class="fas fa-envelope"></i>
+                            <span>wasoker2006@gmail.com</span>
+                        </div>
+                        <div class="contact-info-block">
+                            <i class="fas fa-clock"></i>
+                            <span>Lun - Ven: 9h - 18h<br>Sam: 9h - 12h</span>
+                        </div>
+                        <div class="contact-social mt-4">
+                            <span class="me-2">Suivez-nous</span>
+                            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+</script>
+</html>
