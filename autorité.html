@@ -353,7 +353,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
                             <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
-                            <li><a class="dropdown-item" href="#personnalites">Galleries Photo</a></li>
+                            <li><a class="dropdown-item" href="#personnalites">Gallerie Photo</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -453,10 +453,6 @@
 
     <!-- Footer -->
     <footer class="footer-new position-relative mt-5">
-        <!-- Effet wave -->
-        <div class="footer-wave">
-            <svg viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#0F9B39" d="M0,60 C360,120 1080,0 1440,60 L1440,90 L0,90 Z"></path></svg>
-        </div>
         <div class="container py-5">
             <div class="row g-4 align-items-start">
                 <!-- Bloc à propos -->
@@ -504,40 +500,32 @@
     </footer>
     <style>
         .footer-new {
-            background: #AC3B27;
+            background: linear-gradient(135deg, #0F9B39 0%, #4a7c59 100%);
             color: #FFFFFF;
             position: relative;
             overflow: hidden;
-        }
-        .footer-wave {
-            position: absolute;
-            top: -1px; left: 0; right: 0;
-            width: 100%;
-            line-height: 0;
-            z-index: 2;
-        }
-        .footer-wave svg path {
-            fill: #AC3B27;
+            padding-top: 30px;
+            padding-bottom: 20px;
         }
         .footer-title {
-            color: #E6AC30;
+            color: #fff;
             font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: 1px;
         }
         .footer-subtitle {
-            color: #E6AC30;
+            color: #a8d4ae;
             font-size: 1.1rem;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
         .footer-desc {
-            color: #E7E6E6;
+            color: #d6f5e3;
             font-size: 1rem;
             font-style: italic;
         }
         .footer-links a {
-            color: #FFFFFF;
+            color: #e0ffe0;
             text-decoration: none;
             transition: color 0.2s;
             display: block;
@@ -545,11 +533,11 @@
             font-size: 1rem;
         }
         .footer-links a:hover {
-            color: #AC3B27;
+            color: #a8d4ae;
             text-decoration: underline;
         }
         .footer-contact li {
-            color: #E7E6E6;
+            color: #e0ffe0;
             font-size: 0.98rem;
             margin-bottom: 0.5rem;
             display: flex;
@@ -557,14 +545,14 @@
             gap: 8px;
         }
         .footer-contact i {
-            color: #E6AC30;
+            color: #a8d4ae;
             min-width: 18px;
             text-align: center;
         }
         .footer-newsletter .form-control {
             border-radius: 25px 0 0 25px;
             border: none;
-            background: #E7E6E6;
+            background: #e0ffe0;
             color: #0F9B39;
             font-size: 1rem;
         }
@@ -573,7 +561,7 @@
             outline: none;
         }
         .footer-newsletter .btn-gold {
-            background: #E6AC30;
+            background: #a8d4ae;
             color: #0F9B39;
             border-radius: 0 25px 25px 0;
             border: none;
@@ -581,7 +569,7 @@
             transition: background 0.2s;
         }
         .footer-newsletter .btn-gold:hover {
-            background: #AC3B27;
+            background: #0F9B39;
             color: #fff;
         }
         .footer-social-link {
@@ -590,24 +578,24 @@
             justify-content: center;
             width: 44px;
             height: 44px;
-            background: #E6AC30;
-            color: #0F9B39;
+            background: #0F9B39;
+            color: #fff;
             border-radius: 50%;
             font-size: 1.3rem;
             transition: background 0.2s, color 0.2s, transform 0.2s;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
         .footer-social-link:hover {
-            background: #AC3B27;
-            color: #fff;
+            background: #a8d4ae;
+            color: #0F9B39;
             transform: scale(1.1);
         }
         .footer-separator {
-            border-color: #E6AC30;
+            border-color: #a8d4ae;
             opacity: 0.4;
         }
         .footer-copyright {
-            color: #E7E6E6;
+            color: #d6f5e3;
             font-size: 0.95rem;
             letter-spacing: 0.5px;
         }
@@ -621,9 +609,12 @@
             .footer-social {
                 justify-content: center;
             }
+            .footer-new {
+                padding-top: 18px;
+                padding-bottom: 10px;
+            }
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
     // Animation simple pour la newsletter
     document.querySelectorAll('.footer-newsletter').forEach(form => {

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastronomie d'Adjamé</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #E6AC30;
+            --green: #0F9B39;
+            --bg-light: #f5f7fa;
+            --text-dark: #222;
+            --text-light: #fff;
+        }
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+        }
+        .section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 0 20px;
+        }
+        .title-main {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--green);
+        }
+        .subtitle-main {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        .cards-row {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .card-plat {
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 8px 32px rgba(230,172,48,0.10);
+            width: 340px;
+            padding: 0 0 24px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .card-plat:hover {
+            box-shadow: 0 16px 40px rgba(15,155,57,0.13);
+            transform: translateY(-4px) scale(1.02);
+        }
+        .card-plat img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 22px 22px 0 0;
+        }
+        .card-plat .plat-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 18px 0 8px 0;
+            text-align: center;
+        }
+        .card-plat .plat-desc {
+            color: #555;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 18px;
+            min-height: 48px;
+        }
+        .card-plat .plat-services {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .btn-service {
+            background: var(--green);
+            color: var(--text-light);
+            border: none;
+            border-radius: 18px;
+            padding: 6px 18px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-service.gold {
+            background: var(--gold);
+            color: var(--text-dark);
+        }
+        .btn-service:hover {
+            background: #0c7c2a;
+            color: #fff;
+        }
+        .btn-service.gold:hover {
+            background: #b98a23;
+            color: #fff;
+        }
+        /* Section image + texte */
+        .section-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 60px;
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 8px 32px rgba(15,155,57,0.08);
+            padding: 40px 32px;
+        }
+        .section-flex .flex-text {
+            flex: 1.2;
+        }
+        .section-flex .flex-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 18px;
+        }
+        .section-flex .flex-desc {
+            color: #444;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+        }
+        .section-flex .flex-img {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .section-flex .flex-img img {
+            width: 320px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(230,172,48,0.13);
+        }
+        @media (max-width: 1000px) {
+            .section-flex {
+                flex-direction: column-reverse;
+                padding: 28px 10px;
+            }
+            .section-flex .flex-img img {
+                width: 100%;
+                max-width: 350px;
+                height: 180px;
+            }
+        }
+        @media (max-width: 700px) {
+            .cards-row {
+                flex-direction: column;
+                gap: 22px;
+                align-items: center;
+            }
+            .section {
+                padding: 20px 2vw 0 2vw;
+            }
+        }
+        /* Header et Navigation */
+        .navbar {
+            background: rgba(0, 0, 0, 0.312) !important;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(172,59,39,0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .navbar-nav .nav-link:hover {
+            background: #E6AC30;
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        .dropdown-menu {
+            background: #E6AC30;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+        .dropdown-item {
+            color: rgba(255, 255, 255, 0.9) !important;
+            padding: 0.7rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .dropdown-item:hover {
+            background: #E6AC30;
+            color: white !important;
+        }
+        /* Responsive Design pour la navigation */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home"><img src="img/logo.png" width="100" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Découvrir Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
+                            <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
+                            <li><a class="dropdown-item" href="gallerie.html">Gallerie Photo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Vivre à Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#logement">Gastronomie
+                            </a></li>
+                            <li><a class="dropdown-item" href="#education">Vie associative
+                            </a></li>
+                            <li><a class="dropdown-item" href="info.html">Info pratique</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Économie et Mobilité
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="exploration.html">Explorer les marchés</a></li>
+                            <li><a class="dropdown-item" href="commercant.html">Je suis commerçant</a></li>
+                            <li><a class="dropdown-item" href="transport.html">Explore la gare</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Services Citoyens
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="demande.html">Faire une demande </a></li>
+                            <li><a class="dropdown-item" href="signaler.html">Signaler un problème</a></li>
+                            <li><a class="dropdown-item" href="annonce.html">Annonces de la mairie</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Voix d'Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#actualites">Actualités</a></li>
+                            <li><a class="dropdown-item" href="#temoignages">Exprime-toi</a></li>
+                            <li><a class="dropdown-item" href="#participation">Sondages dynamiques sur les besoins ou projets dans la commune
+                            </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<br><br><br><br>
+    <div class="section">
+        <div class="title-main">Gastronomie d'Adjamé</div>
+        <div class="subtitle-main">Découvrez les saveurs authentiques et les plats emblématiques de la commune d'Adjamé</div>
+        <div class="cards-row">
+            <div class="card-plat">
+                <img src="imgv2/Attiéké + poulet frit.jpg" alt="Attiéké poulet">
+                <div class="plat-title">Attiéké poulet</div>
+                <div class="plat-desc">Le plat incontournable d'Adjamé : semoule de manioc accompagnée de poulet grillé, tomates, oignons et piment.</div>
+                <div class="plat-services">
+                    <button class="btn-service gold"><i class="fas fa-leaf"></i> Traditionnel</button>
+                    <button class="btn-service"><i class="fas fa-fire"></i> Braisé</button>
+                </div>
+            </div>
+            <div class="card-plat">
+                <img src="imgv2/Soupe de patte de bœuf.jpg" alt="Soupe de pattes de bœuf">
+                <div class="plat-title">Soupe de pattes de bœuf</div>
+                <div class="plat-desc">Une soupe savoureuse à base de pattes de bœuf, d'épices locales et de légumes, très appréciée pour sa richesse et son goût unique à Adjamé.</div>
+                <div class="plat-services">
+                    <button class="btn-service gold"><i class="fas fa-bone"></i> Pattes de bœuf</button>
+                    <button class="btn-service"><i class="fas fa-mug-hot"></i> Réconfortant</button>
+                </div>
+            </div>
+            <div class="card-plat">
+                <img src="imgv2/Le-garba.webp" alt="Garba">
+                <div class="plat-title">Garba</div>
+                <div class="plat-desc">Semoule de manioc (attiéké) et thon frit, servi avec piment et oignons. Un plat populaire et rapide à déguster.</div>
+                <div class="plat-services">
+                    <button class="btn-service gold"><i class="fas fa-fish"></i> Thon</button>
+                    <button class="btn-service"><i class="fas fa-bolt"></i> Rapide</button>
+                </div>
+            </div>
+        </div>
+        <div class="section-flex">
+            <div class="flex-text">
+                <div class="flex-title">Une cuisine riche et variée</div>
+                <div class="flex-desc">À Adjamé, la gastronomie est un véritable art de vivre. Goûtez au foutou, au placali, au kedjenou, et à bien d'autres spécialités qui font la renommée de la commune. Les marchés regorgent de produits frais et d'épices qui subliment chaque plat.</div>
+                <button class="btn-service gold"><i class="fas fa-utensils"></i> Explorer les spécialités</button>
+            </div>
+            <div class="flex-img">
+                <img src="imgv2/Foutou-banane-et-sauce-graine-ivoirienne.png" alt="Plats ivoiriens à Adjamé">
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

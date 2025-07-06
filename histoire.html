@@ -87,7 +87,7 @@
     .history-hero {
       height: 60vh;
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                  url('img/adjame-historique.jpg') center/cover no-repeat;
+                  url('./imgv2/histoire2.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -255,6 +255,7 @@
       height: 200px;
       border-radius: 10px;
       object-fit: cover;
+      object-position: top center;
       margin-bottom: 15px;
       border: 3px solid var(--secondary-color);
     }
@@ -351,10 +352,12 @@
 
     /* Footer Styles */
     .footer-new {
-      background: #AC3B27;
+      background: linear-gradient(135deg, #0F9B39 0%, #4a7c59 100%);
       color: #FFFFFF;
       position: relative;
       overflow: hidden;
+      padding-top: 30px;
+      padding-bottom: 20px;
     }
     .footer-wave {
       position: absolute;
@@ -364,27 +367,27 @@
       z-index: 2;
     }
     .footer-wave svg path {
-      fill: #AC3B27;
+      fill: #0F9B39;
     }
     .footer-title {
-      color: #E6AC30;
+      color: #fff;
       font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: 1px;
     }
     .footer-subtitle {
-      color: #E6AC30;
+      color: #a8d4ae;
       font-size: 1.1rem;
       font-weight: 600;
       letter-spacing: 0.5px;
     }
     .footer-desc {
-      color: #E7E6E6;
+      color: #d6f5e3;
       font-size: 1rem;
       font-style: italic;
     }
     .footer-links a {
-      color: #FFFFFF;
+      color: #e0ffe0;
       text-decoration: none;
       transition: color 0.2s;
       display: block;
@@ -392,11 +395,11 @@
       font-size: 1rem;
     }
     .footer-links a:hover {
-      color: #AC3B27;
+      color: #a8d4ae;
       text-decoration: underline;
     }
     .footer-contact li {
-      color: #E7E6E6;
+      color: #e0ffe0;
       font-size: 0.98rem;
       margin-bottom: 0.5rem;
       display: flex;
@@ -404,14 +407,14 @@
       gap: 8px;
     }
     .footer-contact i {
-      color: #E6AC30;
+      color: #a8d4ae;
       min-width: 18px;
       text-align: center;
     }
     .footer-newsletter .form-control {
       border-radius: 25px 0 0 25px;
       border: none;
-      background: #E7E6E6;
+      background: #e0ffe0;
       color: #0F9B39;
       font-size: 1rem;
     }
@@ -420,7 +423,7 @@
       outline: none;
     }
     .footer-newsletter .btn-gold {
-      background: #E6AC30;
+      background: #a8d4ae;
       color: #0F9B39;
       border-radius: 0 25px 25px 0;
       border: none;
@@ -428,7 +431,7 @@
       transition: background 0.2s;
     }
     .footer-newsletter .btn-gold:hover {
-      background: #AC3B27;
+      background: #0F9B39;
       color: #fff;
     }
     .footer-social-link {
@@ -437,24 +440,24 @@
       justify-content: center;
       width: 44px;
       height: 44px;
-      background: #E6AC30;
-      color: #0F9B39;
+      background: #0F9B39;
+      color: #fff;
       border-radius: 50%;
       font-size: 1.3rem;
       transition: background 0.2s, color 0.2s, transform 0.2s;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
     .footer-social-link:hover {
-      background: #AC3B27;
-      color: #fff;
+      background: #a8d4ae;
+      color: #0F9B39;
       transform: scale(1.1);
     }
     .footer-separator {
-      border-color: #E6AC30;
+      border-color: #a8d4ae;
       opacity: 0.4;
     }
     .footer-copyright {
-      color: #E7E6E6;
+      color: #d6f5e3;
       font-size: 0.95rem;
       letter-spacing: 0.5px;
     }
@@ -518,6 +521,50 @@
         padding: 20px;
       }
     }
+
+    /* Section Culture & Événements */
+    .culture-section {
+      background: linear-gradient(135deg, #f8f9fa 60%, #E6AC30 100%);
+    }
+    .culture-title {
+      letter-spacing: 1px;
+      font-family: 'Inter', Arial, sans-serif;
+    }
+    .culture-img-wrap {
+      position: relative;
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .culture-img-wrap img {
+      max-height: 320px;
+      object-fit: cover;
+      width: 100%;
+    }
+    .culture-img-wrap .badge {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
+    }
+    .culture-event-row {
+      margin-bottom: 3rem !important;
+      animation: fadeInUp 1s both;
+    }
+    @media (max-width: 991px) {
+      .culture-img-wrap img {
+        max-height: 220px;
+      }
+    }
+    @media (max-width: 767px) {
+      .culture-title {
+        font-size: 2rem;
+      }
+      .culture-img-wrap img {
+        max-height: 180px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -544,7 +591,7 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
               <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
-              <li><a class="dropdown-item" href="#personnalites">Galleries Photo</a></li>
+              <li><a class="dropdown-item" href="gallerie.html">Galleries Photo</a></li>
             </ul>
           </li>
           
@@ -553,9 +600,9 @@
               Vivre à Adjamé
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#logement">Éducation et jeunesse</a></li>
+              <li><a class="dropdown-item" href="gastronomie.html">Gastronomie</a></li>
               <li><a class="dropdown-item" href="vie-associative.html">Vie associative</a></li>
-              <li><a class="dropdown-item" href="#social">Info pratique</a></li>
+              <li><a class="dropdown-item" href="info.html">Info pratique</a></li>
 
             </ul>
           </li>
@@ -620,7 +667,7 @@
           <div class="timeline-content">
             <div class="timeline-date">Origines - XVIIIe siècle</div>
             <h3 class="timeline-title">Les Premiers Habitants</h3>
-            <img src="img/village-ancien.jpg" alt="Village traditionnel" class="timeline-image">
+            <img src="img/Nangui Abrogoua.jpg" alt="Village traditionnel" class="timeline-image">
             <p class="timeline-description">En langue tchaman, « Adjamé » signifie « la rencontre ». Le village était habité par le peuple Djemian, qui a posé les premières fondations de ce territoire historique.</p>
           </div>
         </div>
@@ -630,7 +677,7 @@
           <div class="timeline-content">
             <div class="timeline-date">XIXe siècle</div>
             <h3 class="timeline-title">L'Ère du Commerce</h3>
-            <img src="img/commerce-historique.jpg" alt="Commerce traditionnel" class="timeline-image">
+            <img src="imgv2/commerce colo.jpg" alt="Commerce traditionnel" class="timeline-image">
             <p class="timeline-description">Avec l'arrivée des colons et le développement des échanges commerciaux, Adjamé devient un carrefour stratégique pour le commerce local et régional.</p>
           </div>
         </div>
@@ -640,7 +687,7 @@
           <div class="timeline-content">
             <div class="timeline-date">XXe siècle</div>
             <h3 class="timeline-title">L'Urbanisation</h3>
-            <img src="img/urbanisation.jpg" alt="Développement urbain" class="timeline-image">
+            <img src="imgv2/dev urbain.jpg" alt="Développement urbain" class="timeline-image">
             <p class="timeline-description">La commune connaît une transformation majeure avec l'urbanisation d'Abidjan. Adjamé devient un centre administratif et commercial majeur.</p>
           </div>
         </div>
@@ -650,7 +697,7 @@
           <div class="timeline-content">
             <div class="timeline-date">Aujourd'hui</div>
             <h3 class="timeline-title">Le Cœur d'Abidjan</h3>
-            <img src="img/adjame-moderne.jpg" alt="Adjamé moderne" class="timeline-image">
+            <img src="img/background 220.jpg" alt="Adjamé moderne" class="timeline-image">
             <p class="timeline-description">Adjamé est aujourd'hui le centre névralgique d'Abidjan, avec ses marchés animés, sa diversité culturelle et son dynamisme économique.</p>
           </div>
         </div>
@@ -670,7 +717,7 @@
       <div class="row">
         <div class="col-lg-4 col-md-6">
           <div class="era-card">
-            <div class="era-image" style="background-image: url('img/ere-village.jpg')">
+            <div class="era-image" style="background-image: url('imgv2/histoire\ adjamé.jpg')">
               <div class="era-overlay">
                 <div class="era-period">XVIIIe - XIXe siècle</div>
                 <h3 class="era-title">L'Ère Villageoise</h3>
@@ -690,7 +737,7 @@
 
         <div class="col-lg-4 col-md-6">
           <div class="era-card">
-            <div class="era-image" style="background-image: url('img/ere-coloniale.jpg')">
+            <div class="era-image" style="background-image: url('imgv2/commerce\ colo.jpg')">
               <div class="era-overlay">
                 <div class="era-period">Fin XIXe - 1960</div>
                 <h3 class="era-title">L'Ère Coloniale</h3>
@@ -710,7 +757,7 @@
 
         <div class="col-lg-4 col-md-6">
           <div class="era-card">
-            <div class="era-image" style="background-image: url('img/ere-moderne.jpg')">
+            <div class="era-image" style="background-image: url('img/background\ 220.jpg')">
               <div class="era-overlay">
                 <div class="era-period">1960 - Aujourd'hui</div>
                 <h3 class="era-title">L'Ère Moderne</h3>
@@ -731,12 +778,84 @@
     </div>
   </section>
 
+  <!-- Section Culture & Événements -->
+  <section class="culture-section py-5" style="background: linear-gradient(135deg, #f8f9fa 60%, #E6AC30 100%);">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span style="font-size:2.5rem;color:#AC3B27;"><i class="fas fa-theater-masks"></i></span>
+        <h2 class="culture-title" style="font-size:2.7rem;font-weight:800;color:#0F9B39;letter-spacing:1px;">Culture & Événements</h2>
+        <p class="lead" style="color:#555;max-width:600px;margin:0 auto;">Découvrez les grands rendez-vous culturels qui font vibrer la commune d'Adjamé et rassemblent toutes les générations.</p>
+      </div>
+      <div class="row g-5 align-items-center mb-5 culture-event-row">
+        <!-- FESCAD -->
+        <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+          <div class="culture-img-wrap">
+            <img src="imgv2/fescad2025.jpg" alt="FESCAD Festival Culturel d'Adjamé" class="img-fluid rounded shadow-lg" style="border:5px solid #E6AC30;">
+            <span class="badge bg-success position-absolute top-0 start-0 m-3" style="font-size:1rem;">Juillet 2025</span>
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <h3 class="fw-bold mb-2" style="color:#AC3B27;">FESCAD – Festival Culturel d'Adjamé</h3>
+          <div class="mb-2"><span class="badge bg-warning text-dark me-2">Nouveau</span><span class="badge bg-info text-dark">Événement annuel</span></div>
+          <p class="mb-3">Trois jours de festivités (25‑27 juillet 2025) autour du thème : <strong>« L'éducation, vecteur de croissance pour Adjamé »</strong>. Concerts, cross populaire, foire économique, ateliers, conférences…</p>
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item"><span class="badge bg-light text-success"><i class="fas fa-users"></i> 30 000 visiteurs</span></li>
+            <li class="list-inline-item"><span class="badge bg-light text-success"><i class="fas fa-briefcase"></i> 500 emplois créés</span></li>
+          </ul>
+          <div class="mb-2">
+            <span class="badge bg-secondary"><i class="fas fa-music"></i> Concerts</span>
+            <span class="badge bg-secondary"><i class="fas fa-running"></i> Cross populaire</span>
+            <span class="badge bg-secondary"><i class="fas fa-store"></i> Foire</span>
+            <span class="badge bg-secondary"><i class="fas fa-chalkboard-teacher"></i> Ateliers</span>
+          </div>
+          <p class="text-muted small mb-0">Objectifs : cohésion sociale, insertion des jeunes, promotion du talent local.</p>
+        </div>
+      </div>
+      <div class="row g-5 align-items-center mb-5 culture-event-row flex-lg-row-reverse">
+        <!-- FERA -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="culture-img-wrap">
+            <img src="imgv2/fera.jpg" alt="FERA Festival des Retrouvailles d'Adjamtala" class="img-fluid rounded shadow-lg" style="border:5px solid #0F9B39;">
+            <span class="badge bg-danger position-absolute top-0 start-0 m-3" style="font-size:1rem;">Décembre 2023</span>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h3 class="fw-bold mb-2" style="color:#0F9B39;">FERA – Festival des Retrouvailles d'Adjamtala</h3>
+          <div class="mb-2"><span class="badge bg-primary">3ᵉ édition</span><span class="badge bg-info text-dark ms-2">Fin d'année</span></div>
+          <p class="mb-3">Un événement de fin d'année (23‑24 décembre 2023) pour rassembler la jeunesse et promouvoir l'image d'Adjamé. Matchs de foot, spectacles, distribution de cadeaux…</p>
+          <div class="mb-2">
+            <span class="badge bg-secondary"><i class="fas fa-futbol"></i> Foot</span>
+            <span class="badge bg-secondary"><i class="fas fa-gift"></i> Cadeaux</span>
+            <span class="badge bg-secondary"><i class="fas fa-microphone"></i> Spectacles</span>
+          </div>
+          <p class="text-muted small mb-0">Objectif : rassembler la jeunesse, renforcer la cohésion et la fierté locale.</p>
+        </div>
+      </div>
+      <div class="row g-5 align-items-center mb-5 culture-event-row">
+        <!-- Fête de génération / Afatchué -->
+        <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+          <div class="culture-img-wrap">
+            <img src="imgv2/affatché.jpg" alt="Fête de génération Afatchué" class="img-fluid rounded shadow-lg" style="border:5px solid #E6AC30;">
+            <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-3" style="font-size:1rem;">Tous les 15 ans</span>
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <h3 class="fw-bold mb-2" style="color:#AC3B27;">Fête de génération / Afatchué (Ébriés)</h3>
+          <div class="mb-2"><span class="badge bg-success">Tradition</span></div>
+          <p class="mb-3">Cérémonie de passage de génération propre aux peuples Ébrié, marquant l'accès à l'âge adulte et aux responsabilités communautaires. Célébrée dans certains quartiers d'Adjamé.</p>
+          <div class="mb-2">
+            <span class="badge bg-secondary"><i class="fas fa-users"></i> Communauté</span>
+            <span class="badge bg-secondary"><i class="fas fa-drum"></i> Rites & danses</span>
+          </div>
+          <p class="text-muted small mb-0">Un moment fort de transmission et de fierté identitaire.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer-new position-relative mt-5">
     <!-- Effet wave -->
-    <div class="footer-wave">
-      <svg viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#0F9B39" d="M0,60 C360,120 1080,0 1440,60 L1440,90 L0,90 Z"></path></svg>
-    </div>
     <div class="container py-5">
       <div class="row g-4 align-items-start">
         <!-- Bloc à propos -->
@@ -746,15 +865,7 @@
           <img src="img/logo mairie adjaamé-Photoroom.png" alt="Logo Adjamé" style="max-width:120px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
         </div>
         <!-- Bloc liens utiles -->
-        <div class="col-md-2">
-          <h4 class="footer-subtitle mb-3">Liens</h4>
-          <ul class="footer-links list-unstyled">
-            <li><a href="#culture">Culture</a></li>
-            <li><a href="#commerce">Commerce</a></li>
-            <li><a href="#transport">Transport</a></li>
-            <li><a href="#actualites">Actualités</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+        <div class="col-md-2 d-none d-md-block">
         </div>
         <!-- Bloc contact -->
         <div class="col-md-3">

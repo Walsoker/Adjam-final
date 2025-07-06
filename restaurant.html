@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharmacies de Garde - Adjamé</title>
+    <title>Restaurants - Adjamé</title>
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -109,7 +109,7 @@
         .page-title {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #0F9B39;
+            color: #E6AC30;
             margin-bottom: 15px;
         }
 
@@ -120,14 +120,14 @@
             margin: 0 auto;
         }
 
-        .pharmacy-grid {
+        .restaurant-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
 
-        .pharmacy-card {
+        .restaurant-card {
             background: #fff;
             border-radius: 20px;
             padding: 30px;
@@ -136,45 +136,42 @@
             border: 2px solid transparent;
         }
 
-        .pharmacy-card:hover {
+        .restaurant-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(15,155,57,0.15);
-            border-color: #0F9B39;
+            box-shadow: 0 20px 40px rgba(230,172,48,0.15);
+            border-color: #E6AC30;
         }
 
-        .pharmacy-header {
+        .restaurant-header {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
         }
 
-        .pharmacy-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #0F9B39, #4a7c59);
+        .restaurant-image {
+            width: 80px;
+            height: 80px;
             border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            object-fit: cover;
             margin-right: 20px;
-            color: white;
-            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 3px solid #E6AC30;
         }
 
-        .pharmacy-name {
+        .restaurant-name {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #0F9B39;
+            color: #E6AC30;
             margin-bottom: 5px;
         }
 
-        .pharmacy-number {
+        .restaurant-type {
             font-size: 0.9rem;
             color: #666;
             font-weight: 500;
         }
 
-        .pharmacy-info {
+        .restaurant-info {
             margin-bottom: 20px;
         }
 
@@ -185,7 +182,7 @@
         }
 
         .info-icon {
-            color: #0F9B39;
+            color: #E6AC30;
             margin-right: 12px;
             margin-top: 3px;
             min-width: 16px;
@@ -197,7 +194,35 @@
             line-height: 1.5;
         }
 
-        .pharmacy-actions {
+        .services-list {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .services-title {
+            font-weight: 600;
+            color: #E6AC30;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .service-item {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-item i {
+            color: #E6AC30;
+            margin-right: 8px;
+            font-size: 0.8rem;
+        }
+
+        .restaurant-actions {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
@@ -216,45 +241,45 @@
         }
 
         .btn-call {
-            background: linear-gradient(135deg, #0F9B39, #4a7c59);
+            background: linear-gradient(135deg, #E6AC30, #d4a017);
             color: white;
             border: none;
         }
 
         .btn-call:hover {
-            background: #0F9B39;
+            background: #E6AC30;
             color: white;
             transform: translateY(-2px);
         }
 
         .btn-map {
             background: transparent;
-            color: #0F9B39;
-            border: 2px solid #0F9B39;
+            color: #E6AC30;
+            border: 2px solid #E6AC30;
         }
 
         .btn-map:hover {
-            background: #0F9B39;
+            background: #E6AC30;
             color: white;
             transform: translateY(-2px);
         }
 
-        .emergency-notice {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        .special-notice {
+            background: linear-gradient(135deg, #E6AC30, #d4a017);
             color: white;
             padding: 20px;
             border-radius: 15px;
             margin-bottom: 40px;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(255,107,107,0.2);
+            box-shadow: 0 8px 25px rgba(230,172,48,0.2);
         }
 
-        .emergency-notice h3 {
+        .special-notice h3 {
             margin-bottom: 10px;
             font-size: 1.4rem;
         }
 
-        .emergency-notice p {
+        .special-notice p {
             margin-bottom: 0;
             opacity: 0.9;
         }
@@ -268,21 +293,21 @@
                 font-size: 2rem;
             }
             
-            .pharmacy-grid {
+            .restaurant-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
             
-            .pharmacy-card {
+            .restaurant-card {
                 padding: 20px;
             }
             
-            .pharmacy-header {
+            .restaurant-header {
                 flex-direction: column;
                 text-align: center;
             }
             
-            .pharmacy-icon {
+            .restaurant-image {
                 margin-right: 0;
                 margin-bottom: 15px;
             }
@@ -304,7 +329,9 @@
             line-height: 0;
             z-index: 2;
         }
-        
+        .footer-wave svg path {
+            fill: #0F9B39;
+        }
         .footer-title {
             color: #fff;
             font-size: 1.5rem;
@@ -446,7 +473,7 @@
                             Vivre à Adjamé
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#logement">Éducation et jeunesse
+                            <li><a class="dropdown-item" href="gastronomie.html">Gastronomie
                             </a></li>
                             <li><a class="dropdown-item" href="vie-associative.html">Vie associative
                             </a></li>
@@ -496,39 +523,48 @@
     <br><br><br>
     <div class="main-container">
         <div class="page-header">
-            <h1 class="page-title">Pharmacies de Garde à Adjamé</h1>
-            <p class="page-subtitle">Trouvez rapidement une pharmacie de garde près de chez vous en cas d'urgence</p>
+            <h1 class="page-title">Restaurants à Adjamé</h1>
+            <p class="page-subtitle">Découvrez les meilleurs restaurants et maquis de la commune d'Adjamé</p>
         </div>
 
-        <div class="emergency-notice">
-            <h3><i class="fas fa-exclamation-triangle me-2"></i>Urgence Médicale</h3>
-            <p>En cas d'urgence vitale, composez immédiatement le <strong>185</strong> (SAMU) ou le <strong>110</strong> (Pompiers)</p>
+        <div class="special-notice">
+            <h3><i class="fas fa-utensils me-2"></i>Gastronomie Locale</h3>
+            <p>Savourez les saveurs authentiques d'Adjamé dans nos restaurants et maquis traditionnels</p>
         </div>
 
-        <div class="pharmacy-grid">
-            <!-- Pharmacie 1 -->
-            <div class="pharmacy-card">
-                <div class="pharmacy-header">
-                    <div class="pharmacy-icon">
-                        <i class="fas fa-pills"></i>
-                    </div>
+        <div class="restaurant-grid">
+            <!-- Restaurant 1 -->
+            <div class="restaurant-card">
+                <div class="restaurant-header">
+                    <img src="imgv2/hotel1.jpg" alt="Golden Spoons" class="restaurant-image">
                     <div>
-                        <div class="pharmacy-name">PHARMACIE DE LA MOSQUEE</div>
-                        <div class="pharmacy-number">Pharmacie #1</div>
+                        <div class="restaurant-name">Golden Spoons</div>
+                        <div class="restaurant-type">Restaurant & Bar</div>
                     </div>
                 </div>
-                <div class="pharmacy-info">
+                <div class="restaurant-info">
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt info-icon"></i>
-                        <div class="info-text">BD. WILLIAM JACOB DERRIERE LES RAILS DE LA GRANDE MOSQUEE</div>
+                        <div class="info-text">9XGP+6R7 G7 marché de Paillet, Rue, Abidjan</div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone info-icon"></i>
-                        <div class="info-text">+225 01 03 12 11 91</div>
+                        <div class="info-text">+225 07 47 97 90 02</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock info-icon"></i>
+                        <div class="info-text">Ouvert 24h/24</div>
                     </div>
                 </div>
-                <div class="pharmacy-actions">
-                    <a href="tel:+2250103121191" class="action-btn btn-call">
+                <div class="services-list">
+                    <div class="services-title">Services disponibles :</div>
+                    <div class="service-item">
+                        <i class="fas fa-cocktail"></i>
+                        Excellents cocktails
+                    </div>
+                </div>
+                <div class="restaurant-actions">
+                    <a href="tel:+2250747979002" class="action-btn btn-call">
                         <i class="fas fa-phone"></i> Appeler
                     </a>
                     <a href="#" class="action-btn btn-map">
@@ -537,29 +573,42 @@
                 </div>
             </div>
 
-            <!-- Pharmacie 2 -->
-            <div class="pharmacy-card">
-                <div class="pharmacy-header">
-                    <div class="pharmacy-icon">
-                        <i class="fas fa-pills"></i>
-                    </div>
+            <!-- Restaurant 2 -->
+            <div class="restaurant-card">
+                <div class="restaurant-header">
+                    <img src="imgv2/hotel2.jpg" alt="CARRÉ D'AS Live Maquis Resto" class="restaurant-image">
                     <div>
-                        <div class="pharmacy-name">PHARMACIE SCHIBA</div>
-                        <div class="pharmacy-number">Pharmacie #2</div>
+                        <div class="restaurant-name">CARRÉ D'AS Live Maquis Resto</div>
+                        <div class="restaurant-type">Maquis & Restaurant</div>
                     </div>
                 </div>
-                <div class="pharmacy-info">
+                <div class="restaurant-info">
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt info-icon"></i>
-                        <div class="info-text">RUE DU DISPENSAIRE ANTITUBERCULEUX / FACE MARCHE GOURO (EX LOCAUX COFRUITEL)</div>
+                        <div class="info-text">Abidjan</div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone info-icon"></i>
-                        <div class="info-text">+225 27 20 37 98 33</div>
+                        <div class="info-text">+225 07 08 15 57 94</div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock info-icon"></i>
+                        <div class="info-text">Ouvert ⋅ Ferme à 00:00</div>
                     </div>
                 </div>
-                <div class="pharmacy-actions">
-                    <a href="tel:+2252720379833" class="action-btn btn-call">
+                <div class="services-list">
+                    <div class="services-title">Services disponibles :</div>
+                    <div class="service-item">
+                        <i class="fas fa-infinity"></i>
+                        Formule "à volonté"
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-cocktail"></i>
+                        Excellents cocktails
+                    </div>
+                </div>
+                <div class="restaurant-actions">
+                    <a href="tel:+2250708155794" class="action-btn btn-call">
                         <i class="fas fa-phone"></i> Appeler
                     </a>
                     <a href="#" class="action-btn btn-map">
@@ -568,200 +617,38 @@
                 </div>
             </div>
 
-            <!-- Pharmacie 3 -->
-            <div class="pharmacy-card">
-                <div class="pharmacy-header">
-                    <div class="pharmacy-icon">
-                        <i class="fas fa-pills"></i>
-                    </div>
+            <!-- Restaurant 3 -->
+            <div class="restaurant-card">
+                <div class="restaurant-header">
+                    <img src="img/marché.jpg" alt="Restaurant Chez Mado" class="restaurant-image">
                     <div>
-                        <div class="pharmacy-name">PHARMACIE ST EMMANUEL</div>
-                        <div class="pharmacy-number">Pharmacie #3</div>
+                        <div class="restaurant-name">Restaurant Chez Mado</div>
+                        <div class="restaurant-type">Restaurant</div>
                     </div>
                 </div>
-                <div class="pharmacy-info">
+                <div class="restaurant-info">
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt info-icon"></i>
-                        <div class="info-text">BD GENERAL DE GAULLE / QUARTIER MIRADOR FACE IMMEUBLE SICOGI / 30 M DU CARREFOUR</div>
+                        <div class="info-text">9X4J+XM3, Abidjan</div>
                     </div>
                     <div class="info-item">
-                        <i class="fas fa-phone info-icon"></i>
-                        <div class="info-text">+225 27 20 37 98 27</div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-mobile-alt info-icon"></i>
-                        <div class="info-text">+225 01 02 69 19 38</div>
+                        <i class="fas fa-clock info-icon"></i>
+                        <div class="info-text">Ouvert ⋅ Ferme à 18:30</div>
                     </div>
                 </div>
-                <div class="pharmacy-actions">
-                    <a href="tel:+2252720379827" class="action-btn btn-call">
-                        <i class="fas fa-phone"></i> Appeler
-                    </a>
-                    <a href="#" class="action-btn btn-map">
-                        <i class="fas fa-map-marker-alt"></i> Localiser
-                    </a>
-                </div>
-            </div>
-
-            <!-- Pharmacie 4 -->
-            <div class="pharmacy-card">
-                <div class="pharmacy-header">
-                    <div class="pharmacy-icon">
-                        <i class="fas fa-pills"></i>
+                <div class="services-list">
+                    <div class="services-title">Services disponibles :</div>
+                    <div class="service-item">
+                        <i class="fas fa-utensils"></i>
+                        Cuisine traditionnelle
                     </div>
-                    <div>
-                        <div class="pharmacy-name">PHARMACIE DE LA PROVIDENCE</div>
-                        <div class="pharmacy-number">Pharmacie #4</div>
+                    <div class="service-item">
+                        <i class="fas fa-coffee"></i>
+                        Service de restauration
                     </div>
                 </div>
-                <div class="pharmacy-info">
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt info-icon"></i>
-                        <div class="info-text">PETIT MARCHE DES 220 LGTS / FACE EDIPRESSE / LIGNE BUS N° 14 00 09 75 86 12 83</div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone info-icon"></i>
-                        <div class="info-text">+225 27 20 37 55 81</div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-mobile-alt info-icon"></i>
-                        <div class="info-text">+225 07 07 08 45 12</div>
-                    </div>
-                </div>
-                <div class="pharmacy-actions">
-                    <a href="tel:+2252720375581" class="action-btn btn-call">
-                        <i class="fas fa-phone"></i> Appeler
-                    </a>
-                    <a href="#" class="action-btn btn-map">
-                        <i class="fas fa-map-marker-alt"></i> Localiser
-                    </a>
-                </div>
-            </div>
-
-            <!-- Pharmacie 5 -->
-            <div class="pharmacy-card">
-                <div class="pharmacy-header">
-                    <div class="pharmacy-icon">
-                        <i class="fas fa-pills"></i>
-                    </div>
-                    <div>
-                        <div class="pharmacy-name">PHARMACIE SARAH</div>
-                        <div class="pharmacy-number">Pharmacie #5</div>
-                    </div>
-                </div>
-                <div class="pharmacy-info">
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt info-icon"></i>
-                        <div class="info-text">ROUTE CAMP GENDARMERIE AGBAN / CENTRE COMMERCIAL CARINE N' COUTURE / FACE QUARTIER CHICANE</div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone info-icon"></i>
-                        <div class="info-text">+225 27 20 39 03 57</div>
-                    </div>
-                </div>
-                <div class="pharmacy-actions">
-                    <a href="tel:+2252720390357" class="action-btn btn-call">
-                        <i class="fas fa-phone"></i> Appeler
-                    </a>
-                    <a href="#" class="action-btn btn-map">
-                        <i class="fas fa-map-marker-alt"></i> Localiser
-                    </a>
-                </div>
-            </div>
-
-            <!-- Pharmacie 6 -->
-            <div class="pharmacy-card">
-                <div class="pharmacy-header">
-                    <div class="pharmacy-icon">
-                        <i class="fas fa-pills"></i>
-                    </div>
-                    <div>
-                        <div class="pharmacy-name">PHARMACIE KORO</div>
-                        <div class="pharmacy-number">Pharmacie #6</div>
-                    </div>
-                </div>
-                <div class="pharmacy-info">
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt info-icon"></i>
-                        <div class="info-text">ADJAME QUARTIER MARIE THERESE HOUPHOUET BOIGNY A COTE COLLEGE MONTHERLANT BATIMENT B</div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone info-icon"></i>
-                        <div class="info-text">+225 01 52 78 27 27</div>
-                    </div>
-                </div>
-                <div class="pharmacy-actions">
-                    <a href="tel:+2250152782727" class="action-btn btn-call">
-                        <i class="fas fa-phone"></i> Appeler
-                    </a>
-                    <a href="#" class="action-btn btn-map">
-                        <i class="fas fa-map-marker-alt"></i> Localiser
-                    </a>
-                </div>
-            </div>
-
-            <!-- Pharmacie 7 -->
-            <div class="pharmacy-card">
-                <div class="pharmacy-header">
-                    <div class="pharmacy-icon">
-                        <i class="fas fa-pills"></i>
-                    </div>
-                    <div>
-                        <div class="pharmacy-name">PHARMACIE DU MARCHE (NVLLE)</div>
-                        <div class="pharmacy-number">Pharmacie #7</div>
-                    </div>
-                </div>
-                <div class="pharmacy-info">
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt info-icon"></i>
-                        <div class="info-text">RUE DES AGOUAS / FACE AU GD MARCHE D'ADJAME</div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone info-icon"></i>
-                        <div class="info-text">+225 27 20 37 06 17</div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-mobile-alt info-icon"></i>
-                        <div class="info-text">+225 07 58 09 46 95</div>
-                    </div>
-                </div>
-                <div class="pharmacy-actions">
-                    <a href="tel:+2252720370617" class="action-btn btn-call">
-                        <i class="fas fa-phone"></i> Appeler
-                    </a>
-                    <a href="#" class="action-btn btn-map">
-                        <i class="fas fa-map-marker-alt"></i> Localiser
-                    </a>
-                </div>
-            </div>
-
-            <!-- Pharmacie 8 -->
-            <div class="pharmacy-card">
-                <div class="pharmacy-header">
-                    <div class="pharmacy-icon">
-                        <i class="fas fa-pills"></i>
-                    </div>
-                    <div>
-                        <div class="pharmacy-name">PHARMACIE CHRIST MARIE DE PAILLET</div>
-                        <div class="pharmacy-number">Pharmacie #8</div>
-                    </div>
-                </div>
-                <div class="pharmacy-info">
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt info-icon"></i>
-                        <div class="info-text">PAILLET EXTENSION / ENTRE LE CARREFOUR HUMMER ET LA MAISON BLANCHE DES PETITS</div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone info-icon"></i>
-                        <div class="info-text">+225 27 20 37 40 00</div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-mobile-alt info-icon"></i>
-                        <div class="info-text">+225 07 57 48 94 43</div>
-                    </div>
-                </div>
-                <div class="pharmacy-actions">
-                    <a href="tel:+2252720374000" class="action-btn btn-call">
+                <div class="restaurant-actions">
+                    <a href="#" class="action-btn btn-call">
                         <i class="fas fa-phone"></i> Appeler
                     </a>
                     <a href="#" class="action-btn btn-map">
@@ -774,6 +661,7 @@
 
     <!-- Nouveau Footer Sombre et Moderne -->
     <footer class="footer-new position-relative mt-5">
+        <!-- Effet wave -->
         
         <div class="container py-5">
             <div class="row g-4 align-items-start">

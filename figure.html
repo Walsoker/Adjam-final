@@ -265,42 +265,135 @@
             z-index: 1;
         }
 
-        .footer {
-            background: linear-gradient(135deg, #2c5530 0%, #1a3d1f 100%);
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-            margin-top: 0;
+        .footer-new {
+            background: linear-gradient(135deg, #0F9B39 0%, #4a7c59 100%);
+            color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+            padding-top: 30px;
+            padding-bottom: 20px;
         }
 
-        @media (max-width: 768px) {
-            .figure-card {
-                flex-direction: column !important;
-                padding: 40px 0;
+        .footer-title {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .footer-subtitle {
+            color: #a8d4ae;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-desc {
+            color: #d6f5e3;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .footer-links a {
+            color: #e0ffe0;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: #a8d4ae;
+            text-decoration: underline;
+        }
+
+        .footer-contact li {
+            color: #e0ffe0;
+            font-size: 0.98rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-contact i {
+            color: #a8d4ae;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        .footer-newsletter .form-control {
+            border-radius: 25px 0 0 25px;
+            border: none;
+            background: #e0ffe0;
+            color: #0F9B39;
+            font-size: 1rem;
+        }
+
+        .footer-newsletter .form-control:focus {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .footer-newsletter .btn-gold {
+            background: #a8d4ae;
+            color: #0F9B39;
+            border-radius: 0 25px 25px 0;
+            border: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .footer-newsletter .btn-gold:hover {
+            background: #0F9B39;
+            color: #fff;
+        }
+
+        .footer-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #0F9B39;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .footer-social-link:hover {
+            background: #a8d4ae;
+            color: #0F9B39;
+            transform: scale(1.1);
+        }
+
+        .footer-separator {
+            border-color: #a8d4ae;
+            opacity: 0.4;
+        }
+
+        .footer-copyright {
+            color: #d6f5e3;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 767px) {
+            .footer-title, .footer-subtitle {
                 text-align: center;
             }
-
-            .figure-image {
-                flex: none;
-                width: 300px;
-                height: 300px;
-                margin: 0 0 40px 0;
+            .footer-new .row > div {
+                text-align: center;
             }
-
-            .figure-content {
-                padding: 0 20px;
+            .footer-social {
+                justify-content: center;
             }
-
-            .figure-name {
-                font-size: 2.2rem;
-            }
-
-            .header h1 {
-                font-size: 2.5rem;
-            }
-
-            .decorative-element {
-                display: none;
+            .footer-new {
+                padding-top: 18px;
+                padding-bottom: 10px;
             }
         }
 
@@ -419,7 +512,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
                             <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
-                            <li><a class="dropdown-item" href="gallerie.html">Galleries Photo</a></li>
+                            <li><a class="dropdown-item" href="gallerie.html">Gallerie Photo</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -427,9 +520,9 @@
                             Vivre à Adjamé
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="index.html#logement">Éducation et jeunesse</a></li>
+                            <li><a class="dropdown-item" href="gastronomie.html">Gastronomie</a></li>
                             <li><a class="dropdown-item" href="vie-associative.html">Vie associative</a></li>
-                            <li><a class="dropdown-item" href="index.html#social">Info pratique</a></li>
+                            <li><a class="dropdown-item" href="info.html">Info pratique</a></li>
 
                         </ul>
                     </li>
@@ -450,7 +543,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="demande.html">Faire une demande </a></li>
                             <li><a class="dropdown-item" href="signaler.html">Signaler un problème</a></li>
-                            <li><a class="dropdown-item" href="index.html#urbanisme">Annonces de la mairie</a></li>
+                            <li><a class="dropdown-item" href="annonce.html">Annonces de la mairie</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -479,16 +572,16 @@
 
     <main class="figures-section">
         <div class="container">
-            <!-- Aruna Dindane -->
+            <!-- Nangui Abrogoua (remonté en premier) -->
             <div class="figure-card fade-in">
                 <div class="figure-image">
-                    <img src="img/Aruna Dindane.webp" alt="Aruna Dindane - Footballeur International">
+                    <img src="img/Nangui Abrogoua.jpg" alt="Nangui Abrogoua - Pionnier et Bâtisseur">
                 </div>
                 <div class="figure-content">
-                    <h2 class="figure-name">Aruna Dindane</h2>
-                    <p class="figure-title">Footballeur International</p>
+                    <h2 class="figure-name">Nangui Abrogoua</h2>
+                    <p class="figure-title">Pionnier et Bâtisseur</p>
                     <p class="figure-bio">
-                        Né à Adjamé, Aruna Dindane est l'une des figures les plus emblématiques du football ivoirien. Attaquant redoutable et capitaine de l'équipe nationale de Côte d'Ivoire, il a marqué l'histoire du football africain par ses performances exceptionnelles. Sa carrière l'a mené dans les plus grands championnats européens, où il a brillé par son talent et sa détermination. Véritable ambassadeur de son quartier natal, Dindane reste une source d'inspiration pour la jeunesse d'Adjamé, incarnant la réussite par le travail et la persévérance.
+                        Nangui Abrogoua est une figure historique fondamentale dans l'histoire d'Adjamé. Pionnier et visionnaire, il a contribué de manière significative au développement urbain et social de la région. Son héritage se perpétue à travers les nombreuses réalisations qui portent encore aujourd'hui son empreinte. Homme de terrain et de proximité, il a su mobiliser les énergies autour de projets ambitieux pour sa communauté. Sa mémoire reste vivace parmi les habitants d'Adjamé qui reconnaissent en lui l'un des artisans de la modernité de leur territoire.
                     </p>
                 </div>
                 <div class="decorative-element"></div>
@@ -524,16 +617,16 @@
                 <div class="decorative-element"></div>
             </div>
 
-            <!-- Nangui Abrogoua -->
+            <!-- Aruna Dindane (descendu en dernier) -->
             <div class="figure-card fade-in">
                 <div class="figure-image">
-                    <img src="img/Nangui Abrogoua.jpg" alt="Nangui Abrogoua - Pionnier et Bâtisseur">
+                    <img src="img/Aruna Dindane.webp" alt="Aruna Dindane - Footballeur International">
                 </div>
                 <div class="figure-content">
-                    <h2 class="figure-name">Nangui Abrogoua</h2>
-                    <p class="figure-title">Pionnier et Bâtisseur</p>
+                    <h2 class="figure-name">Aruna Dindane</h2>
+                    <p class="figure-title">Footballeur International</p>
                     <p class="figure-bio">
-                        Nangui Abrogoua est une figure historique fondamentale dans l'histoire d'Adjamé. Pionnier et visionnaire, il a contribué de manière significative au développement urbain et social de la région. Son héritage se perpétue à travers les nombreuses réalisations qui portent encore aujourd'hui son empreinte. Homme de terrain et de proximité, il a su mobiliser les énergies autour de projets ambitieux pour sa communauté. Sa mémoire reste vivace parmi les habitants d'Adjamé qui reconnaissent en lui l'un des artisans de la modernité de leur territoire.
+                        Né à Adjamé, Aruna Dindane est l'une des figures les plus emblématiques du football ivoirien. Attaquant redoutable et capitaine de l'équipe nationale de Côte d'Ivoire, il a marqué l'histoire du football africain par ses performances exceptionnelles. Sa carrière l'a mené dans les plus grands championnats européens, où il a brillé par son talent et sa détermination. Véritable ambassadeur de son quartier natal, Dindane reste une source d'inspiration pour la jeunesse d'Adjamé, incarnant la réussite par le travail et la persévérance.
                     </p>
                 </div>
                 <div class="decorative-element"></div>
@@ -541,9 +634,51 @@
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 - Patrimoine d'Adjamé. Honorer notre histoire, construire notre avenir.</p>
+    <!-- Remplacement du footer -->
+    <footer class="footer-new position-relative mt-5">
+        <div class="container py-5">
+            <div class="row g-4 align-items-start">
+                <!-- Bloc à propos -->
+                <div class="col-md-4">
+                    <h3 class="footer-title mb-3">Commune d'Adjamé</h3>
+                    <p class="footer-desc mb-3">"Adjamé, carrefour de cultures et d'opportunités, au cœur d'Abidjan."</p>
+                    <img src="img/logo mairie adjaamé-Photoroom.png" alt="Logo Adjamé" style="max-width:120px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                </div>
+                <!-- Bloc liens utiles -->
+                <div class="col-md-2 d-none d-md-block">
+                </div>
+                <!-- Bloc contact -->
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Contact</h4>
+                    <ul class="footer-contact list-unstyled mb-3">
+                        <li><i class="fas fa-map-marker-alt"></i> Boulevard Lagunaire, Adjamé</li>
+                        <li><i class="fas fa-phone"></i> +225 27 20 XX XX XX</li>
+                        <li><i class="fas fa-envelope"></i> contact@mairie-adjame.ci</li>
+                        <li><i class="fas fa-clock"></i> Lun - Ven: 7h30 - 15h30</li>
+                    </ul>
+                </div>
+                <!-- Bloc newsletter & réseaux sociaux -->
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Restez connectés</h4>
+                    <form class="footer-newsletter mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                            <button class="btn btn-gold" type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="footer-social d-flex gap-3">
+                        <a href="#" class="footer-social-link" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@redecouvreadjame" class="footer-social-link" title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-separator my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright mb-0">&copy; 2025 Commune d'Adjamé. Tous droits réservés.</p>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -595,6 +730,18 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+
+        // Animation simple pour la newsletter
+        document.querySelectorAll('.footer-newsletter').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email) {
+                    alert('Merci pour votre inscription ! Vous recevrez bientôt nos actualités.');
+                    this.querySelector('input[type="email"]').value = '';
+                }
+            });
         });
     </script>
 </body>
