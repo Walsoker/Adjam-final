@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boîte à idées citoyenne - Adjamé</title>
+    <meta name="description" content="Proposez vos idées pour améliorer la commune d'Adjamé !">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-light: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Header et Navigation */
+        .navbar {
+            background: rgba(0, 0, 0, 0.312) !important;
+            padding: 0.3rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(172,59,39,0.85) !important;
+            backdrop-filter: blur(10px);
+            padding: 0.1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background: #E6AC30;
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            background: #E6AC30;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown-item {
+            color: var(--text-light) !important;
+            padding: 0.7rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: #E6AC30;
+            color: white !important;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #E7E6E6 100%);
+        }
+        .idea-box-section {
+            max-width: 600px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(44,62,80,0.10);
+            padding: 2.5rem 2rem 2rem 2rem;
+        }
+        .idea-box-title {
+            color: #AC3B27;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .idea-box-desc {
+            color: #0F9B39;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        .form-control, .form-select {
+            border-radius: 10px;
+            border: 1px solid #E6AC30;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #AC3B27;
+            box-shadow: 0 0 0 2px #E6AC30;
+        }
+        .btn-idea {
+            background: linear-gradient(45deg, #E6AC30, #F4C430);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            border-radius: 25px;
+            padding: 0.7rem 2.2rem;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(230, 172, 48, 0.15);
+        }
+        .btn-idea:hover {
+            background: linear-gradient(45deg, #F4C430, #E6AC30);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .ideas-list-section {
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .idea-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(44,62,80,0.08);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem 1.2rem;
+            border-left: 6px solid #E6AC30;
+            transition: box-shadow 0.2s;
+        }
+        .idea-card:hover {
+            box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+        }
+        .idea-title {
+            color: #AC3B27;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .idea-summary {
+            color: #2c3e50;
+            font-size: 1.05rem;
+            margin: 0.5rem 0 0.2rem 0;
+        }
+        .idea-meta {
+            color: #0F9B39;
+            font-size: 0.95rem;
+        }
+        .idea-author {
+            color: #888;
+            font-size: 0.92rem;
+        }
+        @media (max-width: 600px) {
+            .idea-box-section, .ideas-list-section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="imgv2/logo12.png" width="90" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Découvrir Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
+                            <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
+                            <li><a class="dropdown-item" href="gallerie.html">Galleries Photo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Vivre à Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="gastronomie.html">Gastronomie</a></li>
+                            <li><a class="dropdown-item" href="vie-associative.html">Vie associative</a></li>
+                            <li><a class="dropdown-item" href="info.html">Info pratique</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Économie et Mobilité
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="exploration.html">Explorer les marchés</a></li>
+                            <li><a class="dropdown-item" href="commercant.html">Je suis commerçant</a></li>
+                            <li><a class="dropdown-item" href="transport.html">Explore la gare</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Voix d'Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Bôite.html">Boîte à idées citoyenne </a></li>
+                            <li><a class="dropdown-item" href="signaler.html">Espace témoignages & anecdotes</a></li>
+                            <li><a class="dropdown-item" href="annonce.html">Sondages dynamiques</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br><br><br>
+    <section class="idea-box-section mt-5">
+        <h1 class="idea-box-title"><i class="fa-regular fa-lightbulb me-2"></i>Boîte à idées citoyenne</h1>
+        <p class="idea-box-desc">Proposez vos idées pour améliorer la commune d'Adjamé !</p>
+        <form id="ideaForm" autocomplete="off">
+            <div class="mb-3">
+                <label for="ideaTitle" class="form-label">🖊️ Titre de l'idée *</label>
+                <input type="text" class="form-control" id="ideaTitle" required maxlength="60">
+            </div>
+            <div class="mb-3">
+                <label for="ideaDesc" class="form-label">✍️ Description *</label>
+                <textarea class="form-control" id="ideaDesc" rows="3" required maxlength="300"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="ideaQuartier" class="form-label">📍 Quartier concerné *</label>
+                <select class="form-select" id="ideaQuartier" required>
+                    <option value="" disabled selected>Choisir un quartier</option>
+                    <option>Adjamé Centre</option>
+                    <option>Williamsville</option>
+                    <option>Bracodi</option>
+                    <option>Liberté</option>
+                    <option>Boribana</option>
+                    <option>Adjamé Village</option>
+                    <option>220 Logements</option>
+                    <option>Autre</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="ideaName" class="form-label">👤 Nom (optionnel)</label>
+                <input type="text" class="form-control" id="ideaName" maxlength="40">
+            </div>
+            <div class="mb-3">
+                <label for="ideaContact" class="form-label">📧 Contact (optionnel)</label>
+                <input type="email" class="form-control" id="ideaContact" maxlength="60">
+            </div>
+            <button type="submit" class="btn btn-idea w-100 mt-2"><i class="fa-solid fa-paper-plane me-2"></i>Soumettre mon idée</button>
+        </form>
+    </section>
+    <section class="ideas-list-section">
+        <h2 class="mb-4" style="color:#AC3B27;font-size:1.5rem;font-weight:600;text-align:center;">💡 Dernières idées publiées</h2>
+        <div id="ideasList"></div>
+        <!-- Exemple sophistiqué -->
+        <div class="idea-card d-flex align-items-center gap-3 mt-4" style="box-shadow:0 8px 32px rgba(44,62,80,0.13);background:linear-gradient(120deg,#f8f9fa 60%,#e6ac30 100%);">
+            <img src="img/adjame territoire.jpg" alt="Adjamé" style="width:90px;height:90px;object-fit:cover;border-radius:14px;border:3px solid #AC3B27;box-shadow:0 2px 8px #E6AC30aa;">
+            <div>
+                <div class="idea-title" style="font-size:1.15rem;">Créer un espace vert moderne à Williamsville</div>
+                <div class="idea-summary" style="font-size:1.01rem;">Un habitant propose d'aménager un parc urbain avec des jeux pour enfants, du wifi gratuit et des bancs solaires pour recharger les téléphones.</div>
+                <div class="idea-meta"><i class="fa-solid fa-location-dot me-1"></i> Williamsville</div>
+                <div class="idea-author mt-1"><i class="fa-regular fa-user me-1"></i> Awa K. (habitante d'Adjamé)</div>
+            </div>
+        </div>
+        <!-- Deuxième exemple sophistiqué -->
+        <div class="idea-card d-flex align-items-center gap-3 mt-4" style="box-shadow:0 8px 32px rgba(44,62,80,0.13);background:linear-gradient(120deg,#f8f9fa 60%,#0F9B39 100%);">
+            <img src="imgv2/actu2.jpg" alt="Marché Adjamé" style="width:90px;height:90px;object-fit:cover;border-radius:14px;border:3px solid #0F9B39;box-shadow:0 2px 8px #0F9B39aa;">
+            <div>
+                <div class="idea-title" style="font-size:1.15rem;">Installer des poubelles connectées au Marché Roxy</div>
+                <div class="idea-summary" style="font-size:1.01rem;">Proposition d'un jeune commerçant : mettre en place des poubelles intelligentes qui alertent la mairie quand elles sont pleines, pour garder le marché propre et moderne.</div>
+                <div class="idea-meta"><i class="fa-solid fa-location-dot me-1"></i> Marché Roxy</div>
+                <div class="idea-author mt-1"><i class="fa-regular fa-user me-1"></i> Moussa D. (commerçant d'Adjamé)</div>
+            </div>
+        </div>
+    </section>
+    <!-- Nouveau Footer Sombre et Moderne -->
+    <footer class="footer-new position-relative mt-5">
+        <div class="container py-5">
+            <div class="row g-4 align-items-start">
+                <!-- Bloc à propos -->
+                <div class="col-md-4">
+                    <h3 class="footer-title mb-3">Commune d'Adjamé</h3>
+                    <p class="footer-desc mb-3">"Adjamé, carrefour de cultures et d'opportunités, au cœur d'Abidjan."</p>
+                    <img src="img/logo mairie adjaamé-Photoroom.png" alt="Logo Adjamé" style="max-width:120px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                </div>
+                <div class="col-md-2 d-none d-md-block"></div>
+                <!-- Bloc contact -->
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Contact</h4>
+                    <ul class="footer-contact list-unstyled mb-3">
+                        <li><i class="fas fa-map-marker-alt"></i> Boulevard Lagunaire, Adjamé</li>
+                        <li><i class="fas fa-phone"></i> +225 27 20 XX XX XX</li>
+                        <li><i class="fas fa-envelope"></i> contact@mairie-adjame.ci</li>
+                        <li><i class="fas fa-clock"></i> Lun - Ven: 7h30 - 15h30</li>
+                    </ul>
+                </div>
+                <!-- Bloc newsletter & réseaux sociaux -->
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Restez connectés</h4>
+                    <form class="footer-newsletter mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                            <button class="btn btn-gold" type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="footer-social d-flex gap-3">
+                        <a href="#" class="footer-social-link" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@redecouvreadjame" class="footer-social-link" title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-separator my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright mb-0">&copy; 2025 Commune d'Adjamé. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <style>
+    .footer-new {
+        background: linear-gradient(135deg, #0F9B39 0%, #4a7c59 100%);
+        color: #FFFFFF;
+        position: relative;
+        overflow: hidden;
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+    .footer-title {
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+    .footer-subtitle {
+        color: #a8d4ae;
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    .footer-desc {
+        color: #d6f5e3;
+        font-size: 1rem;
+        font-style: italic;
+    }
+    .footer-links a {
+        color: #e0ffe0;
+        text-decoration: none;
+        transition: color 0.2s;
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+    .footer-links a:hover {
+        color: #a8d4ae;
+        text-decoration: underline;
+    }
+    .footer-contact li {
+        color: #e0ffe0;
+        font-size: 0.98rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .footer-contact i {
+        color: #a8d4ae;
+        min-width: 18px;
+        text-align: center;
+    }
+    .footer-newsletter .form-control {
+        border-radius: 25px 0 0 25px;
+        border: none;
+        background: #e0ffe0;
+        color: #0F9B39;
+        font-size: 1rem;
+    }
+    .footer-newsletter .form-control:focus {
+        box-shadow: none;
+        outline: none;
+    }
+    .footer-newsletter .btn-gold {
+        background: #a8d4ae;
+        color: #0F9B39;
+        border-radius: 0 25px 25px 0;
+        border: none;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    .footer-newsletter .btn-gold:hover {
+        background: #0F9B39;
+        color: #fff;
+    }
+    .footer-social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background: #0F9B39;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 1.3rem;
+        transition: background 0.2s, color 0.2s, transform 0.2s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .footer-social-link:hover {
+        background: #a8d4ae;
+        color: #0F9B39;
+        transform: scale(1.1);
+    }
+    .footer-separator {
+        border-color: #a8d4ae;
+        opacity: 0.4;
+    }
+    .footer-copyright {
+        color: #d6f5e3;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+    }
+    @media (max-width: 767px) {
+        .footer-title, .footer-subtitle {
+            text-align: center;
+        }
+        .footer-new .row > div {
+            text-align: center;
+        }
+        .footer-social {
+            justify-content: center;
+        }
+        .footer-new {
+            padding-top: 18px;
+            padding-bottom: 10px;
+        }
+    }
+    </style>
+    <script>
+    // Animation simple pour la newsletter
+    document.querySelectorAll('.footer-newsletter').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Merci pour votre inscription ! Vous recevrez bientôt nos actualités.');
+                this.querySelector('input[type="email"]').value = '';
+            }
+        });
+    });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+    // Gestion du formulaire et affichage des idées (localStorage)
+    const form = document.getElementById('ideaForm');
+    const ideasList = document.getElementById('ideasList');
+    const storageKey = 'adjame_ideas';
+
+    function getIdeas() {
+        return JSON.parse(localStorage.getItem(storageKey) || '[]');
+    }
+    function saveIdeas(ideas) {
+        localStorage.setItem(storageKey, JSON.stringify(ideas));
+    }
+    function renderIdeas() {
+        const ideas = getIdeas().reverse();
+        ideasList.innerHTML = ideas.length ? ideas.slice(0,5).map(idea => `
+            <div class="idea-card">
+                <div class="idea-title">${idea.title}</div>
+                <div class="idea-summary">${idea.desc.length > 100 ? idea.desc.slice(0,100)+'...' : idea.desc}</div>
+                <div class="idea-meta"><i class="fa-solid fa-location-dot me-1"></i> ${idea.quartier}</div>
+                <div class="idea-author mt-1">${idea.name ? `<i class='fa-regular fa-user me-1'></i> ${idea.name}` : ''}</div>
+            </div>
+        `).join('') : '<div class="text-center text-muted">Aucune idée publiée pour le moment.</div>';
+    }
+    renderIdeas();
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const title = document.getElementById('ideaTitle').value.trim();
+        const desc = document.getElementById('ideaDesc').value.trim();
+        const quartier = document.getElementById('ideaQuartier').value;
+        const name = document.getElementById('ideaName').value.trim();
+        const contact = document.getElementById('ideaContact').value.trim();
+        if (!title || !desc || !quartier) return;
+        const ideas = getIdeas();
+        ideas.push({ title, desc, quartier, name, contact, date: Date.now() });
+        saveIdeas(ideas);
+        form.reset();
+        renderIdeas();
+        alert('Merci pour votre idée ! Elle a bien été enregistrée.');
+    });
+    </script>
+</body>
+</html>
