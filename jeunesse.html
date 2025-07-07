@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeunesse Engagée – Adjamé</title>
+    <meta name="description" content="Talents, projets et défis des jeunes d'Adjamé. Tribune, challenge, inspiration et engagement local !">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --vert: #0F9B39;
+            --rouge: #AC3B27;
+            --orange: #E6AC30;
+            --gris: #f8f9fa;
+            --clair: #fff;
+            --ombre: 0 4px 24px rgba(44,62,80,0.10);
+        }
+        body {
+            background: var(--gris);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #222;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--vert);
+            margin-bottom: 1.2rem;
+        }
+        .section-subtitle {
+            color: var(--rouge);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            background: var(--clair);
+            border-radius: 18px;
+            box-shadow: var(--ombre);
+            padding: 1.2rem 1rem 1.2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.7rem;
+            border-left: 6px solid var(--orange);
+            transition: box-shadow 0.2s;
+        }
+        .project-card:hover {
+            box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+        }
+        .project-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid var(--vert);
+            background: #eaf6fb;
+        }
+        .project-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--orange);
+        }
+        .project-group {
+            color: var(--vert);
+            font-size: 0.98rem;
+            font-weight: 500;
+        }
+        .project-ecole {
+            color: var(--rouge);
+            font-size: 0.95rem;
+        }
+        .project-desc {
+            color: #444;
+            font-size: 0.97rem;
+        }
+        .btn-soumettre {
+            background: linear-gradient(90deg, var(--orange), var(--vert));
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 0.7rem 2.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(230, 172, 48, 0.15);
+            transition: all 0.3s;
+        }
+        .btn-soumettre:hover {
+            background: linear-gradient(90deg, var(--vert), var(--orange));
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .form-projet {
+            background: var(--clair);
+            border-radius: 16px;
+            box-shadow: var(--ombre);
+            padding: 1.5rem 1rem;
+            margin-top: 1.5rem;
+        }
+        .form-label {
+            font-weight: 500;
+            color: var(--vert);
+        }
+        .form-control, .form-select {
+            border-radius: 10px;
+            border: 1px solid var(--orange);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--vert);
+            box-shadow: 0 0 0 2px var(--orange);
+        }
+        /* Section 2 : Tribune */
+        .tabs-tribune {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: var(--gris);
+            color: var(--rouge);
+            border: 1.5px solid var(--rouge);
+            border-radius: 20px;
+            padding: 0.4rem 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--rouge);
+            color: #fff;
+        }
+        .tribune-content {
+            display: none;
+        }
+        .tribune-content.active {
+            display: block;
+        }
+        .tribune-card {
+            background: var(--clair);
+            border-radius: 14px;
+            box-shadow: var(--ombre);
+            padding: 1.1rem 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .tribune-type {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--orange);
+        }
+        .tribune-title {
+            color: var(--vert);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .tribune-meta {
+            color: var(--rouge);
+            font-size: 0.95rem;
+        }
+        .tribune-text {
+            color: #444;
+            font-size: 0.97rem;
+        }
+        .tribune-media {
+            margin: 0.7rem 0;
+        }
+        /* Section 3 : Challenge */
+        .challenge-section {
+            background: linear-gradient(120deg, #eaf6fb 60%, #f8f9fa 100%);
+            border-radius: 18px;
+            box-shadow: var(--ombre);
+            padding: 2rem 1rem 1.5rem 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .challenge-theme {
+            color: var(--orange);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .challenge-btn {
+            background: linear-gradient(90deg, var(--vert), var(--orange));
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 0.7rem 2.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 4px 15px rgba(15, 155, 57, 0.13);
+            transition: all 0.3s;
+        }
+        .challenge-btn:hover {
+            background: linear-gradient(90deg, var(--orange), var(--vert));
+            color: #fff;
+            transform: scale(1.05);
+        }
+        .challenge-form {
+            background: var(--clair);
+            border-radius: 16px;
+            box-shadow: var(--ombre);
+            padding: 1.5rem 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .challenge-winner {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: var(--ombre);
+            padding: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .winner-thumb {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--vert);
+        }
+        .winner-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--vert);
+        }
+        .winner-likes {
+            color: var(--orange);
+            font-weight: 600;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 0.7rem;
+        }
+        .gallery-thumb {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid var(--vert);
+            box-shadow: 0 2px 8px #0F9B3922;
+            transition: transform 0.2s;
+        }
+        .gallery-thumb:hover {
+            transform: scale(1.07);
+        }
+        .charte-section {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: var(--ombre);
+            padding: 1.2rem 1rem;
+            margin: 2.5rem 0 1.5rem 0;
+            color: #444;
+            font-size: 0.98rem;
+        }
+        .charte-section ul {
+            margin: 0 0 0 1.2rem;
+            padding: 0;
+        }
+        .charte-section li {
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 700px) {
+            .section-title { font-size: 1.3rem; }
+            .project-card, .tribune-card, .challenge-section, .charte-section { padding: 1rem 0.5rem; }
+            .challenge-section { padding: 1.2rem 0.5rem 1rem 0.5rem; }
+        }
+        /* Header et Navigation */
+        .navbar {
+            background: rgba(0, 0, 0, 0.312) !important;
+            padding: 0.3rem 0;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: #AC3B27 !important;
+            backdrop-filter: blur(10px);
+            padding: 0.1rem 0;
+        }
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .navbar-nav .nav-link:hover {
+            background: #E6AC30;
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        .dropdown-menu {
+            background: #E6AC30;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+        .dropdown-item {
+            color: #fff !important;
+            padding: 0.7rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .dropdown-item:hover {
+            background: #E6AC30;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="imgv2/logo12.png" width="90" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Découvrir Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="histoire.html">Histoire & Culture</a></li>
+                            <li><a class="dropdown-item" href="personalité.html">Personnalités Locales</a></li>
+                            <li><a class="dropdown-item" href="gallerie.html">Galleries Photo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Vivre à Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="gastronomie.html">Gastronomie</a></li>
+                            <li><a class="dropdown-item" href="vie-associative.html">Vie associative</a></li>
+                            <li><a class="dropdown-item" href="info.html">Info pratique</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Économie et Mobilité
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="exploration.html">Explorer les marchés</a></li>
+                            <li><a class="dropdown-item" href="transport.html">Explore la gare</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Voix d'Adjamé
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Bôite.html">Boîte à idées citoyenne </a></li>
+                            <li><a class="dropdown-item" href="jeunesse.html">Jeunesse Engagée</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br><br><br><br><br>
+    <!-- Section 1 : Projets scolaires et associatifs -->
+    <section class="container py-4">
+        <h1 class="section-title"><i class="fa-solid fa-rocket me-2"></i>Projets scolaires & associatifs</h1>
+        <div class="section-subtitle">Découvrez les initiatives des jeunes d'Adjamé et proposez la vôtre !</div>
+        <div class="project-grid mb-4">
+            <!-- Exemple de projet -->
+            <div class="project-card">
+                <img src="imgv2/actu1.jpg" class="project-img" alt="Logo projet">
+                <div class="project-title">Club Science & Robotique</div>
+                <div class="project-group"><i class="fa-solid fa-users me-1"></i> Collège Moderne Adjamé</div>
+                <div class="project-ecole"><i class="fa-solid fa-school me-1"></i> Williamsville</div>
+                <div class="project-desc">Des jeunes passionnés créent des robots pour sensibiliser à l'écologie et à l'innovation dans leur quartier.</div>
+            </div>
+            <div class="project-card">
+                <img src="imgv2/actu3.jpg" class="project-img" alt="Logo projet">
+                <div class="project-title">Troupe Danse Espoir</div>
+                <div class="project-group"><i class="fa-solid fa-users me-1"></i> Groupe Espoir</div>
+                <div class="project-ecole"><i class="fa-solid fa-school me-1"></i> 220 Logements</div>
+                <div class="project-desc">Une troupe de jeunes danseurs anime les fêtes de quartier et partage la culture urbaine d'Adjamé.</div>
+            </div>
+            <div class="project-card">
+                <img src="imgv2/actu4.jpg" class="project-img" alt="Logo projet">
+                <div class="project-title">Solidarité Scolaire</div>
+                <div class="project-group"><i class="fa-solid fa-users me-1"></i> Association Jeunesse Unie</div>
+                <div class="project-ecole"><i class="fa-solid fa-school me-1"></i> Adjamé Centre</div>
+                <div class="project-desc">Collecte de fournitures et tutorat pour aider les élèves en difficulté dans la commune.</div>
+            </div>
+        </div>
+        <button class="btn btn-soumettre" data-bs-toggle="collapse" data-bs-target="#formProjet"><i class="fa-solid fa-plus me-2"></i>Soumettre un projet</button>
+        <div class="collapse" id="formProjet">
+            <form class="form-projet mt-3">
+                <div class="mb-3">
+                    <label class="form-label">Nom du porteur / groupe *</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Titre du projet *</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Description *</label>
+                    <textarea class="form-control" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Fichier/Image</label>
+                    <input type="file" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contact (email ou téléphone)</label>
+                    <input type="text" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-soumettre w-100 mt-2"><i class="fa-solid fa-paper-plane me-2"></i>Envoyer</button>
+            </form>
+        </div>
+    </section>
+    <!-- Section 3 : Challenge Adjamé Talents -->
+    <section class="container challenge-section my-4">
+        <h2 class="section-title"><i class="fa-solid fa-trophy me-2"></i>Challenge Adjamé Talents – Défi du mois</h2>
+        <div class="challenge-theme mb-2">🎯 Thème du mois : <span style="color:var(--vert);font-weight:700;">"Raconte ton quartier en 30 sec"</span></div>
+        <button class="challenge-btn" data-bs-toggle="collapse" data-bs-target="#formChallenge">Je participe !</button>
+        <div class="collapse" id="formChallenge">
+            <form class="challenge-form mt-3">
+                <div class="mb-3">
+                    <label class="form-label">Nom / Pseudo *</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Lien TikTok / Instagram *</label>
+                    <input type="url" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Quartier</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">J'accepte la charte d'affichage *</label>
+                    <input type="checkbox" required> Oui
+                </div>
+                <button type="submit" class="challenge-btn w-100 mt-2"><i class="fa-solid fa-paper-plane me-2"></i>Envoyer</button>
+            </form>
+        </div>
+        <div class="challenge-winner mt-4">
+            <img src="imgv2/actu5.jpg" class="winner-thumb" alt="Gagnant">
+            <div>
+                <div class="winner-title">Vidéo gagnante : "Adjamé en rythme"</div>
+                <a href="https://www.tiktok.com/@adjametalents/video/7352345678901234567" target="_blank" style="color:var(--vert);font-weight:600;">Voir la vidéo</a>
+                <div class="winner-likes"><i class="fa-solid fa-heart me-1"></i> 1 245 likes</div>
+            </div>
+        </div>
+        <div class="gallery-grid mb-2">
+            <a href="https://www.tiktok.com/@redecouvreadjame/video/7521409406022503685" target="_blank"><img src="imgv2/video1.png" class="gallery-thumb" alt="Participation"></a>
+            <a href="https://www.tiktok.com/@adjametalents/video/7352345678901234568" target="_blank"><img src="imgv2/video2.png" class="gallery-thumb" alt="Participation"></a>
+        </div>
+    </section>
+    <!-- Charte du participant -->
+    <section class="container charte-section">
+        <h3 class="mb-2" style="color:var(--orange);font-size:1.1rem;"><i class="fa-solid fa-shield-halved me-2"></i>Charte du participant</h3>
+        <ul>
+            <li>Pas de contenu offensant, violent ou inapproprié</li>
+            <li>Les vidéos doivent mettre en valeur Adjamé et son esprit communautaire</li>
+            <li>Les meilleures vidéos seront affichées avec accord de la personne concernée</li>
+        </ul>
+    </section>
+    <!-- Footer -->
+    <footer class="footer-new position-relative mt-5">
+        <div class="container py-5">
+            <div class="row g-4 align-items-start">
+                <div class="col-md-4">
+                    <h3 class="footer-title mb-3">Commune d'Adjamé</h3>
+                    <p class="footer-desc mb-3">"Adjamé, carrefour de cultures et d'opportunités, au cœur d'Abidjan."</p>
+                    <img src="img/logo mairie adjaamé-Photoroom.png" alt="Logo Adjamé" style="max-width:120px; background:#fff; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                </div>
+                <div class="col-md-2 d-none d-md-block"></div>
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Contact</h4>
+                    <ul class="footer-contact list-unstyled mb-3">
+                        <li><i class="fas fa-map-marker-alt"></i> Boulevard Lagunaire, Adjamé</li>
+                        <li><i class="fas fa-phone"></i> +225 27 20 XX XX XX</li>
+                        <li><i class="fas fa-envelope"></i> contact@mairie-adjame.ci</li>
+                        <li><i class="fas fa-clock"></i> Lun - Ven: 7h30 - 15h30</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4 class="footer-subtitle mb-3">Restez connectés</h4>
+                    <form class="footer-newsletter mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                            <button class="btn btn-gold" type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                    <div class="footer-social d-flex gap-3">
+                        <a href="#" class="footer-social-link" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@redecouvreadjame" class="footer-social-link" title="TikTok" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-separator my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="footer-copyright mb-0">&copy; 2025 Commune d'Adjamé. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <style>
+    .footer-new {
+        background: linear-gradient(135deg, #0F9B39 0%, #4a7c59 100%);
+        color: #FFFFFF;
+        position: relative;
+        overflow: hidden;
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+    .footer-title {
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+    .footer-subtitle {
+        color: #a8d4ae;
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    .footer-desc {
+        color: #d6f5e3;
+        font-size: 1rem;
+        font-style: italic;
+    }
+    .footer-links a {
+        color: #e0ffe0;
+        text-decoration: none;
+        transition: color 0.2s;
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+    .footer-links a:hover {
+        color: #a8d4ae;
+        text-decoration: underline;
+    }
+    .footer-contact li {
+        color: #e0ffe0;
+        font-size: 0.98rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .footer-contact i {
+        color: #a8d4ae;
+        min-width: 18px;
+        text-align: center;
+    }
+    .footer-newsletter .form-control {
+        border-radius: 25px 0 0 25px;
+        border: none;
+        background: #e0ffe0;
+        color: #0F9B39;
+        font-size: 1rem;
+    }
+    .footer-newsletter .form-control:focus {
+        box-shadow: none;
+        outline: none;
+    }
+    .footer-newsletter .btn-gold {
+        background: #a8d4ae;
+        color: #0F9B39;
+        border-radius: 0 25px 25px 0;
+        border: none;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    .footer-newsletter .btn-gold:hover {
+        background: #0F9B39;
+        color: #fff;
+    }
+    .footer-social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background: #0F9B39;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 1.3rem;
+        transition: background 0.2s, color 0.2s, transform 0.2s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .footer-social-link:hover {
+        background: #a8d4ae;
+        color: #0F9B39;
+        transform: scale(1.1);
+    }
+    .footer-separator {
+        border-color: #a8d4ae;
+        opacity: 0.4;
+    }
+    .footer-copyright {
+        color: #d6f5e3;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+    }
+    @media (max-width: 767px) {
+        .footer-title, .footer-subtitle {
+            text-align: center;
+        }
+        .footer-new .row > div {
+            text-align: center;
+        }
+        .footer-social {
+            justify-content: center;
+        }
+        .footer-new {
+            padding-top: 18px;
+            padding-bottom: 10px;
+        }
+    }
+    </style>
+    <script>
+    // Animation simple pour la newsletter
+    document.querySelectorAll('.footer-newsletter').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Merci pour votre inscription ! Vous recevrez bientôt nos actualités.');
+                this.querySelector('input[type="email"]').value = '';
+            }
+        });
+    });
+    // Navbar scroll effet comme index
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    // Tribune tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            document.querySelectorAll('.tribune-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById('tab-' + this.dataset.tab).classList.add('active');
+        });
+    });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>
